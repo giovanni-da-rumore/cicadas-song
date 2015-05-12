@@ -1,32 +1,35 @@
 # Schema Information
 
-## blogs
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-owner_id    | integer   | not null, foreign key (references users)
-title       | string    | not null
-
-## followings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-blog_id     | integer   | not null, foreign key (references blogs)
-follower_id | integer   | not null, foreign key (references users)
-
-## posts
+## text
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 author_id   | integer   | not null, foreign key (references users)
 title       | string    | not null
-body        | string    |
+published_date | integer |
 
-## tags
+## followings
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-label       | string    | not null, unique
+text_id     | integer   | not null, foreign key (references blogs)
+follower_id | integer   | not null, foreign key (references users)
+
+## annotation
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+author_id   | integer   | not null, foreign key (references users)
+body        | text      | not null
+approval    | integer   |
+
+
+## text_description
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+text_id     | integer   | not null, unique
+author_id   | integer   | not null, foreign key
 
 ## taggings
 column name | data type | details
@@ -39,7 +42,12 @@ tag_id      | integer   | not null, foreign key (references tags)
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
+username        | string    | not null, unique
 email           | string    | not null, unique
 password_digest | string    | not null
 session_token   | string    | not null, unique
+editor          | boolean   | default false
 
+
+## to make tables for joining texts and annotations with multiple authors
+## Also, if have time, add current hotness for texts and overall points for users
