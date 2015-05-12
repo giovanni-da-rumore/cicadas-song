@@ -8,6 +8,20 @@
 </head>
 <body>
 
+ <% if current_user %>
+  <%= current_user.username %>
+  <form class="" action="/sessions" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <button type="submit">Sign Out</button>
+  </form>
+
+  <br><br>
+  <% else %>
+  <a href="/users/new">Sign Up</a>
+  <a href="/sessions/new">Sign In</a>
+<% end %>
+
 <%= yield %>
 
 </body>
