@@ -32,7 +32,7 @@ Allit is a clone of Genius built on Rails and Backbone. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Blog Creation (~1 day)
+### Phase 1: User Authentication, Text Creation (~1 day)
 I will implement user authentication in Rails based on the App Academy practices. After this phase, users should be able to create genius texts using a simple text form in a Rails view. Users will also be separated into two categories, general users who can upload and edit texts and privileged users, who can edit texts/annotations and later 'postlet' or advertize texts. Users will also be able to create text descriptions, which will be visible in a sidebar. The most important part of this phase will be pushing the app to Heroku and ensuring that everything works before moving on
 to phase 2.
 
@@ -63,7 +63,7 @@ chronologically. On the Backbone side, I'll make a `FeedShow` view whose that so
 [Details][phase-four]
 
 
-### Phase 5: Searching for Blogs and Posts (~2 days)
+### Phase 5: Searching for Texts and Authors (~2 days)
 I'll need to add `search` routes to both the Texts controllers. On the
 Backbone side, there will be a `SearchResults` composite view has `TextIndex`
 and `AuthorIndex` subviews. These views will use plain old `text` and 'author'
@@ -81,13 +81,12 @@ I'll add another "hotTexts" route that collects texts based on a ranking system.
 
 ### Bonus Features (TBD)
 - [ ] "Upvodte-Downvote" button for annotations
-- [ ] Custom blog urls
 - [ ] Pagination/infinite scroll
-- [ ] Activity history (e.g. likes, reblogs, taggings)
+- [ ] Activity history (e.g. likes, annotations)
 - [ ] Multiple sessions/session management
 - [ ] User avatars
 - [ ] Typeahead search bar
-- [ ] Ability to add music/youtube or soundcloud links to annotations and text descriptions.
+- [ ] Ability to add music --youtube or spotify-- links to annotations and text descriptions.
 - [ ] Ability to message other users
 
 
