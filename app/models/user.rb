@@ -4,7 +4,14 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6, allow_nil: true}
 
   attr_reader :password
+
   has_many :sessions
+
+  #to do
+  #has_many :library_texts, through: :library_join, as: :texts
+  #has_many :authored_texts, through: author_join, as: texts 
+
+
 
   def password=(password)
     @password = password

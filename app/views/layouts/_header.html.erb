@@ -9,7 +9,7 @@
         <li><a href="#"> Notifications</a></li>
         <li><a href="<%=user_url(current_user)%>"><%=current_user.username%></a></li>
         <li><a href="#">Create</a></li>
-        <li><a href="#">Space Holder</a></li>
+        <li><%= link_to "Sign out", sessions_url, method: :delete%></li>
       </ul>
     <% else %>
     <ul class="header-list group">

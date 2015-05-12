@@ -1,34 +1,55 @@
 .header {
-  border: 1px solid black;
+  border-bottom: 1px solid #F2F2F2;
   display: block;
   text-align: center;
-  margin: auto;
+  margin-bottom: 10px;
+  background: #FF0000;
 }
 
 .header-list {
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
   float: right;
 }
 
 .header-nav {
-  border: 1px solid green;
   display: block;
   margin: auto;
-  margin: 15px 30px;
-  background: red;
-  color: white;
+  margin: 0px 25px;
+  color: #f9f8f7;
 }
 
 .header-logo {
-  border: 1px solid orange;
+  /*border: 1px solid orange;*/
   float: left;
-  padding: 6px;
+  padding: 10px;
+  font-size: 18px;
 }
 
+
+
+
+
 .header-list > li {
-  border: 1px solid white;
+  border-left: 1px solid #F2F2F2;
   float: left;
-  padding: 5px;
+}
+
+.header-list li:last-child {
+  border-right: 1px solid #F2F2F2;
+}
+
+.header-list a:hover {
+  background: #000;
+}
+
+
+
+
+
+.header-list a {
+  display: block;
+  padding: 12px;
+  font-size: 14px;
 }
 
 
