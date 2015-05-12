@@ -1,0 +1,61 @@
+.header {
+  border: 1px solid black;
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+.header-list {
+  border: 1px solid blue;
+  float: right;
+}
+
+.header-nav {
+  border: 1px solid green;
+  display: block;
+  margin: auto;
+  margin: 15px 30px;
+  background: red;
+  color: white;
+}
+
+.header-logo {
+  border: 1px solid orange;
+  float: left;
+  padding: 6px;
+}
+
+.header-list > li {
+  border: 1px solid white;
+  float: left;
+  padding: 5px;
+}
+
+
+
+
+
+
+
+/*<header class="header">
+    <nav class="header-nav group">
+      <h1 class="header-logo">
+        <a href="/">Aleatory Literature</a>
+        </h1>
+
+    <%if current_user%>
+      <ul class="header-list group">
+        <li><a href="#"> Notifications</a></li>
+        <li><a href="<%=user_url(user)%>">Profile</a></li>
+        <li><a href="<%=new_text%>">Create</a></li>
+        <li><a href="#">Space Holder</a></li>
+      </ul>
+    <% else %>
+    <ul class="header-list group">
+      <li><a href="/sessions/new">Sign In</a></li>
+      <li><a href="/users/new">Sign Up</a></li>
+      <li><a href="#">Space Holder</a></li>
+    </ul>
+    <% end %>
+ </nav>
+</header>*/

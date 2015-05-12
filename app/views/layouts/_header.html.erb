@@ -1,0 +1,22 @@
+<header class="header">
+    <nav class="header-nav group">
+      <h1 class="header-logo">
+        <a href="/">Aleatory Literature</a>
+        </h1>
+
+    <%if current_user%>
+      <ul class="header-list group">
+        <li><a href="#"> Notifications</a></li>
+        <li><a href="<%=user_url(current_user)%>"><%=current_user.username%></a></li>
+        <li><a href="#">Create</a></li>
+        <li><a href="#">Space Holder</a></li>
+      </ul>
+    <% else %>
+    <ul class="header-list group">
+      <li><a href="/sessions/new">Sign In</a></li>
+      <li><a href="/users/new">Sign Up</a></li>
+      <li><a href="#">Space Holder</a></li>
+    </ul>
+    <% end %>
+ </nav>
+</header>
