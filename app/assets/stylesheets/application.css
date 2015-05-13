@@ -69,6 +69,28 @@
    box-shadow: 0 0 1px 1px teal;
  }
 
+ input {
+   display: block;
+   border: 1px solid #ccc;
+   background: #fff;
+   height: 25px;
+   width: 210px;
+   border-radius: 5px;
+   margin: 2px 0px;
+
+ }
+
+ input.single-check {
+   display: inline;
+ }
+
+ form label {
+   padding: 5px 0px;
+   display: block;
+ }
+
+
+
  /* Clearfix */
 
  .group:after {

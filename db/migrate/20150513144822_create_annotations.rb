@@ -5,7 +5,6 @@ class CreateAnnotations < ActiveRecord::Migration
       t.integer :author_id, null: false
       t.text :content, null: false
       t.integer :score, default: 0
-
       t.timestamps null: false
     end
 

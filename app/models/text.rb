@@ -1,7 +1,7 @@
 class Text < ActiveRecord::Base
-  validates :body, :author_id, :title, presence: true
+  validates :body, :title, presence: true
 
-  belongs_to :author
+  belongs_to :author, inverse_of: :texts
 
   belongs_to :uploader,
   class_name: "User",
@@ -28,3 +28,14 @@ class Text < ActiveRecord::Base
 
 
 end
+
+
+# a = Author.new
+#
+# Text.belongs_to :author
+# Author.has_many :texts, inverse_of: :author
+#
+# t = a.texts.new
+#
+# t.author #=> nil
+# a.texts #=> [t]

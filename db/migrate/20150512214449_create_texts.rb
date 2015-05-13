@@ -4,7 +4,7 @@ class CreateTexts < ActiveRecord::Migration
       t.string :title, null: false
       t.date :date
       t.text :body, null: false
-      t.integer :author_id, null: false
+      t.integer :author_id
       t.integer :user_id, null: false
 
       t.timestamps null: false

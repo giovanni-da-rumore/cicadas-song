@@ -1,7 +1,7 @@
 class Author < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
-  has_many :texts
+  has_many :texts, inverse_of: :text
 
 
 end

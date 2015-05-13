@@ -56,8 +56,6 @@ form > .date-select {
 form label {
   padding: 8px 0px;
   display: block;
-
-
 }
 
 form {
@@ -81,7 +79,7 @@ form {
   <ul class="form-top-components group">
     <li>
       <label>Author:
-        <input type=text name="text[username]" value="<%=@text.author%>">
+        <input type=text name="text[author]" value="<%=@text.author%>">
       </label>
     </li>
     <li>
@@ -92,23 +90,26 @@ form {
   </ul>
 
     <label for="text[body]">Text:
-      <textarea name="text[body]"> <%=@text.body%> </textarea>
+      <textarea name="text[body]"><%=@text.body%></textarea>
    </label>
 
       <label class="date-select">Publication Date
         <select class="date-selector" name="text[date][year]">
+          <option value=""></option>
           <% ce_years.each do |year| %>
             <option value="<%=year%>"> <%=year%> </option>
           <%end%>
         </select>
 
         <select class="date-selector" name="text[date][month]">
+          <option value=""></option>
           <% Date::MONTHNAMES.each_with_index do |month, idx| %>
             <option value="<%=idx + 1%>"> <%=month%> </option>
           <%end%>
         </select>
 
         <select class="date-selector" name="text[date][day]">
+          <option value=""></option>
           <% 1.upto(31) do |day| %>
             <option value="<%=day%>"> <%=day%> </option>
           <%end%>
