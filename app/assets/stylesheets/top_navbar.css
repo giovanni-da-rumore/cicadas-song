@@ -3,7 +3,10 @@
   display: block;
   text-align: center;
   margin-bottom: 10px;
-  background: #FF0000;
+  /*background: #FF0000;*/
+  background: #009900;
+  /*background: #22b422;*/
+  /*background: #00B300;*/
 }
 
 .header-list {
@@ -25,6 +28,10 @@
   font-size: 18px;
 }
 
+.header-logo:hover {
+  color: #FFD700;
+}
+
 
 
 
@@ -40,6 +47,8 @@
 
 .header-list a:hover {
   background: #000;
+  /*background: #0000f2;
+  background: #0000d2;*/
 }
 
 

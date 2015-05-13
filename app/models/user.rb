@@ -5,13 +5,32 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  has_many :sessions
+  has_many :sessions, dependent: :destroy
+
+  has_many :uploaded_texts,
+  class_name: "Text",
+  foreign_key: :user_id,
+  primary_key: :id
+
+  has_many :annotations, dependent: :destroy,
+  class_name: "Annotation",
+  foreign_key: :author_id,
+  primary_key: :id
+
+  has_many :text_descriptions, dependent: :destroy,
+  class_name: "Description",
+  foreign_key: :author_id,
+  primary_key: :id
+
+
+  has_many :libraries, dependent: :destroy
 
   #to do
-  #has_many :library_texts, through: :library_join, as: :texts
-  #has_many :authored_texts, through: author_join, as: texts 
+  has_many :library_texts, through: :libraries, as: :text
 
-
+  def authored_texts
+    texts = self.uploaded_texts.where(author_is_user: true)
+  end
 
   def password=(password)
     @password = password

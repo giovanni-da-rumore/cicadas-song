@@ -36,6 +36,9 @@ Allit is a clone of Genius built on Rails and Backbone. Users can:
 I will implement user authentication in Rails based on the App Academy practices. After this phase, users should be able to create genius texts using a simple text form in a Rails view. Users will also be separated into two categories, general users who can upload and edit texts and privileged users, who can edit texts/annotations and later 'postlet' or advertize texts. Users will also be able to create text descriptions, which will be visible in a sidebar. The most important part of this phase will be pushing the app to Heroku and ensuring that everything works before moving on
 to phase 2.
 
+##recordi, eventually use plolymorphic associations for "collections" on texts, viz. user library's (user_id), authors_texts (author_id), time period (to figure out)
+
+
 [Details][phase-one]
 
 ### Phase 2: Viewing Texts and Annotations (~3 days)

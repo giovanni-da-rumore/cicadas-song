@@ -1,0 +1,125 @@
+<style>
+input {
+  display: block;
+  border: 1px solid #ccc;
+  background: #fff;
+  height: 25px;
+  width: 260px;
+  border-radius: 5px;
+}
+
+input.single-check {
+  display: inline;
+}
+
+textarea {
+
+  width: 600px;
+  min-height: 500px;
+  resize: none;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.form-top-components li {
+  /*display: block;
+  border: 1px solid red;
+  float: left;*/
+  width: 275px;
+  float: left;
+}
+
+.form-top-components li:last-child {
+  /*margin-left: 40px;*/
+}
+
+
+
+
+
+form > ul {
+  display: block;
+  width: 600px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+
+form > .date-select {
+  display: block;
+  width: 600px;
+}
+
+
+
+form label {
+  padding: 8px 0px;
+  display: block;
+
+
+}
+
+form {
+  display: block;
+  width: 620px;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+
+</style>
+
+<%= render "shared/errors" %>
+
+
+
+<form class="group" action="<%=api_texts_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <strong>Create Text</strong>
+
+  <ul class="form-top-components group">
+    <li>
+      <label>Author:
+        <input type=text name="text[username]" value="<%=@text.author%>">
+      </label>
+    </li>
+    <li>
+      <label>Title:
+        <input type="text" name="text[title]" value="<%=@text.title%>">
+      </label>
+    </li>
+  </ul>
+
+    <label for="text[body]">Text:
+      <textarea name="text[body]"> <%=@text.body%> </textarea>
+   </label>
+
+      <label class="date-select">Publication Date
+        <select class="date-selector" name="text[date][year]">
+          <% ce_years.each do |year| %>
+            <option value="<%=year%>"> <%=year%> </option>
+          <%end%>
+        </select>
+
+        <select class="date-selector" name="text[date][month]">
+          <% Date::MONTHNAMES.each_with_index do |month, idx| %>
+            <option value="<%=idx + 1%>"> <%=month%> </option>
+          <%end%>
+        </select>
+
+        <select class="date-selector" name="text[date][day]">
+          <% 1.upto(31) do |day| %>
+            <option value="<%=day%>"> <%=day%> </option>
+          <%end%>
+        </select>
+      </label>
+
+    <label>Are you this text's author?
+       <input class="single-check" type="checkbox" name="text[author_is_user]">
+    </label>
+
+  <button class="form-submit">Create</button>
+
+
+</form>

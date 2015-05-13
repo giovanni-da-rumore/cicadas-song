@@ -15,7 +15,7 @@
  */
 
  html, body, header, nav, h1, a,
- ul, li, strong, main, button, i,
+ ul, li, input, strong, main, button, i,
  section, img, div, h2, p, form,
  fieldset, textarea,
  span, article, footer, time, small {
@@ -48,7 +48,7 @@
    font-size: 14px;
    color: #000;
 
-   background: #FAEBD7;
+   background: #f1f1f1;
    /*background: #fff7ef;
    background: #fdf4eb;*/
 
