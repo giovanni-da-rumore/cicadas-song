@@ -1,5 +1,5 @@
 class Text < ActiveRecord::Base
-  validates :body, :title, presence: true
+  validates :body, :title, :author, presence: true
 
   belongs_to :author, inverse_of: :texts
 

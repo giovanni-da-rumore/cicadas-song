@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513203652) do
+ActiveRecord::Schema.define(version: 20150514145000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "annotations", force: :cascade do |t|
-    t.integer  "text_id",                null: false
-    t.integer  "author_id",              null: false
-    t.text     "content",                null: false
-    t.integer  "score",      default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "text_id",                 null: false
+    t.integer  "author_id",               null: false
+    t.text     "content",                 null: false
+    t.integer  "score",       default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "start_index",             null: false
+    t.integer  "end_index",               null: false
   end
 
   add_index "annotations", ["author_id"], name: "index_annotations_on_author_id", using: :btree
@@ -40,6 +42,18 @@ ActiveRecord::Schema.define(version: 20150513203652) do
   add_index "authors", ["birth"], name: "index_authors_on_birth", using: :btree
   add_index "authors", ["death"], name: "index_authors_on_death", using: :btree
   add_index "authors", ["name"], name: "index_authors_on_name", using: :btree
+
+  create_table "descriptions", force: :cascade do |t|
+    t.integer  "text_id",                null: false
+    t.integer  "author_id",              null: false
+    t.string   "content"
+    t.integer  "score",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "descriptions", ["author_id"], name: "index_descriptions_on_author_id", using: :btree
+  add_index "descriptions", ["text_id"], name: "index_descriptions_on_text_id", using: :btree
 
   create_table "libraries", force: :cascade do |t|
     t.integer  "user_id"
@@ -60,18 +74,6 @@ ActiveRecord::Schema.define(version: 20150513203652) do
 
   add_index "sessions", ["content"], name: "index_sessions_on_content", unique: true, using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
-
-  create_table "descriptions", force: :cascade do |t|
-    t.integer  "text_id",                null: false
-    t.integer  "author_id",              null: false
-    t.string   "content"
-    t.integer  "score",      default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "text_descriptions", ["author_id"], name: "index_text_descriptions_on_author_id", using: :btree
-  add_index "text_descriptions", ["text_id"], name: "index_text_descriptions_on_text_id", using: :btree
 
   create_table "texts", force: :cascade do |t|
     t.string   "title",                          null: false

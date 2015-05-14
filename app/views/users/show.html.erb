@@ -1,0 +1,4 @@
+<% @user.uploaded_texts.each do |text| %>
+  <%= render "/api/texts/show", text: text %>
+<br>
+<% end %>
