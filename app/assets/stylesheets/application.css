@@ -73,15 +73,19 @@
    display: block;
    border: 1px solid #ccc;
    background: #fff;
-   height: 25px;
-   width: 210px;
+   height: 15px;
+   width: 200px;
    border-radius: 5px;
    margin: 2px 0px;
+   padding: 5px;
 
  }
 
  input.single-check {
    display: inline;
+   padding: 1px;
+   height: 13px;
+   width: 35px;
  }
 
  form label {

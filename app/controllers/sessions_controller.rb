@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     @user = User.validate_credentials_username(user_params)
     if @user
       login!(@user)
-      redirect_to users_url
+      redirect_to "/"
     else
       @user = User.new(user_params)
       render :new

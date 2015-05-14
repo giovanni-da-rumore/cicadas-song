@@ -1,22 +1,17 @@
-<style>
-input {
-  display: block;
-  margin-bottom: 5px;
-}
-</style>
-
 <%= render "shared/errors" %>
 
 <form action="<%=sessions_url%>" method="post">
-  Sign In<br><br>
+  Sign In
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 
-  <label>Username
-   <input type=text name="user[username]" value="<%=@user.username%>">
-   <label>
-    <label>Password
-   <input type="password" name="user[password]" value="">
-   <label>
-     <button class="form-submit">sign in</button>
+  <label>
+    Username
+    <input type=text name="user[username]" value="<%=@user.username%>">
+  </label>
+  <label>
+    Password
+    <input type="password" name="user[password]" value="">
+  </label>
 
+  <button class="form-submit">sign in</button>
 </form>

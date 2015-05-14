@@ -1,0 +1,51 @@
+<form class="text-form group">
+  <strong>Create Text</strong>
+
+  <ul class="form-top-components group">
+    <li>
+      <label>Author:
+        <input class="text-form-input" type=text name="text[author]" value="<%=text.escape('author')%>">
+      </label>
+    </li>
+    <li>
+      <label>Title:
+        <input class="text-form-input" type="text" name="text[title]" value="<%=text.escape('title')%>">
+      </label>
+    </li>
+  </ul>
+
+    <label for="text[body]">Text:
+      <textarea class="text-textarea" name="text[body]"><%=text.escape('body')%></textarea>
+   </label>
+
+      <label class="date-select">Publication Date
+        <select class="date-selector" name="text[date][year]">
+          <option value=""></option>
+          <% date.ce_years().forEach(function(year){ %>
+            <option value="<%=year%>"> <%=year%></option>
+          <%});%>
+        </select>
+
+        <select class="date-selector" name="text[date][month]">
+          <option value=""></option>
+          <% for (var i = 0; i < date.months.length; i++) {%>
+            <option value="<%=i + 1%>"> <%=date.months[i]%> </option>
+          <% }%>
+        </select>
+
+        <select class="date-selector" name="text[date][day]">
+          <option value=""></option>
+          <% for (var i = 1; i < 32; i++) { %>
+            <option value="<%=i%>"> <%=i%> </option>
+          <% } %>
+        </select>
+      </label>
+
+    <label>Are you this text's author?
+       <input class="single-check" type="checkbox" name="text[author_is_user]">
+    </label>
+
+  <button class="form-submit">Create</button>
+
+
+</form>

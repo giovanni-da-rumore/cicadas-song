@@ -1,0 +1,14 @@
+<% redirect_to session_new_url unless logged_in? %>
+
+
+<main id="main"></main>
+
+
+
+<script>
+
+$(document).ready(function(){
+  Cicadas.initialize({ cUserId: <%= current_user.id%> });
+});
+
+</script>

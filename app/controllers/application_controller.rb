@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
 
   def require_login
-    redirect_to new_user_url unless logged_in?
+    redirect_to new_sessions_url unless logged_in?
   end
 
   def forbid_login
