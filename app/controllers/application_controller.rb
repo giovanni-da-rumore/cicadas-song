@@ -57,11 +57,10 @@ class ApplicationController < ActionController::Base
   def find_or_make_author(author_name)
     author = Author.find_by(name: author_name)
     if author
-      return author.id
+      return author
     else
       author = Author.new(name: author_name)
-      author.save
-      author.id
+      author
     end
   end
 

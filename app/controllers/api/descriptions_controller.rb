@@ -1,6 +1,6 @@
 
 module Api
-  class Api::DescriptionsController < ApiController
+  class DescriptionsController < ApiController
 
     def new
       @description = Description.new()

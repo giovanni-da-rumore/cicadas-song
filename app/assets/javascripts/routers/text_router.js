@@ -13,17 +13,26 @@ Cicadas.Routers.Text = Backbone.Router.extend({
 
 
   welcome: function () {
-    alert("home works")
+    this.$rootEl.html("ubi amor ibi oculus est")
+    this._textsIndex = new Cicadas.Views.TextsIndex();
+    this._swapViews(this._textsIndex);
 
   },
 
-  showText: function () {
-
+  showText: function (id) {
+    var texts = new Cicadas.Collections.Texts();
+    var text = texts.getOrFetch(id);
+    this._showText = new Cicadas.Views.TextShow({model: text});
+    this._swapViews(this._showText);
   },
 
   newText: function () {
-    //debugger;
-    this._newText = new Cicadas.Views.TextForm();
+    var text = new Cicadas.Models.Text();
+    var texts = new Cicadas.Collections.Texts();
+    this._newText = new Cicadas.Views.TextForm({
+      model: text,
+      collection: texts
+    });
     this._swapViews(this._newText);
 
   },

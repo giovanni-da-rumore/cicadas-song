@@ -7,7 +7,6 @@ Cicadas.Collections.Texts = Backbone.Collection.extend({
 
   getOrFetch: function(id) {
     var text = this.get(id)
-
     if (!text) {
       text = new Cicadas.Models.Text({id: id})
       text.fetch({

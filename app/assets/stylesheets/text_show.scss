@@ -1,7 +1,3 @@
-
-
-<style>
-
 .text-show-container {
   display: block;
   margin: auto;
@@ -25,7 +21,7 @@
 .show-description {
   display: block;
   float: left;
-  padding-right: 30px;
+  padding-right: 20px;
   padding-left: 10px;
   margin-top: 30px;
   border-left: 1px solid #ccc;
@@ -71,47 +67,6 @@
   padding-bottom: 5px;
 }
 
-
 .description-content {
-  padding-bottom: 10px;
+  padding-bottom :10px;
 }
-
-
-
-
-</style>
-
-
-
-<div class="text-show-container group">
-<section class="text-show-main">
-  <header class="text-show-header">
-    <h1 class="show-title"> <%= @text.title %> </h1>
-    <h3 class="show-author"> <%= @text.author.name %> </h3>
-  </header>
-  <nav class="text-show-nav">
-  </nav>
-  <section class="text-show-body">
-    <%=@text.body %>
-  </section>
-</section>
-
-
-<section class="show-description">
-  <% if @text.descriptions.length > 0 %>
-    <%= render "/api/descriptions/show", description: @text.descriptions[0] %>
-  <% else %>
-    <%= render "/api/descriptions/new", description: Description.new, text: @text  %>
-  <% end %>
-  <!-- <div class="show-description-right-line">
-  </div> -->
-</section>
-
-
-
-
-<section class="text-show-comment-form">
-  <!-- insert comment form -->
-</section>
-
-</div>

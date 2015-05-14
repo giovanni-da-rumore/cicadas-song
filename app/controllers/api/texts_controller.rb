@@ -1,6 +1,6 @@
 
 module Api
-  class Api::TextsController < ApiController
+  class TextsController < ApiController
 
     before_action :user_is_editor, only: [:destroy, :edit]
 
@@ -11,15 +11,13 @@ module Api
 
     def create
       parsed_params = parse_text_params
-      @text = current_user.uploaded_texts.create(parsed_params)
-
+      @author = find_or_make_author(text_params[:author])
+      @text = @author.texts.new(parsed_params)
       if @text.save
-        @text.author_id = find_or_make_author(text_params[:author])
-        @text.save!
-        redirect_to api_text_url(@text)
+        @author.save
+        render json: @text
       else
-        flash[:errors] = @text.errors.full_messages
-      render :new
+        render json: @text.errors.full_messages, status: :uprocessable_entity
       end
     end
 
@@ -46,7 +44,7 @@ module Api
 
     private
     def text_params
-      params.require(:text).permit(:author, :title, :body, date: [:year, :day, :month])
+      params.require(:text).permit(:author, :title, :body, :user_id, date: [:year, :day, :month])
     end
 
     def user_is_editor

@@ -5,7 +5,7 @@ window.Cicadas = {
   Routers: {},
 
   initialize: function(options) {
-    this.currentUser = this.getCurrentUser(options.id);
+    this.currentUser = this.getCurrentUser(options.cUserId);
     new Cicadas.Routers.Text({
       $rootEl: $('#main')
     });
@@ -14,7 +14,7 @@ window.Cicadas = {
 
   getCurrentUser: function(id) {
     user = new Cicadas.Models.User({id: id});
-    //user.fetch();
+    user.fetch();
     return user
   }
 
