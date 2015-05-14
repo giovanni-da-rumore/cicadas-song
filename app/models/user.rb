@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   foreign_key: :author_id,
   primary_key: :id
 
-  has_many :text_descriptions, dependent: :destroy,
+  has_many :descriptions, dependent: :destroy,
   class_name: "Description",
   foreign_key: :author_id,
   primary_key: :id

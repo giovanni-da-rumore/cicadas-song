@@ -14,7 +14,7 @@
  *= require_self
  */
 
- html, body, header, nav, h1, a,
+ html, body, header, nav, h1, a, h3, h2,
  ul, li, input, strong, main, button, i,
  section, img, div, h2, p, form,
  fieldset, textarea,
@@ -89,9 +89,6 @@
    display: block;
  }
 
-
-
- /* Clearfix */
 
  .group:after {
    content: "";

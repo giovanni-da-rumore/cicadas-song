@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :texts
-    resources :annotations, only: [:create, :update, :destroy]
-    resources :descriptions, only: [:create, :update, :destroy]
+    resources :annotations
+    resources :descriptions
     resources :users, only: [:index, :show, :destroy]
     resources :authors
   end

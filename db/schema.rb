@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20150513203652) do
   add_index "sessions", ["content"], name: "index_sessions_on_content", unique: true, using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
-  create_table "text_descriptions", force: :cascade do |t|
+  create_table "descriptions", force: :cascade do |t|
     t.integer  "text_id",                null: false
     t.integer  "author_id",              null: false
     t.string   "content"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20150513203652) do
     t.string   "title",                          null: false
     t.string   "date"
     t.text     "body",                           null: false
-    t.integer  "author_id"                    
+    t.integer  "author_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.boolean  "author_is_user", default: false
