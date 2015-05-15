@@ -27,7 +27,7 @@ module Api
     end
 
     def index
-      @texts = Text.all
+      @texts = Text.all.reverse
       render :index
     end
 
