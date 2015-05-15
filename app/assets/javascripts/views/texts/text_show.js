@@ -2,9 +2,7 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
 
   events: {
-
     "click .description-edit": "editDescription",
-
   },
 
 

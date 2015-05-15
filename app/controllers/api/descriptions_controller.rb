@@ -22,6 +22,15 @@ module Api
     end
 
     def edit
+      @description = Description.find(params[:id])
+      render json: @description
+    end
+
+
+    def update
+      @description = Description.find(params[:id])
+      @description.update_attributes(description_params)
+      render json: @description
     end
 
     def destroy

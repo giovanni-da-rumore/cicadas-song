@@ -18,15 +18,6 @@ class Text < ActiveRecord::Base
 
   has_many :patrons, through: :libraries, as: :text
 
-
-
-
-
-
-
-
-
-
 end
 
 
