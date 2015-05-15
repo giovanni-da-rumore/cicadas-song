@@ -1,6 +1,6 @@
 Cicadas.Views.TextForm = Backbone.View.extend({
 
-  template: JST['texts/text_form'],
+  template: JST['texts/form'],
 
 
   events: {
@@ -33,7 +33,7 @@ Cicadas.Views.TextForm = Backbone.View.extend({
         this.$el.find('.errors').append('<li>'+ error +'</li>')
       }.bind(this));
     }
-    
+
     var text = new Cicadas.Models.Text(attrs);
     this.model.save(attrs, {
       success: riuscire.bind(this),

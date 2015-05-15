@@ -1,0 +1,68 @@
+<style>
+
+.description-textarea {
+  /*width: 350px;*/
+  /*width: 275px;*/
+  width: 100%;
+  min-height: 225px;
+  resize: none;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 5px;
+  padding: 5px
+}
+
+.description-form {
+  margin: auto;
+  display: block;
+  width: 95%;
+  widht-min: 300px;
+  /*width: 300px;*/
+}
+
+.description-form li {
+  padding: 3px;
+}
+</style>
+
+<ul class="errors">
+</ul>
+
+<form class="description-form group">
+<!-- <table>
+  <tr> -->
+  <ul>
+    <!-- <td> -->
+    <li>
+      <strong>Add Description</strong>
+    </li><!-- </td>
+  </tr>
+  <tr>
+    <td> -->
+    <li>
+      <textarea class="description-textarea"
+      name="description[content]"><%=description.escape('content')%></textarea>
+    </li>
+    <!-- </td>
+  </tr>
+  <tr>
+    <td> -->
+    <li>
+
+      <button class="form-submit description-submit">Save</button>
+
+      <li>
+        <button class="description-cancel">Cancel</button>
+      </li>
+
+
+    </li>
+  </ul>
+    <!-- </td>
+  </tr>
+
+
+</table> -->
+
+
+</form>

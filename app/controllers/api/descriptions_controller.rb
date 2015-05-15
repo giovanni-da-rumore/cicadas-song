@@ -10,16 +10,15 @@ module Api
     def create
       @description = current_user.descriptions.create(description_params)
       if @description.save
-        redirect_to api_text_url(@description.text_id)
+        render json: @description
       else
-        flash[:errors] = @description.errors.full_messages
-        redirect_to api_text_url(description_params[:text_id])
+        render json: @description
       end
-
-
     end
 
     def show
+      @description = Description.find(params[:id])
+      render json: @description
     end
 
     def edit
@@ -30,7 +29,7 @@ module Api
 
 
     def description_params
-      params.require(:description).permit(:content, :text_id)
+      params.require(:description).permit(:content, :text_id, :author_id)
     end
 
   end
