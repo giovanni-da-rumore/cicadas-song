@@ -9,7 +9,8 @@ Cicadas.Views.DescriptionShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({description: this.model}));
+    var content = Cicadas.TextParser.spaceParse(this.model.escape('content'))
+    this.$el.html(this.template({description: this.model, content: content}));
     return this;
   },
 

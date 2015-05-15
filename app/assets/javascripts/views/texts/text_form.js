@@ -24,7 +24,7 @@ Cicadas.Views.TextForm = Backbone.View.extend({
 
     var riuscire = function () {
       this.collection.add(this.model, {merge: true});
-      Backbone.history.navigate("", {trigger: true})
+      Backbone.history.navigate("/texts/" + this.model.get('id'), {trigger: true})
     };
 
     var fallire = function (model, response) {

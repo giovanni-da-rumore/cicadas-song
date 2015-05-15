@@ -29,7 +29,6 @@ Cicadas.Models.Text = Backbone.Model.extend({
       this._description = new Cicadas.Models.Description();
     }
     return this._description;
-  }
+  },
 
-
-})
+});

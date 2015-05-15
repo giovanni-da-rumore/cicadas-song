@@ -16,7 +16,8 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
   render: function () {
     var descriptionView = this.renderDescription();
-    this.$el.html(this.template({text: this.model}));
+    var body = Cicadas.TextParser.spaceParse(this.model.escape('body'));
+    this.$el.html(this.template({text: this.model, body: body }));
     this.$el.find('.show-description').html(descriptionView.render().$el);
     return this;
   },
@@ -27,7 +28,7 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     var view
     var description = this.model.textDescription();
     if (description.get('id')) {
-      view = new Cicadas.Views.DescriptionShow({model: description});
+      view = new Cicadas.Views.DescriptionShow({model: description, content: ''});
     }
     else {
       view = new Cicadas.Views.DescriptionForm({model: description,
