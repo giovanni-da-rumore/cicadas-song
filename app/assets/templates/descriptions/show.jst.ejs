@@ -1,8 +1,24 @@
+<style>
+  .description-author {
+    display: block;
+  }
+
+  .description-content {
+    display: block;
+    padding-top: 10px;
+
+  }
+
+
+}
+</style>
+
+
 <main class="description-container group">
 <section class="description-main-content">
 
   <section class="desctiption-author">
-    <!-- insert Description By: author name -->
+    contributor: <%=description.author().escape('username')%>
   </section>
 
   <section class="description-content">

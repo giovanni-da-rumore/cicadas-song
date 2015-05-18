@@ -1,5 +1,5 @@
 class Annotation < ActiveRecord::Base
-  validates :text_id, :content_id, :content, presence: true
+  validates :text_id, :author_id, :content, presence: true
 
   belongs_to :text
 

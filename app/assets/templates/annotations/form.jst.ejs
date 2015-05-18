@@ -1,0 +1,49 @@
+<style>
+
+.annotation-textarea {
+  /*width: 350px;*/
+  /*width: 275px;*/
+  width: 100%;
+  min-height: 225px;
+  resize: none;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 5px;
+  padding: 5px
+}
+
+.annotation-form {
+  margin: auto;
+  display: block;
+  width: 95%;
+  widht-min: 300px;
+  float: left;
+  /*width: 300px;*/
+}
+
+.annotation-form li {
+  padding: 3px;
+}
+</style>
+
+<ul class="errors">
+</ul>
+
+<form class="annotation-form group">
+  <ul>
+    <li>
+      <strong>Exegesize!</strong>
+    </li>
+    <li>
+      <textarea class="annotation-textarea"
+      name="annotation[content]"
+      placeholder="scrivi qualcosa interesante"><%=annotation.escape('content')%></textarea>
+    </li>
+    <li>
+      <button class="form-submit description-submit">Save</button>
+      <li>
+        <button class="annotation-cancel">Cancel</button>
+      </li>
+    </li>
+  </ul>
+</form>

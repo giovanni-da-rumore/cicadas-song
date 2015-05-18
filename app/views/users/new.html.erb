@@ -12,15 +12,16 @@ input {
 <form action="<%=users_url%>" method="post">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 
-    <label>Username
+  <label>Username
    <input type=text name="user[username]" value="<%=@user.username%>">
-   <label>
-    <label>Email
+  </label>
+  <label>Email
    <input type="text" name="user[email]" value="<%=@user.email%>">
-   <label>
-    <label>Password
+ </label>
+  <label>Password
    <input type="password" name="user[password]" value="">
-   <label>
-     <button class="form-submit">sign up</button>
+ </label>
+ 
+  <button class="form-submit">sign up</button>
 
 </form>

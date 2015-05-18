@@ -12,6 +12,7 @@ Cicadas.Collections.Users = Backbone.Collection.extend({
       user = new Cicadas.Models.User({id: id})
       user.fetch({
         succcess: function () {
+          console.log(user)
           this.add(user);
         }.bind(this)
       });

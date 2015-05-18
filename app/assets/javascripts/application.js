@@ -16,6 +16,13 @@
 //= require underscore
 //= require backbone
 //= require cicadas
+//= require rangy-core
+//= require rangy-cssclassapplier
+//= require rangy-highlighter
+//= require rangy-position
+//= require rangy-selectionsaverestore
+//= require rangy-serializer
+//= require rangy-textrange
 //= require_tree ../templates
 //= require_tree ./utils
 //= require_tree ./models

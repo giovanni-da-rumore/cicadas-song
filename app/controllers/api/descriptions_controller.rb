@@ -18,7 +18,7 @@ module Api
 
     def show
       @description = Description.find(params[:id])
-      render json: @description
+      render :show
     end
 
     def edit
