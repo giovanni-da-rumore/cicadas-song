@@ -2,10 +2,9 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
 
   events: {
-    "mousedown .text-show-container": "render",
+    "mousedown .text-show-main": "render",
     "click .description-edit": "editDescription",
     "mouseup .text-show-body": "makeAnnotation",
-    "click .text-show-body": "beginCLick",
   },
 
 
@@ -49,23 +48,27 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
 
   makeAnnotation: function (event) {
-    var ctarg = event.currentTarget;
-    var text = window.getSelection();
-    // var text = rangy.getSelection(window);
-    // var sel = rangy.getSelection();
-    // var oldsel = window.getSelection().getRangeAt(0);
-    // var range = sel.getRangeAt(0);
-    // var rageOffsets = range.toCharacterRange(event.currentTarget);
+    // var normalText = window.getSelection();
+    // && text.match(/[a-zA-Z\d]/)
+    var container = event.currentTarget;
+    var selected = rangy.getSelection();
+    var range = selected.getRangeAt(0);
+    var text = selected.text();
+    var textRange = range.toCharacterRange(container);
+    // selected.applyToSelection(container);
 
+    var classApplier = rangy.modules.ClassApplier;
+    var highlightApplier = rangy.createClassApplier("high-yellow",
+    { elementTagName: "a", elementProperties: href="#"});
+    highlightApplier.applyToSelection();
 
-    // var range = text.getRangeAt(0);
-    if (text.toString().length > 0) {
-      console.log(text.toString);
-      //console.log(rangy.toCharacterRange(text, event.target))
+    if (text.length > 0) {
       // debugger;
       var anForm = new Cicadas.Views.AnnotationForm({
         model: new Cicadas.Models.Annotation(),
-        textId: this.textId});
+        textId: this.textId,
+        range: textRange});
+
       this.$el.find('.text-show-right-sidebar').html(anForm.render().$el);
     }
   },
