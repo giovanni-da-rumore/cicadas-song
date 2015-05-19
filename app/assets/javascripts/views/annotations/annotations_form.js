@@ -29,7 +29,6 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 		var riuscire = function () {
       var content = Cicadas.TextParser.spaceParse(this.model.escape('content'));
       this.$el.html(JST['annotations/show']({annotation: this.model, content: content}));
-			// debugger;
     };
 
     this.model.save(attrs, {

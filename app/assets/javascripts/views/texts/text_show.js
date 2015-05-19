@@ -2,7 +2,6 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
 
   events: {
-    "mousedown .show-title": "toText",
     "mousedown .text-show-main": "render",
     "click .description-edit": "editDescription",
     "mouseup .text-show-body": "makeAnnotation",
@@ -70,13 +69,6 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
       this.$el.find('.text-show-right-sidebar').html(anForm.render().$el);
     }
-  },
-
-
-  toText: function (event) {
-    alert("works!")
-    event.preventDefault();
-    Backbone.history.navigate("/#/texts/"+this.model.escape('id'), {trigger: true});
   },
 
 

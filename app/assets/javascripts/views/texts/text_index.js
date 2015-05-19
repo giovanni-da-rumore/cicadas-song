@@ -28,13 +28,11 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
     console.log("called");
     //var $textList = this.$el.find("text-list-index-list")
     this.collection.each(function (text) {
-      text = new Cicadas.Views.TextShow({model: text});
+      text = new Cicadas.Views.TextItem({model: text});
       this.$el.append(text.render().$el);
     }.bind(this));
     return this;
   },
-
-
 
 
 
