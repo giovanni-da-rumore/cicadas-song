@@ -4,7 +4,7 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
   events: {
     "click .text-show-body .annotation": "showAnnotation",
     "click .description-edit": "editDescription",
-    "mouseup .text-show-body": "makeAnnotation",
+    "mouseup .text-show-body": "clickHandler",
     // "click .annotation": "showAnnotation",
   },
 
@@ -20,7 +20,6 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    console.log('called!')
     var descriptionView = this.renderDescription();
 
     if (this.model.annotations().length > 0)
@@ -57,11 +56,6 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
 
   makeAnnotation: function (event) {
-    var normalText = window.getSelection().toString();
-    if (normalText.length < 1) {
-      this.exitAnnotation(event);
-      return;
-    }
     this.inAnnotation = true;
     var container = event.currentTarget;
     var selected = rangy.getSelection();
@@ -82,8 +76,29 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
   },
 
+
+  clickHandler: function (event) {
+    var text = window.getSelection().toString();
+    if (text.length > 1 && text.match(/\S/)) {
+      this.makeAnnotation(event);
+
+    } else {
+
+      if ($(event.target).is('.annotation')) {
+        this.showAnnotation(event);
+      } else {
+        this.exitAnnotation(event);
+      }
+    }
+  },
+
+
+
+
   showAnnotation: function (event) {
     event.preventDefault();
+    this.$el.find(".text-show-body .active").removeClass('active');
+    $(event.currentTarget).addClass("active");
     this.inAnnotation = true;
     var id = event.currentTarget.id;
     var annotation = this.model.annotations().get(id);
@@ -95,6 +110,7 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
   exitAnnotation: function (event) {
     event.preventDefault();
     if (this.inAnnotation) {
+      this.$el.find(".text-show-body .active").removeClass('active');
       this.inAnnotation = false
       this.render();
     }
