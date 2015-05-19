@@ -18,7 +18,6 @@ Cicadas.Views.TextForm = Backbone.View.extend({
 
   submitText: function (event) {
     event.preventDefault();
-    console.log(Cicadas.currentUser)
     var attrs = this.$el.find('form').serializeJSON();
     attrs["text"]["user_id"] = Cicadas.currentUser.get('id');
 

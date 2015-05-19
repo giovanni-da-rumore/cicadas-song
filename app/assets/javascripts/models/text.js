@@ -47,28 +47,14 @@ Cicadas.Models.Text = Backbone.Model.extend({
 
   addAnnotationsToBody: function () {
     var annotations = this.annotations()
-    var prevAnnotation = null
-    // sort(function (a, b) {
-    //   return a.get('start_index') - b.get('start_index');
-    // });
-    var newText = this.get('body');
-    var textSlices = [];
+    var textSlices = this.getTextSlices(annotations);
+    return textSlices.join('');
 
-
-
-    annotations.each(function (annotation) {
-      console.log(annotation.get("start_index"))
-      console.log(annotation.get("end_index"))
-      debugger;
-      prevAnnotation = annotation;
-    }.bind(this));
   },
-
-
 
   getTextSlice: function (annotation, prevAnnotation) {
     var id = annotation.escape('id');
-    var frontWrapper = '<a href="/' + id + '" id="' + id +'">'
+    var frontWrapper = '<a href="/#/' + id + '" id="' + id +'" class="annotation">'
     var text = this.get('body');
 
     if (prevAnnotation) {
@@ -80,13 +66,31 @@ Cicadas.Models.Text = Backbone.Model.extend({
       var newText = text.slice(0, annotation.escape('end_index'));
       var diff = annotation.get('start_index');
     }
-    var padding = newText.slice(0, diff);
+    var frontText = newText.slice(0, diff);
     var anText = newText.slice(diff);
-    var result =  padding + frontWrapper + anText + "</a>"
+    var result =  frontText + frontWrapper + anText + "</a>"
 
     return result;
-  }
+  },
 
+
+  getTextSlices: function (annotations) {
+    var prevAnnotation
+    var endIndex = annotations.last().get("end_index");
+    var text = this.escape('body');
+    var textSlices = [];
+    annotations.each(function (annotation) {
+      // console.log(annotation.get("start_index"))
+      // console.log(annotation.get("end_index"))
+      textSlices.push(this.getTextSlice(annotation, prevAnnotation));
+      //debugger;
+      prevAnnotation = annotation;
+    }.bind(this));
+
+    textSlices.push(text.slice(endIndex));
+
+    return textSlices;
+  },
 
 
 

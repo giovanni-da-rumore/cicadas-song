@@ -8,13 +8,11 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 	template: JST["annotations/form"],
 
 	initialize: function (options) {
-		//this.listenTo(this.model, 'sync', this.render);
 		this.range = options.range;
 		this.text = options.text
 	},
 
 	render: function () {
-		console.log(this.range);
 		this.$el.html(this.template({annotation: this.model}));
 		return this;
 	},
@@ -43,8 +41,6 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 		event.preventDefault();
 		var descriptionView = new Cicadas.Views.DescriptionShow({
 			model: this.text.textDescription()});
-		debugger;
-
 		this.$el.html(descriptionView.render().$el);
 	},
 

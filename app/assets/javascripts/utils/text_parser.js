@@ -1,7 +1,10 @@
 Cicadas.TextParser = {
 
   spaceParse: function (text) {
-    return text.replace(/\n/gm,"<br>");
+    if (text) {
+      return text.replace(/\n/gm,"<br>");
+    }
+    
   },
 
 
