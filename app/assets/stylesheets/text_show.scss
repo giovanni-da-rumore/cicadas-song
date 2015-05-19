@@ -1,10 +1,12 @@
 .text-show-container {
   display: block;
   margin: auto;
-  margin-left: 75px;
+  // margin-left: 75px;
   border-left: 1px solid #ccc;
-  padding-top: 20px;
-  //width: 900px;
+  padding: 20px 0px;
+  width: 920px;
+  background: #f6f4e4;
+  background: #ffffef;
 
 }
 
@@ -14,9 +16,24 @@
   width: 659px;
   width: 70%;
   margin-left: 15px;
+  position: relative
+  // border-right: 1px solid #ccc;
   /*margin-left: 75px;
   border-left: 1px solid #ccc;*/
 }
+
+
+/* not sure what looks better, but this  border stretches the whole page */
+// .text-main-border-right {
+//   display: block;
+//   width: 1px;
+//   height: 100%;
+//   position: absolute;
+//   background: #ccc;
+//   top: 20px;
+//   right: 0;
+//
+// }
 
 
 .text-show-right-sidebar {
@@ -28,6 +45,7 @@
   border-left: 1px solid #ccc;
   // border-right: 1px solid #ccc;
   /*width: 350px;*/
+  line-height: 1.1;
   width: 25%;
 }
 
@@ -59,7 +77,7 @@
 .show-title {
   font-size: 28px;
   font-weight: 200px;
-  padding-bottom: 5px;
+  padding: 10px 0px;
 }
 
 .show-author {

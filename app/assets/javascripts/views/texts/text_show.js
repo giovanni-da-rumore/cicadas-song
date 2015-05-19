@@ -55,9 +55,12 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     var range = selected.getRangeAt(0);
     var text = selected.text();
 
+    this.model.addAnnotationsToBody();
     if (text.length > 0) {
+
+
+
       var textRange = range.toCharacterRange(container);
-      var classApplier = rangy.modules.ClassApplier;
       var highlightApplier = rangy.createClassApplier("high-yellow",
       { elementTagName: "a", elementProperties: href="#"});
 

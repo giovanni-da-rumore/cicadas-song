@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150514145000) do
   end
 
   add_index "descriptions", ["author_id"], name: "index_descriptions_on_author_id", using: :btree
-  add_index "descriptions", ["text_id"], name: "index_descriptions_on_text_id", using: :btree
+  add_index "descriptions", ["text_id"], name: "index_descriptions_on_text_id", unique: true, using: :btree
 
   create_table "libraries", force: :cascade do |t|
     t.integer  "user_id"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20150514145000) do
     t.string   "title",                          null: false
     t.string   "date"
     t.text     "body",                           null: false
-    t.integer  "author_id"
+    t.integer  "author_id",                      null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.boolean  "author_is_user", default: false
