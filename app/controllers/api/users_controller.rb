@@ -3,21 +3,7 @@ class Api::UsersController < ApplicationController
 
   before_action :forbid_login, only: [:new, :create]
 
-  # def new
-  #   @user = User.new
-  #   render json: @user
-  # end
-  #
-  # def create
-  #   @user = User.new(user_params)
-  #   if @user.save
-  #     login!(@user)
-  #     redirect_to root_url
-  #   else
-  #     flash[:errors] = @user.errors.full_messages
-  #     render :new
-  #   end
-  # end
+  wrap_parameters false
 
   def show
     @user = User.find(params[:id])
@@ -29,9 +15,18 @@ class Api::UsersController < ApplicationController
     render :index
   end
 
-  def edit
+  def update
+    @user = User.find(params[:id])
+    @user.update_attributes!(user_params)
   end
 
   def destroy
   end
+
+  def user_params
+    params.require(user).permit(:username, :email, :about, :image, :moderator)
+  end
+
+
+
 end

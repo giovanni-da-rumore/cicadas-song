@@ -2,14 +2,14 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 
 	events: {
 		"click .annotation-submit": "submitNew",
-		<!-- "click .annotation-cancel": "cancel", -->
 	},
 
 	template: JST["annotations/form"],
 
 	initialize: function (options) {
 		this.range = options.range;
-		this.text = options.text
+		this.text = options.text;
+		this.parentView = options.view;
 	},
 
 	render: function () {
@@ -32,8 +32,7 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
     };
 
 		if (this.isNested(this.range.start, this.range.end)) {
-			alert("annotations cannot cover existing annotations");
-
+			this.nestedFailHandler();
 		}
 		else {
 			this.model.save(attrs, {
@@ -58,11 +57,12 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 		return nested;
 	},
 
-	fullPageRefresh: function () {
-		var view = new Cicadas.Views.TextShow({model: this.text})
-
-
-	}
+	nestedFailHandler: function () {
+		alert("annotations cannot cover existing annotations");
+		this.parentView.inAnnotation = false;
+		var descrView = new Cicadas.Views.DescriptionShow({model: this.text});
+		this.$el.html(descrView.render().$el);
+	},
 
 
 

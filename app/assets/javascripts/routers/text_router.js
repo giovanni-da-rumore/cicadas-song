@@ -8,22 +8,23 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     "": "welcome",
     "texts/new": "newText",
     "texts/:id": "showText",
-    "texts/:id/edit": "editText",
+    // "texts/:id/edit": "editText",
+    "users/:id": "showUser",
   },
 
 
   welcome: function () {
-    this.$rootEl.html("ubi amor ibi oculus est")
+    // this.$rootEl.html("ubi amor ibi oculus est")
     this._textsIndex = new Cicadas.Views.TextsIndex();
     this._swapViews(this._textsIndex);
 
   },
 
-  showText: function (id) {
-    var texts = new Cicadas.Collections.Texts();
-    var text = texts.getOrFetch(id);
-    this._showText = new Cicadas.Views.TextShow({model: text});
-    this._swapViews(this._showText);
+  showUser: function (id) {
+    var users = new Cicadas.Collections.Users();
+    var user = users.getOrFetch(id);
+    this._showUser = new Cicadas.Views.UserShow({model: user});
+    this._swapViews(this._showUser);
   },
 
   newText: function () {
@@ -35,6 +36,14 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     });
     this._swapViews(this._newText);
 
+  },
+
+
+  showText: function (id) {
+    var texts = new Cicadas.Collections.Texts();
+    var text = texts.getOrFetch(id);
+    this._showText = new Cicadas.Views.TextShow({model: text});
+    this._swapViews(this._showText);
   },
 
   _swapViews: function (view) {

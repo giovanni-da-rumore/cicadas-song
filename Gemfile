@@ -26,12 +26,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
  gem 'bcrypt', require: true
 
-
  gem 'backbone-on-rails'
 
 gem 'newrelic_rpm'
 
 gem 'rangy-rails'
+
+#for images
+gem "paperclip", "~> 4.2"
+gem "figaro"
+gem "aws-sdk"
+
+gem "ejs"
 
 #in case need to show differences between user edits later on,
 # visions and revisioins

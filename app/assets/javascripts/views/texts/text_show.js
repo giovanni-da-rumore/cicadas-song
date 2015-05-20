@@ -27,7 +27,6 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
   render: function () {
     var descriptionView = this.renderDescription();
-
     if (this.model.annotations().length > 0)
       var body = this.model.addAnnotationsToBody();
     else {
@@ -40,8 +39,11 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
   },
 
   refresh: function (event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     this.inAnnotation = false;
+    this.editingText = false;
     this.render();
 
   },
@@ -106,6 +108,7 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     highlightApplier.applyToSelection();
 
     var anForm = new Cicadas.Views.AnnotationForm({
+      view: this,
       model: new Cicadas.Models.Annotation(),
       text: this.model,
       range: textRange});
@@ -130,18 +133,18 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     }
   },
 
-
-
-
   showAnnotation: function (event) {
     event.preventDefault();
     this.$el.find(".text-show-body .active").removeClass('active');
     $(event.currentTarget).addClass("active");
-    this.inAnnotation = true;
+    //this.inAnnotation = true;
     var id = event.currentTarget.id;
-    var annotation = this.model.annotations().get(id);
-    var anView = new Cicadas.Views.AnnotationShow({model: annotation});
-    this.$el.find('.text-show-right-sidebar').html(anView.render().$el);
+
+    if (id.length > 0) {
+      var annotation = this.model.annotations().get(id);
+      var anView = new Cicadas.Views.AnnotationShow({model: annotation});
+      this.$el.find('.text-show-right-sidebar').html(anView.render().$el);
+    }
 
   },
 
@@ -153,8 +156,6 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
       this.render();
     }
   },
-
-
 
   renderSideBar: function (view) {
     var $sidebar = this.$el.find('.text-show-right-sidebar')

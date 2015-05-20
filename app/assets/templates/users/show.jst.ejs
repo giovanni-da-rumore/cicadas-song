@@ -1,0 +1,43 @@
+
+<style>
+
+  img {
+    display: block;
+    width: 100px;
+    height: 100%;
+
+  }
+
+
+</style>
+
+
+
+
+
+<h1>User</h1>
+
+
+
+    <br>
+    <%= user.get('username') %>
+
+
+  <br>
+
+  <form>
+
+  <label>
+    Avatar
+    <input type="file" name="user[avatar]" class="input-user-avatar">
+  </label>
+
+  <br>
+
+  <img src="" class="preview-user-avatar" width="100">
+
+  <br>
+
+  <button>Save</button> or <a href="#">Cancel</a>
+
+</form>

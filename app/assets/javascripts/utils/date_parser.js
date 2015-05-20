@@ -20,15 +20,6 @@ Cicadas.DateParser = {
     }
   },
 
-  // def date_parser(date_hash)
-  //   return nil if date_hash[:year] == ''
-  //   return Date.new(date_hash[:year].to_i) if date_hash[:month] ==''
-  //   if date_hash[:day] == ''
-  //     return Date.new(date_hash[:year].to_i, date_hash[:month].to_i)
-  //   else
-  //     Date.new(date_hash[:year].to_i, date_hash[:month].to_i, date_hash[:day].to_i)
-  //   end
-  // end
 
 
   ce_years: function () {
