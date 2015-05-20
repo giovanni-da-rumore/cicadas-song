@@ -49,7 +49,6 @@ Cicadas.Models.Text = Backbone.Model.extend({
     var annotations = this.annotations()
     var textSlices = this.getTextSlices(annotations);
     return textSlices.join('');
-
   },
 
   getTextSlice: function (annotation, prevAnnotation) {
@@ -80,10 +79,7 @@ Cicadas.Models.Text = Backbone.Model.extend({
     var text = this.escape('body');
     var textSlices = [];
     annotations.each(function (annotation) {
-      // console.log(annotation.get("start_index"))
-      // console.log(annotation.get("end_index"))
       textSlices.push(this.getTextSlice(annotation, prevAnnotation));
-      //debugger;
       prevAnnotation = annotation;
     }.bind(this));
 
@@ -91,9 +87,5 @@ Cicadas.Models.Text = Backbone.Model.extend({
 
     return textSlices;
   },
-
-
-
-
 
 });

@@ -15,6 +15,23 @@ past a certain page -->
     background: #d8d6bf;
   }
 
+  .text-show-nav {
+    /*float: left;*/
+    border-left: 1px solid #ccc;
+    /*border-right: 1px solid #ccc;*/
+  }
+
+  .text-show-nav > li {
+    display: block;
+    padding: 5px 10px;
+    float: left;
+    border-right: 1px solid #ccc;
+  }
+
+  .text-show-nav > li:hover {
+    -webkit-text-stroke: 1px black;
+  }
+
 
   .text-show-body > a:hover {
     background: #ffc31c;
@@ -25,8 +42,13 @@ past a certain page -->
   a.active {
     background: #ffc31c;
     webkit-text-stroke: 1px black;
+  }
+
+  .text-show-body {
+    padding-top: 25px;
 
   }
+
 
 
 
@@ -40,8 +62,10 @@ past a certain page -->
     <h1 class="show-title"> <a href="/#/texts/<%=text.escape('id')%>"><%= text.escape('title') %> </a></h1>
     <h3 class="show-author"> <%= text.author().escape('name')%> </h3>
   </header>
-  <nav class="text-show-nav">
-  </nav>
+
+  <ul class="text-show-nav group">
+      <li><button class="edit-text">edit</button></li>
+  </ul>
   <section class="text-show-body">
     <%=body%>
   </section>

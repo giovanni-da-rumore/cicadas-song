@@ -62,6 +62,8 @@ GEM
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
     debug_inspector (0.0.2)
+    diff-lcs (1.2.5)
+    diffy (3.0.7)
     eco (1.0.0)
       coffee-script
       eco-source
@@ -182,6 +184,8 @@ DEPENDENCIES
   binding_of_caller
   byebug
   coffee-rails (~> 4.1.0)
+  diff-lcs
+  diffy
   jbuilder (~> 2.0)
   jquery-rails
   newrelic_rpm

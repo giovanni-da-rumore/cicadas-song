@@ -31,9 +31,14 @@ module Api
       render :index
     end
 
-    def edit
+
+    def update
       @text = Text.find(params[:id])
-      render :new
+      if @text.update_attributes(text_params)
+       render json: @text
+      else
+       render json: @text.errors.full_messages, status: :unprocessable_entity
+      end
     end
 
     def destroy
@@ -41,6 +46,11 @@ module Api
       @text.try(:destroy)
       render json: {}
     end
+
+
+
+
+
 
     private
     def text_params

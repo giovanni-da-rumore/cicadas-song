@@ -33,6 +33,11 @@ gem 'newrelic_rpm'
 
 gem 'rangy-rails'
 
+#in case need to show differences between user edits later on,
+# visions and revisioins
+gem 'diff-lcs'
+gem 'diffy'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
