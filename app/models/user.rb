@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
   validates :username, :email, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
 
+
+  has_attached_file :avatar, default_url: "david_bowie.jpg",
+        styles: {:medium => "300x300>", :thumb => "100x100>"}
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   attr_reader :password
 
   has_many :sessions, dependent: :destroy

@@ -3,16 +3,13 @@
 
   img {
     display: block;
-    width: 100px;
-    height: 100%;
+    width: 150px;
+    height: 130%;
 
   }
 
 
 </style>
-
-
-
 
 
 <h1>User</h1>
@@ -21,9 +18,12 @@
 
     <br>
     <%= user.get('username') %>
-
-
   <br>
+  <img src="<%= user.get("avatar") %>" alt="avatar">
+
+  </li>
+  <% }) %>
+</ul>
 
   <form>
 
@@ -34,7 +34,7 @@
 
   <br>
 
-  <img src="" class="preview-user-avatar" width="100">
+  <img src="" class="preview-user-avatar">
 
   <br>
 

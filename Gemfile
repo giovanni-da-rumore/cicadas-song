@@ -34,7 +34,7 @@ gem 'rangy-rails'
 
 #for images
 gem "paperclip", "~> 4.2"
-gem "figaro"
+gem "figaro", " ~> 1.0"
 gem "aws-sdk"
 
 gem "ejs"

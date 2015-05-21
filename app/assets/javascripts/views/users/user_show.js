@@ -27,17 +27,16 @@ Cicadas.Views.UserShow = Backbone.CompositeView.extend({
     var reader = new FileReader();
 
     reader.onloadend = function(){
-      that._updatePreview(reader.result);
-      that.model._image = reader.result;
-      console.log(that.model);
-    }
+      this._updatePreview(reader.result);
+      this.model._avatar = reader.result;
+      console.log(this.model);
+    }.bind(this)
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      that._updatePreview("");
-      delete that.model._image;
-      console.log(that.model);
+      this._updatePreview("");
+      delete this.model._avatar;
     }
   },
 
