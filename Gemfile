@@ -39,6 +39,10 @@ gem "aws-sdk"
 
 gem "ejs"
 
+
+gem 'kaminari'
+gem 'pg_search'
+
 #in case need to show differences between user edits later on,
 # visions and revisioins
 gem 'diff-lcs'

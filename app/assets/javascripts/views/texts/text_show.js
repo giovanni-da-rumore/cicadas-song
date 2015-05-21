@@ -70,9 +70,6 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     });
   },
 
-
-
-
   renderDescription: function () {
     var view
     var description = this.model.textDescription();
@@ -101,6 +98,7 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     var selected = rangy.getSelection();
     var range = selected.getRangeAt(0);
     var textRange = range.toCharacterRange(container);
+    debugger;
 
     var highlightApplier = rangy.createClassApplier("high-yellow",
     { elementTagName: "a", elementProperties: href="#"});
@@ -137,7 +135,7 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     event.preventDefault();
     this.$el.find(".text-show-body .active").removeClass('active');
     $(event.currentTarget).addClass("active");
-    //this.inAnnotation = true;
+    this.inAnnotation = true;
     var id = event.currentTarget.id;
 
     if (id.length > 0) {

@@ -4,7 +4,7 @@ Cicadas.Views.UserShow = Backbone.CompositeView.extend({
 
 	events: {
 		"submit .avatar-form": "updateAvatar",
-		"change form .input-user-avatar": "fileInputChange",
+		"change form #input-user-avatar": "fileInputChange",
 	},
 
 
@@ -32,8 +32,6 @@ Cicadas.Views.UserShow = Backbone.CompositeView.extend({
 	},
 
 	fileInputChange: function(event){
-		debugger;
-
     var that = this;
     var file = event.currentTarget.files[0];
     var reader = new FileReader();
