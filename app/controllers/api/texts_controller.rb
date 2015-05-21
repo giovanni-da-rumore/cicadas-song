@@ -13,7 +13,7 @@ module Api
       parsed_params = parse_text_params
       @author = find_or_make_author(text_params[:author])
       @text = @author.texts.new(parsed_params)
-      #@text.body = @text.bodygsub(/[^\S\n]+/, " ")
+      @text.body = parse_text_body(@text.body)
       if @text.save
         @author.save
         render json: @text
@@ -49,10 +49,6 @@ module Api
     end
 
 
-
-
-
-
     private
     def text_params
       params.require(:text).permit(:author, :title, :body, :user_id, date: [:year, :day, :month])
@@ -67,6 +63,13 @@ module Api
       parsed_params.delete(:author)
       parsed_params[:date] = date_parser(text_params[:date])
       parsed_params
+    end
+
+    def parse_text_body(body)
+      new_body = body.gsub(/[^\S\n]+/, " ")
+      new_body = new_body.gsub(/\n[^\S\n]/, "\n")
+      new_body = new_body.gsub(/[^\S\n]\n/, "\n")
+      new_body
     end
   end
 end
