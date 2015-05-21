@@ -34,6 +34,7 @@ Cicadas.Views.TextForm = Backbone.View.extend({
     }
 
     var text = new Cicadas.Models.Text(attrs);
+    debugger;
     this.model.save(attrs, {
       success: riuscire.bind(this),
       error: fallire.bind(this)

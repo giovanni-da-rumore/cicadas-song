@@ -13,6 +13,7 @@ module Api
       parsed_params = parse_text_params
       @author = find_or_make_author(text_params[:author])
       @text = @author.texts.new(parsed_params)
+      #@text.body = @text.bodygsub(/[^\S\n]+/, " ")
       if @text.save
         @author.save
         render json: @text
