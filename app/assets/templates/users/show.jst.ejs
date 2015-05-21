@@ -4,14 +4,19 @@
   img {
     display: block;
     width: 150px;
-    height: 130%;
+    height: 100%;
+  }
+
+  .user-sidebar {
+    padding: 20px 30px;
 
   }
 
 
+
 </style>
 
-
+<div class="user-sidebar"
 <h1>User</h1>
 
 
@@ -20,12 +25,9 @@
     <%= user.get('username') %>
   <br>
   <img src="<%= user.get("avatar") %>" alt="avatar">
+<br>
 
-  </li>
-  <% }) %>
-</ul>
-
-  <form>
+<form class="avatar-form">
 
   <label>
     Avatar
@@ -38,6 +40,8 @@
 
   <br>
 
-  <button>Save</button> or <a href="#">Cancel</a>
+  <button class="save-avatar">Save</button> or <a href="#">Cancel</a>
 
 </form>
+
+</div>

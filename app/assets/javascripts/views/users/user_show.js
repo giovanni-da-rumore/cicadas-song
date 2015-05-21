@@ -3,7 +3,7 @@ Cicadas.Views.UserShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
 
 	events: {
-		// "click form .input-user-avatar": "fileInputChange"
+		"submit .avatar-form": "updateAvatar",
 		"change form .input-user-avatar": "fileInputChange",
 	},
 
@@ -18,6 +18,18 @@ Cicadas.Views.UserShow = Backbone.CompositeView.extend({
     this.$el.html(this.template({user: this.model}));
     return this;
   },
+
+
+
+	updateAvatar: function(event){
+		event.preventDefault()
+		this.model.save({
+			success: function(){
+				this.collection.add(that.model);
+				this.render();
+			}.bind(this)
+		})
+	},
 
 	fileInputChange: function(event){
 		debugger;
@@ -42,6 +54,6 @@ Cicadas.Views.UserShow = Backbone.CompositeView.extend({
 
   _updatePreview: function(src){
     this.$el.find(".preview-user-avatar").attr("src", src);
-  }
+  },
 
 });

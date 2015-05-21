@@ -17,14 +17,15 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes!(user_params)
+    @user.update_attributes(user_params)
+    render json: @user
   end
 
   def destroy
   end
 
   def user_params
-    params.require(user).permit(:username, :email, :about, :image, :moderator)
+    params.require(:user).permit(:username, :email, :about, :image, :moderator, :avatar)
   end
 
 
