@@ -3,42 +3,178 @@
 
   img {
     display: block;
-    width: 150px;
-    height: auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  .user-show-page {
+    width: 900px;
+    margin: auto;
+    background: #fff;
+    background: #000;
+    color: white;
   }
 
   .user-sidebar {
-    padding: 20px 30px;
+    float: left;
+    width: 200px;
+    margin: 20px;
+  }
+
+
+  .user-show-page h1 {
+    font-size: 28px;
+    display: inline;
+    width: 100%;
+    font-weight: bold;
+    color: #FFD714;
+    padding: 3px;
+    text-shadow: 0px 2px 1px #3FC213;
+    box-shadow: 0px -1px 2px #3FC213;
+  }
+
+  .user-show-page h1:after {
+    width: 200px;
+    content: "";
+    display: block;
+    border: 1px solid #FFD714;
+    margin-top: 15px;
+    box-shadow: 0px 0px 1px #3FC213;
+  }
+
+  .user-show-avatar {
+    display: block;
+    width: 200px;
+    heigth: 250px;
+    border: 1px solid #ccc;*/
+  }
+
+  .user-prof-options {
+    float: left;
+    padding: 20px 0px;
+  }
+
+  .user-prof-options li {
+    float: left;
+    display: block;
+    width: 200px;
+    padding: 10px 0px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .user-prof-options strong {
+    font-size: 18px;
+    display: block;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px;
+    color: #ccc;
+  }
+
+  .avatar-input {
+    padding: 0px;
+    width: 180px;
+    height: 20px;
 
   }
+
+
+
+
+  .user-show-main-content {
+    width: 630px;
+    float: left;
+    display: block;
+    padding: 15px;
+  }
+
+
+
+  .user-show-main-content li {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+
+  }
+
+  .user-show-main-content li:hover {
+    background: #d8d6bf;
+    background: #d6d4bf;;
+
+
+  }
+
+
+  .user-show-main-content ul {
+    display: block;
+    float: left;
+    width: 420px;
+
+  }
+
+
+  h2 {
+    display: inline;
+    padding: 20px 0px;
+    font-size: 30px;
+    float: left;
+  }
+
+
+}
 </style>
 
-<div class="user-sidebar"
-<h1>User</h1>
+<main class="user-show-page group">
 
 
 
-    <br>
-    <%= user.get('username') %>
-  <br>
-  <img src="<%= user.get("avatar") %>" alt="avatar">
-<br>
+  <section class="user-sidebar group">
 
-<form class="avatar-form">
+    <h1 class="user-show-name">
+      <%= user.escape('username') %>
+    </h1>
+    <div class="user-show-avatar">
+      <img src="<%= user.get("avatar") %>" alt="avatar">
+    </div>
 
-  <!-- <label>
-    Avatar -->
-    <input type="file" name="user[avatar]" id="input-user-avatar">
-  <!-- </label> -->
+    <ul class="user-prof-options group">
+      <li>
+        <form class="avatar-form">
+        <strong>Change Avatar:</strong>
+        <input type="file" name="user[avatar]" id="input-user-avatar"
+        class="avatar-input">
+        <img src="" class="preview-user-avatar">
+        <button class="save-avatar"> Save </button>
+        or <a href="#">Cancel</a>
+      </form>
+      </li>
+      <li>
+        <strong> About <%=user.escape('username') %>:</strong>
+        <p>
+          Born in the south land, some twenty odd years ago...
+        </p>
+      </li>
+      <li>
+        to be decided
+      </li>
 
-  <br>
 
-  <img src="" class="preview-user-avatar">
+    </ul>
+  </section>
 
-  <br>
+  <section class="user-show-main-content group">
 
-  <button class="save-avatar">Save</button> or <a href="#">Cancel</a>
+    <h2>Uploaded Texts</h2>
 
-</form>
+    <ul>
+    <% user.uploadedTexts().each(function (text) { %>
+      <li>
+        <a href="#/texts/<%=text.escape('id')%>"><%=text.escape('title')%>
+        </a>
+      </li>
+      <%})%>
+    </ul>
 
-</div>
+  </section>
+
+
+
+</main>

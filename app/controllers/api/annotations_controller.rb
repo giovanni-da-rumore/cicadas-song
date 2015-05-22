@@ -14,11 +14,12 @@ module Api
   	def show
   	end
 
-  	def edit
-  	end
+    def update
+      @annotation = Annotation.find(params[:id])
+      @annotation.update_attributes(annotation_params)
+      render json: @annotation
+    end
 
-  	def update
-  	end
 
   	def destroy
   	end

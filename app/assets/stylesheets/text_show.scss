@@ -4,10 +4,10 @@
   // margin-left: 75px;
   border-left: 1px solid #ccc;
   padding: 20px 0px;
-  width: 920px;
+  width: 900px;
   background: #f6f4e4;
-  background: #ffffef;
-  background: #fdfdfd;
+  // background: #ffffef;
+  // background: #fdfdfd;
   // background: white;
 
   // background: #F8F8FF;
@@ -17,8 +17,8 @@
 .text-show-main {
   display: block;
   float: left;
-  width: 659px;
-  width: 70%;
+  width-min: 625px;
+  width: 65%;
   margin-left: 15px;
   position: relative
   // border-right: 1px solid #ccc;
@@ -50,7 +50,7 @@
   // border-right: 1px solid #ccc;
   /*width: 350px;*/
   line-height: 1.1;
-  width: 25%;
+  width: 30%;
 }
 
 
@@ -68,7 +68,7 @@
 
 
 .text-show-body {
-  font-size: 17px;
+  font-size: 19px;
   padding: 15px 0px;
   padding-right: 15px;
 }

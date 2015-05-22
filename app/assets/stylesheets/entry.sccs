@@ -90,34 +90,3 @@ body {
 
 
 }
-
-
-</style>
-
-
-
-
-<main class="entry">
-
-  <%= render "/layouts/main_header" %>
-<%= render "shared/errors" %>
-
-<form class="entry-form group" action="<%=sessions_url%>" method="post">
-  <h1>SIGN IN</h1>
-  <section class="form-propre">
-
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-
-    <label>
-      Username
-      <input type=text name="user[username]" value="<%=@user.username%>">
-    </label>
-    <label>
-      Password
-      <input type="password" name="user[password]" value="">
-    </label>
-
-    <button class="entry-submit">Login</button>
-  </section>
-</form>
-</main>

@@ -10,6 +10,25 @@ Cicadas.Models.User = Backbone.Model.extend({
     }
 
     return json;
-  }
+  },
 
-})
+
+  parse: function (response) {
+
+    if (response.uploaded_texts) {
+      this.uploadedTexts().set(response.uploaded_texts, { parse: true });
+      delete response.uploaded_texts;
+    }
+    return response;
+  },
+
+  uploadedTexts: function () {
+    if (!this._uploadedTexts) {
+      this._uploadedTexts= new Cicadas.Collections.Texts();
+    }
+
+    return this._uploadedTexts;
+  },
+
+
+});

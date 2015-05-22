@@ -10,5 +10,5 @@ json.annotations user.annotations do |annotation|
 end
 
 json.uploaded_texts user.uploaded_texts do |text|
-	json.extract! text, :id, :author_id, :user_id, :body, :created_at, :updated_at
+	json.extract! text, :id, :title, :author_id, :user_id, :body, :created_at, :updated_at
 end

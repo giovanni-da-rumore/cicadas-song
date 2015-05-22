@@ -1,13 +1,57 @@
 <style>
-  .description-author {
-    display: block;
+
+  .description-container {
+    padding-left: 8px;
+
   }
+
+  .description-author {
+    margin-bottom: 10px;
+    font-weight: bold;
+    box-shadow: 0px 2px 1px #ffc31c;
+  }
+
+  .author-name {
+    margin-left: 15px;
+    font-size: 14px;
+    float: left;
+    /*box-shadow: 0px 2px 2px #ffc31c;*/
+  }
+
+  .desc-cont-tag {
+    /*color: #FFD714;*/
+    font-size: 15px;
+    float: left;
+    /*padding-right: 5px;*/
+    /*box-shadow: 2px 2px 2px #ffc31c;*/
+
+  }
+
+
 
   .description-content {
     display: block;
-    padding-top: 10px;
+    padding: 10px 0px;
+    font-size: 16px;
+    line-height: 1.2;
+    /*background: */
 
   }
+
+  .description-bottom-bar {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 5px;
+
+  }
+
+  .description-bottom-bar button {
+    font-size: 12px;
+    padding: 3px;
+    border-right: 1px solid #ccc;
+
+  }
+
 
 
 }
@@ -17,15 +61,18 @@
 <main class="description-container group">
 <section class="description-main-content">
 
-  <section class="desctiption-author">
-    contributor: <%=description.author().escape('username')%>
+  <section class="description-author group">
+    <div class="desc-cont-tag">contributor:</div>
+    <div class="author-name">
+      <%=description.author().escape('username')%>
+    </div>
   </section>
 
   <section class="description-content">
     <%=content %>
   </section>
-<section class="description-extra-buttons">
-  <button class="description-edit form-submit">Edit</button></td>
+<section class="description-bottom-bar group">
+  <button class="description-edit">Edit</button></td>
 </section>
 
 <section>

@@ -1,69 +1,79 @@
 <style>
 
 .description-textarea {
-  /*width: 350px;*/
-  /*width: 275px;*/
   width: 100%;
   min-height: 225px;
   resize: none;
+  font-size: 16px;
+  padding: 7px;
+  background: #d8d6bf;
   border: 1px solid #ccc;
-  background: #fff;
-  border-radius: 5px;
-  padding: 5px
 }
 
 .description-form {
-  margin: auto;
+  /*margin: auto;*/
   display: block;
   width: 95%;
-  widht-min: 300px;
-  /*width: 300px;*/
+  widht: 300px;
+  padding-bottom: 10px;
 }
+
+
+.description-submit {
+  background: #d8d6bf;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  float: left;
+}
+
+.description-form-footer {
+  margin: 10px 0px;
+}
+
+.description-form-footer button {
+  float: left;
+  /*margin-right: 8px;*/
+  margin-right: 10px;
+  padding: 5px;
+}
+
 
 .description-form li {
   padding: 3px;
 }
+
+.description-form strong {
+  font-weight: bold;
+  box-shadow: 2px 2px 2px #ffc31c;
+}
+
+
+
 </style>
 
 <ul class="errors">
 </ul>
 
 <form class="description-form group">
-<!-- <table>
-  <tr> -->
+
   <ul>
-    <!-- <td> -->
+
     <li>
-      <strong>Add Description</strong>
-    </li><!-- </td>
-  </tr>
-  <tr>
-    <td> -->
+      <%if (!description.get('id')) { %>
+        <strong>Add Description</strong>
+        <%}%>
+    </li>
     <li>
       <textarea class="description-textarea"
       name="description[content]"
       placeholder="scrivi qualcosa interesante"><%=description.escape('content')%></textarea>
     </li>
-    <!-- </td>
-  </tr>
-  <tr>
-    <td> -->
-    <li>
 
-      <button class="form-submit description-submit">Save</button>
+    <div class="description-form-footer group">
+      <button class="description-submit"> Save</button>
 
-      <li>
         <button class="description-cancel">Cancel</button>
-      </li>
-
-
-    </li>
+    </div>
   </ul>
-    <!-- </td>
-  </tr>
-
-
-</table> -->
-
 
 </form>

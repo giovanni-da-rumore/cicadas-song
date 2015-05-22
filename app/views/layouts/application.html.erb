@@ -9,8 +9,9 @@
 </head>
 <body>
 
-
-<%= render "/layouts/header" %>
+<% if current_user %>
+  <%= render "/layouts/header" %>
+<%end%>
 
 <%= yield %>
 

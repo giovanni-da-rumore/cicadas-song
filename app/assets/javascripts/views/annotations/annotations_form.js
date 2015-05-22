@@ -1,7 +1,7 @@
 Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 
 	events: {
-		"click .annotation-submit": "submitNew",
+		"click .annotation-submit": "submitHandler",
 	},
 
 	template: JST["annotations/form"],
@@ -17,7 +17,7 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 		return this;
 	},
 
-	submitNew: function (event){
+	submitNew: function (event) {
 		event.preventDefault();
 		var attrs = this.$el.find('.annotation-form').serializeJSON();
 		attrs.annotation.start_index = this.range.start;
@@ -40,6 +40,31 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
     	});
 		}
   },
+
+
+	submitEdit: function (event) {
+		event.preventDefault();
+		var attrs = this.$el.find('.annotation-form').serializeJSON();
+		this.model.save(attrs, {
+			success: function () {
+				this.text.annotations().add(this.model);
+				var content = Cicadas.TextParser.spaceParse(this.model.escape('content'));
+	      this.$el.html(JST['annotations/show']({annotation: this.model, content: content}));
+			}.bind(this)
+		})
+	},
+
+	submitHandler: function (event) {
+		event.preventDefault();
+		if (this.model.get('id')) {
+			this.submitEdit(event)
+		} else {
+			this.submitNew(event);
+		}
+
+	},
+
+
 
 
 	isNested: function (start, end) {

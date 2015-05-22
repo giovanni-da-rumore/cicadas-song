@@ -1,16 +1,110 @@
 <style>
-input {
-  display: block;
-  margin-bottom: 5px;
+
+html {
+
+  background: url(/assets/hunting_fishing.jpg);
+  background-size: cover;
 }
+
+.entry {
+  background-size: cover;
+  /*width: 900px;*/
+  /*margin: 0px;*/
+  /*padding-top: 200px;*/
+  /*background: url(/assets/hunting_fishing.jpg);*/
+  background: transparent;
+
+}
+
+body {
+  background: transparent;
+  /*background: url(/assets/hunting_fishing.jpg);
+  background-size: cover;*/
+}
+.entry-form {
+  width: 300px;
+  padding: 20px;
+  background: #049100;
+  background: #3FC213;
+  margin-top: 220px;
+  margin: auto;
+  z-index: 1;
+  border: 1px solid #83A1E8;
+  border-radius: 5px;
+  color: white;
+  opacity: 0.9;
+}
+
+.entry-form h1 {
+  text-align: center;
+  padding: 10px 0px;
+  color: #ffc31c;
+  color: #FFD714;
+  font-weight: bold;
+  font-size: 28px;
+  text-shadow: 1px 1px 2px #ffc31c;
+  opacity: 0.9;
+}
+
+
+.entry-form input {
+  display: block;
+  border: 1px solid #000;
+  background: #FFF7DF;
+  height: 20px;
+  width: 275px;
+  border-radius: 5px;
+  padding: 5px;
+  color: #000;
+  margin-top: 5px;
+}
+
+.entry-form .form-propre {
+  background: #3FE713;
+  /*background: #3FC213;*/
+  display: block;
+  padding: 5px;
+  margin-top: 20px;
+
+}
+
+.entry-form label {
+  font-size: 16px;
+  padding-bottom: 5px;
+  text-shadow: 1px 1px 2\1px #fff;
+
+}
+
+.entry-submit {
+  margin: 10px 5px;
+  padding: 4px;
+  border: 1px solid #000;
+  display: inline;
+  border-radius: 3px;
+  background: #3FC213;
+
+
+}
+
+
+
+
+
 </style>
 
-
+<main class="entry">
+<%= render "/layouts/main_header" %>
 <%= render "shared/errors" %>
 
 
-<form action="<%=users_url%>" method="post">
+<form class="entry-form group" action="<%=users_url%>" method="post">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <h1>SIGN UP</h1>
+
+
+  <section class="form-propre">
+
 
   <label>Username
    <input type=text name="user[username]" value="<%=@user.username%>">
@@ -21,7 +115,9 @@ input {
   <label>Password
    <input type="password" name="user[password]" value="">
  </label>
- 
-  <button class="form-submit">sign up</button>
+
+  <button class="entry-submit">sign up</button>
+</section>
 
 </form>
+<main>
