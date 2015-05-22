@@ -10,6 +10,7 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     "texts/:id": "showText",
     // "texts/:id/edit": "editText",
     "users/:id": "showUser",
+    "search": "search"
   },
 
 
@@ -45,6 +46,13 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     this._showText = new Cicadas.Views.TextShow({model: text});
     this._swapViews(this._showText);
   },
+
+  search: function () {
+    this._Search = new Cicadas.Views.Search();
+    this._swapViews(this._Search);
+
+  },
+
 
   _swapViews: function (view) {
     this._currentView && this._currentView.remove();

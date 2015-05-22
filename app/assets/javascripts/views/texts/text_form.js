@@ -2,7 +2,6 @@ Cicadas.Views.TextForm = Backbone.View.extend({
 
   template: JST['texts/form'],
 
-
   events: {
     "submit": "submitText"
   },
@@ -23,6 +22,7 @@ Cicadas.Views.TextForm = Backbone.View.extend({
 
     var riuscire = function () {
       this.collection.add(this.model, {merge: true});
+      debugger;
       Backbone.history.navigate("/texts/" + this.model.get('id'), {trigger: true})
     };
 
@@ -32,8 +32,6 @@ Cicadas.Views.TextForm = Backbone.View.extend({
         this.$el.find('.errors').append('<li>'+ error +'</li>')
       }.bind(this));
     }
-
-    var text = new Cicadas.Models.Text(attrs);
     debugger;
     this.model.save(attrs, {
       success: riuscire.bind(this),

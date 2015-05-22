@@ -1,4 +1,7 @@
 class Text < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:title, :author]
+
   validates :body, :title, :author, presence: true
 
   belongs_to :author, inverse_of: :texts
@@ -17,6 +20,7 @@ class Text < ActiveRecord::Base
   has_many :libraries
 
   has_many :patrons, through: :libraries, as: :text
+
 
 end
 

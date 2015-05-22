@@ -1,2 +1,1 @@
-json.extract! @user, :id, :username, :email, :moderator
-json.avatar asset_path(@user.avatar.url(:original))
+json.partial! "api/users/show", user: @user

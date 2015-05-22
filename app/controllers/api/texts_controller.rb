@@ -66,10 +66,12 @@ module Api
     end
 
     def parse_text_body(body)
-      new_body = body.gsub(/[^\S\n]+/, " ")
-      new_body = new_body.gsub(/\n[^\S\n]/, "\n")
-      new_body = new_body.gsub(/[^\S\n]\n/, "\n")
-      new_body
+      body
+      # new_body = body.strip
+      # new_body = body.gsub(/[^\S\n]+/, " ")
+      # new_body = new_body.gsub(/\n[^\S\n]/, "\n")
+      # new_body = new_body.gsub(/[^\S\n]\n/, "\n")
+      # new_body
     end
   end
 end

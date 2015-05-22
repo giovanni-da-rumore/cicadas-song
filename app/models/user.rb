@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: :username
+
   validates :username, :email, :password_digest, presence: true
   validates :username, :email, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
-
 
   has_attached_file :avatar, default_url: "david_bowie.jpg",
         styles: {:medium => "300x300>", :thumb => "100x100>"}
@@ -27,10 +29,8 @@ class User < ActiveRecord::Base
   foreign_key: :author_id,
   primary_key: :id
 
-
   has_many :libraries, dependent: :destroy
 
-  #to do
   has_many :library_texts, through: :libraries, as: :text
 
   def authored_texts
@@ -60,5 +60,4 @@ class User < ActiveRecord::Base
     token = session.generate_new_session_token!
     token
   end
-
 end
