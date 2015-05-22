@@ -68,7 +68,7 @@ Cicadas.Models.Text = Backbone.Model.extend({
 
     var frontText = newText.slice(0, diff);
     var anText = newText.slice(diff);
-    var result =  frontText + frontWrapper + anText + "</a>"
+    var result =  _.escape(frontText) + frontWrapper + _.escape(anText) + "</a>"
 
     return result;
   },
@@ -84,7 +84,7 @@ Cicadas.Models.Text = Backbone.Model.extend({
       prevAnnotation = annotation;
     }.bind(this));
 
-    textSlices.push(text.slice(endIndex));
+    textSlices.push(_.escape(text.slice(endIndex)));
 
     return textSlices;
   },
