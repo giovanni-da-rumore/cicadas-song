@@ -1,0 +1,48 @@
+
+
+<style>
+
+  .search-text-item {
+    padding: 8px;
+    border-top: 2px solid #ccc;
+    width: 500px;
+    display: block;
+  }
+
+  /*.search-text-item:last-child {
+    border-bottom: 1px solid #ccc;
+
+  }*/
+
+  .search-text-item:hover {
+    border-left: 6px solid #ffc31c;
+    box-shadow: -1px 1px 1px black;
+  }
+
+  .search-text-title {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 4px;
+    float: left
+    width: 450px;
+    display: block;
+  }
+
+  .search-text-author {
+    font-size: 14px;
+    display: block;
+    /*float: left;*/
+
+  }
+
+
+
+
+</style>
+
+
+<a class="search-text-item group" href="/#/texts/<%=text.escape('id')%>">
+  <div class="search-text-title"><%=text.escape('title')%></div>
+  <div class="search-text-author"><%=author.escape('name')%></div>
+
+</a>

@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
       redirect_to "/"
     else
       @user = User.new(user_params)
+      flash[:errors] = ["Incorrent username and password combination."]
       render :new
     end
   end

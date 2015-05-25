@@ -84,10 +84,15 @@ body {
   display: inline;
   border-radius: 3px;
   background: #3FC213;
+}
+
+.errors {
+  text-align: center;
+  font-size: 14px;
+  color: blue;
 
 
 }
-
 
 </style>
 
@@ -97,11 +102,13 @@ body {
 <main class="entry">
 
   <%= render "/layouts/main_header" %>
-<%= render "shared/errors" %>
 
 <form class="entry-form group" action="<%=sessions_url%>" method="post">
   <h1>SIGN IN</h1>
   <section class="form-propre">
+    <div class="errors">
+    <%= render "shared/errors" %>
+  </div>
 
     <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 

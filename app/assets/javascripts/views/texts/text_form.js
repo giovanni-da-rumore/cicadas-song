@@ -38,28 +38,11 @@ Cicadas.Views.TextForm = Backbone.View.extend({
     });
   },
 
-  // adjustTextArea: function (event) {
-  //   event.preventDefault();
-  //   var $textArea = $(event.currentTarget);
-  //   var minHeight = parseInt($textArea.css("min-height").slice(0, -2)) + 10;
-  //   while ($textArea.outerHeight() < event.currentTarget.scrollHeight +
-  //   parseFloat($textArea.css("borderTopWidth")) + parseFloat($textArea.css("borderBottomWidth"))) {
-  //     $textArea.height($textArea.height()+1);
-  //   };
-  //
-  //   if ($textArea.outerHeight() > minHeight) {
-  //     if (event.which == 8 || event.which == 46) {
-  //       $textArea.height(minHeight)
-  //       $textArea.height(event.currentTarget.scrollHeight);
-  //     }
-  //   }
-  //
-  //
-  //
-  // },
 
+  adjustTextArea: function (event) {
+    debugger;
+    Cicadas.TextParser.adjustTextAreaLarge(event);
 
-
-
+  },
 
 });

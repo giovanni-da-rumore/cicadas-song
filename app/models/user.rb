@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include PgSearch
-  multisearchable against: :username
+  multisearchable against: [:username, :uploaded_texts]
 
   validates :username, :email, :password_digest, presence: true
   validates :username, :email, uniqueness: true

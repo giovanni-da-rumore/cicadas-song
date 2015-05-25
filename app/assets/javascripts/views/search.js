@@ -2,7 +2,7 @@ Cicadas.Views.Search = Backbone.View.extend({
 
 	initialize: function () {
 		this.collection = new Cicadas.Collections.SearchResults();
-		//this.listenTo(this.collection, "sync", this.renderResults);
+		this.listenToOnce(this.collection, "sync", this.renderResults);
 	},
 
 	events: {
@@ -41,11 +41,12 @@ Cicadas.Views.Search = Backbone.View.extend({
 
 		var view;
 		this.collection.each(function (result) {
-			debugger;
 			if (result instanceof Cicadas.Models.User) {
-				view = new Cicadas.Views.UserShow({ model: result });
+				// view = new Cicadas.Views.UserListItem({ model: result });
 			} else if (result instanceof Cicadas.Models.Author) {
-				view = new Cicadas.Views.AuthorShow({ model: result });
+				// view = new Cicadas.Views.AuthorListItem({ model: result });
+			} else if (result instanceof Cicadas.Models.Text) {
+				view = new Cicadas.Views.TextListItem({ model: result });
 			}
 
 			$container.append(view.render().$el);

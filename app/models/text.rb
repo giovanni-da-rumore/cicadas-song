@@ -1,6 +1,10 @@
 class Text < ActiveRecord::Base
   include PgSearch
-  multisearchable against: [:title, :author]
+  multisearchable against: [:title, :author_name]
+  #
+  # pg_search_scope :author, associated_against: {
+  #   author: [:name]
+  # }
 
   validates :body, :title, :author, presence: true
 
@@ -20,6 +24,10 @@ class Text < ActiveRecord::Base
   has_many :libraries
 
   has_many :patrons, through: :libraries, as: :text
+
+  def author_name
+    self.author.name
+  end
 
 
 end

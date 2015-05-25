@@ -81,8 +81,12 @@ body {
   display: inline;
   border-radius: 3px;
   background: #3FC213;
+}
 
-
+.errors {
+  text-align: center;
+  font-size: 14px;
+  color: blue;
 }
 
 
@@ -93,7 +97,6 @@ body {
 
 <main class="entry">
 <%= render "/layouts/main_header" %>
-<%= render "shared/errors" %>
 
 
 <form class="entry-form group" action="<%=users_url%>" method="post">
@@ -104,6 +107,9 @@ body {
 
   <section class="form-propre">
 
+  <div class="errors"
+    <%= render "shared/errors" %>
+  </div>
 
   <label>Username
    <input type=text name="user[username]" value="<%=@user.username%>">
