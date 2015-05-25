@@ -45,11 +45,10 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 	submitEdit: function (event) {
 		event.preventDefault();
 		var attrs = this.$el.find('.annotation-form').serializeJSON();
+		debugger;
 		this.model.save(attrs, {
 			success: function () {
-				this.text.annotations().add(this.model);
-				var content = Cicadas.TextParser.spaceParse(this.model.escape('content'));
-	      this.$el.html(JST['annotations/show']({annotation: this.model, content: content}));
+				this.text.annotations().add(this.model, {merge: true});
 			}.bind(this)
 		})
 	},

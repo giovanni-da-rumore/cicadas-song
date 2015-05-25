@@ -35,8 +35,10 @@ Cicadas.Views.DescriptionForm = Backbone.CompositeView.extend({
     attrs["description"]["text_id"] = this.textId;
 
     var riuscire = function () {
-      var content = Cicadas.TextParser.spaceParse(this.model.escape('content'));
-      this.$el.html(JST['descriptions/show']({description: this.model, content: content}));
+      this.author = Cicadas.currentUser;
+      var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
+      var content = Cicadas.TextParser.spaceParse(content);
+      this.$el.html(JST['descriptions/show']({description: this.model, content: content, author: this.author}));
     };
 
     this.model.save(attrs, {

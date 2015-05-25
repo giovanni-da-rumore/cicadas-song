@@ -54,14 +54,14 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     this.editingText = true;
     var $body = this.$el.find('.text-show-body');
     this.$el.find('.text-show-nav').html(JST["texts/nav"]);
-    $body.html('<textarea class="text-textarea" name="text[body]">' + this.model.get('body')+ "</textarea>");
+    $body.html('<textarea class="textarea-edit" name="text[body]">' + this.model.get('body')+ "</textarea>");
   },
 
   saveEdit: function (event) {
     event.preventDefault();
     var prevModel = this.model;
     var that = this;
-    var attrs = this.$el.find(".text-textarea").serializeJSON();
+    var attrs = this.$el.find(".textarea-edit").serializeJSON();
     this.model.save(attrs, {
       success: function () {
         that.editingText = false;

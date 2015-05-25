@@ -14,7 +14,8 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
 
 
   render: function () {
-    var content = Cicadas.TextParser.spaceParse(this.model.escape('content'))
+    var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
+    var content = Cicadas.TextParser.spaceParse(content);
     this.$el.html(this.template({annotation: this.model, content: content}));
     return this;
   },

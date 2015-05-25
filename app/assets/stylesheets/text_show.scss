@@ -4,7 +4,7 @@
   // margin-left: 75px;
   border-left: 1px solid #ccc;
   padding: 20px 0px;
-  width: 900px;
+  width: 975px;
   background: #f6f4e4;
   // background: #ffffef;
   // background: #fdfdfd;
@@ -26,6 +26,16 @@
   border-left: 1px solid #ccc;*/
 }
 
+
+
+.textarea-edit {
+  display: block;
+  resize: none;
+  min-height: 500px;
+  width: 540px;
+  background: #d8d6bf;
+  padding: 10px;
+}
 
 /* not sure what looks better, but this  border stretches the whole page */
 // .text-main-border-right {

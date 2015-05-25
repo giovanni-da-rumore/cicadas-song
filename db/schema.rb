@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20150521213330) do
   end
 
   add_index "descriptions", ["author_id"], name: "index_descriptions_on_author_id", using: :btree
-  add_index "descriptions", ["text_id"], name: "index_descriptions_on_text_id", using: :btree
+  add_index "descriptions", ["text_id"], name: "index_descriptions_on_text_id", unique: true, using: :btree
 
   create_table "libraries", force: :cascade do |t|
     t.integer  "user_id"
@@ -85,11 +85,23 @@ ActiveRecord::Schema.define(version: 20150521213330) do
   add_index "sessions", ["content"], name: "index_sessions_on_content", unique: true, using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
+  create_table "text_descriptions", force: :cascade do |t|
+    t.integer  "text_id",                null: false
+    t.integer  "author_id",              null: false
+    t.string   "content"
+    t.integer  "score",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "text_descriptions", ["author_id"], name: "index_text_descriptions_on_author_id", using: :btree
+  add_index "text_descriptions", ["text_id"], name: "index_text_descriptions_on_text_id", using: :btree
+
   create_table "texts", force: :cascade do |t|
     t.string   "title",                          null: false
     t.string   "date"
     t.text     "body",                           null: false
-    t.integer  "author_id"
+    t.integer  "author_id",                      null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.boolean  "author_is_user", default: false
@@ -101,17 +113,13 @@ ActiveRecord::Schema.define(version: 20150521213330) do
   add_index "texts", ["title"], name: "index_texts_on_title", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                            null: false
-    t.string   "email",                               null: false
-    t.string   "password_digest",                     null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.boolean  "moderator",           default: false
-    t.integer  "score",               default: 0
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.string   "username",                        null: false
+    t.string   "email",                           null: false
+    t.string   "password_digest",                 null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "moderator",       default: false
+    t.integer  "score",           default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -16,7 +16,7 @@ module Api
 
     def update
       @annotation = Annotation.find(params[:id])
-      @annotation.update_attributes(annotation_params)
+      @annotation.update_attributes!(annotation_params)
       render json: @annotation
     end
 

@@ -6,6 +6,8 @@
   /*background: #FF0000;*/
   background: #009900;
   background: #3FBC13;
+  /*width: 5000px;*/
+  width: 100%;
   /*background: #22b422;*/
   /*background: #00B300;*/
 }
@@ -17,9 +19,11 @@
 
 .header-nav {
   display: block;
-  margin: auto;
-  margin: 0px 25px;
+  margin: 0px 75px;
   color: #f9f8f7;
+  width: 975px;
+  margin: auto;
+  background: #3FBC13;
 }
 
 .header-logo {
@@ -62,32 +66,3 @@
   padding: 10px;
   font-size: 14px;
 }
-
-
-
-
-
-
-
-/*<header class="header">
-    <nav class="header-nav group">
-      <h1 class="header-logo">
-        <a href="/">Aleatory Literature</a>
-        </h1>
-
-    <%if current_user%>
-      <ul class="header-list group">
-        <li><a href="#"> Notifications</a></li>
-        <li><a href="<%=user_url(user)%>">Profile</a></li>
-        <li><a href="<%=new_text%>">Create</a></li>
-        <li><a href="#">Space Holder</a></li>
-      </ul>
-    <% else %>
-    <ul class="header-list group">
-      <li><a href="/sessions/new">Sign In</a></li>
-      <li><a href="/users/new">Sign Up</a></li>
-      <li><a href="#">Space Holder</a></li>
-    </ul>
-    <% end %>
- </nav>
-</header>*/
