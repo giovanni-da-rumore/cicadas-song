@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username, null: false
       t.string :email, null: false
       t.string :password_digest, null: false
+      t.boolean :moderator, default: false
 
       t.timestamps null: false
     end
@@ -12,4 +13,3 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :moderator
   end
 end
- 

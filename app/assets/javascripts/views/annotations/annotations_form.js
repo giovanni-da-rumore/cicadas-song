@@ -2,6 +2,7 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 
 	events: {
 		"click .annotation-submit": "submitHandler",
+		"keyup .annotation-textarea": "adjustTextArea",
 	},
 
 	template: JST["annotations/form"],
@@ -14,8 +15,12 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 
 	render: function () {
 		this.$el.html(this.template({annotation: this.model}));
+		this.$el.find(".annotation-textarea").trigger('keyup');
 		return this;
 	},
+
+
+
 
 	submitNew: function (event) {
 		event.preventDefault();
@@ -45,7 +50,6 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 	submitEdit: function (event) {
 		event.preventDefault();
 		var attrs = this.$el.find('.annotation-form').serializeJSON();
-		debugger;
 		this.model.save(attrs, {
 			success: function () {
 				this.text.annotations().add(this.model, {merge: true});
@@ -88,7 +92,10 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 		this.$el.html(descrView.render().$el);
 	},
 
-
+	adjustTextArea: function (event) {
+		event.preventDefault();
+		Cicadas.TextParser.adjustTextArea(event);
+	},
 
 
 

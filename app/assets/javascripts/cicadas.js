@@ -15,7 +15,7 @@ window.Cicadas = {
   getCurrentUser: function(id) {
     user = new Cicadas.Models.User({id: id});
     user.fetch();
-    return user
+    return user;
   }
 
 

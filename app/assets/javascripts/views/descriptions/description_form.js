@@ -5,27 +5,28 @@ Cicadas.Views.DescriptionForm = Backbone.CompositeView.extend({
   events: {
     "click .description-submit": "submitDescription",
     "click .description-cancel": "cancel",
+    "keyup .description-textarea": "adjustTextArea",
   },
 
   initialize: function (options) {
     this.textId = options.textId;
     this.parentText = options.parentText;
-
-    //this.listenTo(this.model, "sync change", this.render);
   },
 
   render: function () {
     this.$el.html(this.template({description: this.model}));
+    this.$el.find(".description-textarea").trigger('keyup');
     return this;
   },
 
 
-
-  cancel: function (event) {
-    event.preventDefault();
-    var content = Cicadas.TextParser.spaceParse(this.model.escape('content'))
-    this.$el.html(JST['descriptions/show']({description: this.model, content: content}));
-  },
+  // 
+  // cancel: function (event) {
+  //   event.preventDefault();
+  //   this.refresh();
+  //   // var content = Cicadas.TextParser.spaceParse(this.model.escape('content'))
+  //   // this.$el.html(JST['descriptions/show']({description: this.model, content: content}));
+  // },
 
 
   submitDescription: function (event) {
@@ -38,12 +39,20 @@ Cicadas.Views.DescriptionForm = Backbone.CompositeView.extend({
       this.author = Cicadas.currentUser;
       var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
       var content = Cicadas.TextParser.spaceParse(content);
-      this.$el.html(JST['descriptions/show']({description: this.model, content: content, author: this.author}));
+      debugger;
+      this.$el.html(JST['descriptions/show']({description: this.model,
+        content: content, author: this.author}));
     };
 
     this.model.save(attrs, {
       success: riuscire.bind(this),
     });
   },
+
+  adjustTextArea: function (event) {
+		event.preventDefault();
+		Cicadas.TextParser.adjustTextArea(event);
+	},
+
 
 });

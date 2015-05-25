@@ -30,6 +30,33 @@ Cicadas.TextParser = {
   },
 
 
+  adjustTextArea: function (event) {
+    event.preventDefault();
+    var $textArea = $(event.currentTarget);
+    var minHeight = parseInt($textArea.css("min-height").slice(0, -2)) + 10;
+    while ($textArea.outerHeight() < event.currentTarget.scrollHeight +
+    parseFloat($textArea.css("borderTopWidth")) + parseFloat($textArea.css("borderBottomWidth"))) {
+      $textArea.height($textArea.height()+1);
+    };
+    if (minHeight) {
+      if ($textArea.outerHeight() > minHeight + 2) {
+        if (event.which == 8 || event.which == 46) {
+          $textArea.height(minHeight)
+          $textArea.height(event.currentTarget.scrollHeight);
+        }
+      }
+    }
+  },
+
+  adjustTextAreaLarge: function (event) {
+    event.preventDefault();
+    var $textArea = $(event.currentTarget);
+    var minHeight = parseInt($textArea.css("min-height").slice(0, -2)) + 10;
+    while ($textArea.outerHeight() < event.currentTarget.scrollHeight +
+    parseFloat($textArea.css("borderTopWidth")) + parseFloat($textArea.css("borderBottomWidth"))) {
+      $textArea.height($textArea.height()+1);
+    };
+  },
 
 
 };

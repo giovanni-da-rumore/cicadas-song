@@ -28,8 +28,9 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
       model: this.model,
       text: text
     })
-    this.$el.html(formView.render().$el);
-  }
+    this.$el.html(formView.$el);
+    formView.render();
+  },
 
 
 

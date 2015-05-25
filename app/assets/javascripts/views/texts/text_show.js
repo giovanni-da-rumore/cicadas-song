@@ -10,6 +10,7 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     "click .text-edit-save": "saveEdit",
     "click .cancel": "refresh",
     "mouseup .text-show-body": "clickHandler",
+    "keyup .edit-textarea": "adjustTextArea",
     // "click .annotation": "showAnnotation",
   },
 
@@ -39,9 +40,7 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
   },
 
   refresh: function (event) {
-    if (event) {
-      event.preventDefault();
-    }
+    if (event) { event.preventDefault(); }
     this.inAnnotation = false;
     this.editingText = false;
     this.render();
@@ -54,14 +53,15 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     this.editingText = true;
     var $body = this.$el.find('.text-show-body');
     this.$el.find('.text-show-nav').html(JST["texts/nav"]);
-    $body.html('<textarea class="textarea-edit" name="text[body]">' + this.model.get('body')+ "</textarea>");
+    $body.html('<textarea class="edit-textarea" name="text[body]">' + this.model.get('body')+ "</textarea>");
+    this.$el.find('.edit-textarea').trigger("keyup");
   },
 
   saveEdit: function (event) {
     event.preventDefault();
     var prevModel = this.model;
     var that = this;
-    var attrs = this.$el.find(".textarea-edit").serializeJSON();
+    var attrs = this.$el.find(".edit-textarea").serializeJSON();
     this.model.save(attrs, {
       success: function () {
         that.editingText = false;
@@ -86,7 +86,8 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     var view = new Cicadas.Views.DescriptionForm({model: this.model.textDescription(),
     textId: this.textId}
     );
-    this.$el.find('.text-show-right-sidebar').html(view.render().$el);
+    this.$el.find('.text-show-right-sidebar').html(view.$el);
+    view.render();
   },
 
 
@@ -102,7 +103,6 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     { elementTagName: "a", elementProperties: href="#"});
 
     highlightApplier.applyToSelection();
-
     var anForm = new Cicadas.Views.AnnotationForm({
       view: this,
       model: new Cicadas.Models.Annotation(),
@@ -158,6 +158,11 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     $sidebar.remove();
     $sidebar.html(view.render().$el);
   },
+
+  adjustTextArea: function (event) {
+		event.preventDefault();
+		Cicadas.TextParser.adjustTextAreaLarge(event);
+	},
 
 
 });
