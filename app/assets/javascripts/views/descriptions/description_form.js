@@ -20,15 +20,6 @@ Cicadas.Views.DescriptionForm = Backbone.CompositeView.extend({
   },
 
 
-  // 
-  // cancel: function (event) {
-  //   event.preventDefault();
-  //   this.refresh();
-  //   // var content = Cicadas.TextParser.spaceParse(this.model.escape('content'))
-  //   // this.$el.html(JST['descriptions/show']({description: this.model, content: content}));
-  // },
-
-
   submitDescription: function (event) {
     event.preventDefault();
     var attrs = this.$el.find('form').serializeJSON();

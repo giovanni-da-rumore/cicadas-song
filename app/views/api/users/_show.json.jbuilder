@@ -1,6 +1,6 @@
 json.extract! user, :id, :username, :email, :moderator
+json._type "User"
 json.avatar asset_path(user.avatar.url(:original))
-
 
 json.avatar asset_path(user.avatar.url(:original))
 
