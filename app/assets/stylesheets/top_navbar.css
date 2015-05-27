@@ -19,16 +19,15 @@
 
 .header-nav {
   display: block;
-  margin: 0px 75px;
   color: #f9f8f7;
   width: 975px;
   margin: auto;
   background: #3FBC13;
 }
 
-.header-logo {
+/*.header-logo {
   /*border: 1px solid orange;*/
-  float: left;
+  /*float: left;
   padding: 10px;
   font-size: 18px;
 }
@@ -36,7 +35,39 @@
 .header-logo:hover {
   color: #FFD700;
   color: #ffc31c;
+}*/
+
+.header-logo a {
+  padding: 6px;
+  border-radius: 100%;
+  border: 3px solid #009900;
+  background: #fff;
+  color: #3FBC13;
+  box-shadow: 0px 0px 1px black;
+  /*color: #0EA300;
+  color: #A40000;*/
+  font-size: 25px;
+  display: block;
+  float: left;
+  font-weight: bold;
+  margin-left: 5px;
+  vertical-align: center;
+
 }
+
+.header-logo a:hover {
+  color: #ffc31c;
+  border: 3px solid #ffc31c;
+  background: #f1f1f1;
+  background: #fff;
+  background: #A40000;
+  background: #009900;
+  text-shadow: 1px 1px 1px #000;
+  cursor: pointer;
+  /*background: #e0dece;*/
+
+}
+
 
 
 
@@ -63,6 +94,6 @@
 
 .header-list a {
   display: block;
-  padding: 10px;
+  padding: 9px;
   font-size: 14px;
 }

@@ -2,6 +2,8 @@ Cicadas.Routers.Text = Backbone.Router.extend({
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
+    this.$searchBar = options.$searchBar;
+    // this.searchVar = new Cicadas.Views.SearchBar({el: #search-bar});
   },
 
   routes: {
@@ -48,17 +50,18 @@ Cicadas.Routers.Text = Backbone.Router.extend({
   },
 
   search: function () {
-    this._Search = new Cicadas.Views.Search();
+    this._Search = new Cicadas.Views.SearchBar();
     this._swapViews(this._Search);
 
   },
 
 
   _swapViews: function (view) {
+    this._Search = new Cicadas.Views.SearchBar();
+    this.$searchBar.html(this._Search.render().$el);
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
-    // view.render();
   }
 
 });

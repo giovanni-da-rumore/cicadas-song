@@ -7,7 +7,8 @@ window.Cicadas = {
   initialize: function(options) {
     this.currentUser = this.getCurrentUser(options.cUserId);
     new Cicadas.Routers.Text({
-      $rootEl: $('#main')
+      $rootEl: $('#main'),
+      $searchBar: $('#search-bar')
     });
     Backbone.history.start()
   },
