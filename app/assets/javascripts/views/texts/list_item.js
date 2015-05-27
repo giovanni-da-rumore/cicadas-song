@@ -11,7 +11,6 @@ Cicadas.Views.TextListItem = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    debugger;
     this.$el.html(this.template({text: this.model, author: this.author}));
     return this;
   },

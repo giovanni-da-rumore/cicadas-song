@@ -12,7 +12,7 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     "texts/:id": "showText",
     // "texts/:id/edit": "editText",
     "users/:id": "showUser",
-    "search": "search"
+    "search/": "searchResults"
   },
 
 
@@ -49,15 +49,19 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     this._swapViews(this._showText);
   },
 
-  search: function () {
-    this._Search = new Cicadas.Views.SearchBar();
-    this._swapViews(this._Search);
+  searchResults: function (params) {
+    var query = params.replace(/\+/gm, " ");
+    this._SearchResults = new Cicadas.Views.SearchResults({query: query});
+    this._Search = new Cicadas.Views.SearchBar({query: query});
+    this._swapViews(this._SearchResults);
 
   },
 
 
   _swapViews: function (view) {
-    this._Search = new Cicadas.Views.SearchBar();
+    if (!this._Search) {
+      this._Search = new Cicadas.Views.SearchBar();
+    }
     this.$searchBar.html(this._Search.render().$el);
     this._currentView && this._currentView.remove();
     this._currentView = view;

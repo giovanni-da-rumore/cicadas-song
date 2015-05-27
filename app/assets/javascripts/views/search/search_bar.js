@@ -1,6 +1,9 @@
 Cicadas.Views.SearchBar = Backbone.View.extend({
 
-	initialize: function () {
+	initialize: function (options) {
+		if (options) {
+			this.query = options.query
+		}
 		this.collection = new Cicadas.Collections.SearchResults();
 		this.listenToOnce(this.collection, "sync", this.renderResults);
 		this.render();
@@ -14,8 +17,7 @@ Cicadas.Views.SearchBar = Backbone.View.extend({
 	template: JST["static_pages/search_bar"],
 
 	render: function () {
-		var content = this.template();
-		this.$el.html(content);
+		this.$el.html(this.template({search_query: this.query}))
 
 		return this;
 	},
@@ -25,44 +27,9 @@ Cicadas.Views.SearchBar = Backbone.View.extend({
 		var $input = this.$el.find("#query");
 		this.collection.searchInfo.query = $input.val();
 		this.collection.searchInfo.page = 1;
-
 		var that = this;
-		this.collection.fetch({
-			data: this.collection.searchInfo,
-			success: function () {
-				that.renderResults();
-			}
-		});
+		Backbone.history.navigate("#search/?" + $input.val().replace(/\s/, "+"), {trigger: true} )
 	},
 
-	renderResults: function () {
-		this.renderSearchInfo();
-		var $container = this.$("#search-results");
-		$container.empty();
-
-		var view;
-		this.collection.each(function (result) {
-			if (result instanceof Cicadas.Models.User) {
-				// view = new Cicadas.Views.UserListItem({ model: result });
-			} else if (result instanceof Cicadas.Models.Author) {
-				// view = new Cicadas.Views.AuthorListItem({ model: result });
-			} else if (result instanceof Cicadas.Models.Text) {
-				view = new Cicadas.Views.TextListItem({ model: result });
-			}
-
-			$container.append(view.render().$el);
-		});
-	},
-
-	nextPage: function () {
-		this.collection.searchInfo.page++
-		this.collection.fetch({
-			data: this.collection.searchInfo
-		});
-	},
-
-	renderSearchInfo: function () {
-		this.$("#pages").html(this.collection.searchInfo.totalPages);
-	}
 
 });

@@ -1,38 +1,31 @@
-Cicadas.Views.Search = Backbone.View.extend({
+Cicadas.Views.SearchResults = Backbone.View.extend({
 
-	initialize: function () {
+	initialize: function (options) {
 		this.collection = new Cicadas.Collections.SearchResults();
 		this.listenToOnce(this.collection, "sync", this.renderResults);
-	},
-
-	events: {
-		"click button": "search",
-		"click .next-page": "nextPage"
-	},
-
-	template: JST["static_pages/search"],
-
-	render: function () {
-		var content = this.template();
-		this.$el.html(content);
-
-		return this;
-	},
-
-	search: function (event) {
-		event.preventDefault();
-		var $input = this.$el.find("#query");
-		this.collection.searchInfo.query = $input.val();
+		this.query = options.query;
+		this.collection.searchInfo.query = this.query;
 		this.collection.searchInfo.page = 1;
 
-		var that = this;
 		this.collection.fetch({
 			data: this.collection.searchInfo,
 			success: function () {
-				that.renderResults();
-			}
-		});
+				this.renderResults();
+			}.bind(this)
+		})
 	},
+
+	events: {
+		"click .next-page": "nextPage"
+	},
+
+	template: JST["static_pages/search_results"],
+
+	render: function () {
+		this.$el.html(this.template());
+		return this;
+	},
+
 
 	renderResults: function () {
 		this.renderSearchInfo();
