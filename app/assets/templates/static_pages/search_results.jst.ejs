@@ -2,15 +2,83 @@
 
   .search-results-container {
     width: 975px;
-    padding-top: 20px;
     margin: auto;
-    background: #f6f4e4;
+    /*background: #f6f4e4;*/
   }
 
   .search-texts-container {
-    width: 400px;
+    width: 475px;
     float: left;
     display: block;
+    margin-right: 75px;
+    margin-left: 3px;
+
+  }
+
+  .search-results-sidebar {
+    width: 350px;
+    float: left;
+    background: #f6f4e4;
+    border: 1px solid #ccc;;
+    padding: 10px;
+
+  }
+
+
+
+  .search-text-item {
+    padding: 8px;
+    border-top: 2px solid #ccc;
+    display: block;
+  }
+
+  .search-results-texts > li:last-child {
+    border-bottom: 2px solid #ccc;
+  }
+
+  .search-text-item:hover {
+    border-left: 6px solid #ffc31c;
+    box-shadow: -1px 1px 1px black;
+  }
+
+  .search-text-title {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 4px;
+    float: left
+    width: 400px;
+    display: block;
+  }
+
+  .search-text-author {
+    font-size: 14px;
+    display: block;
+    /*float: left;*/
+
+  }
+
+
+
+.search-results-sidebar li {
+  padding: 5px;
+  color: #878787;
+
+}
+
+
+  .search-results-artists li:first-child {
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+    padding-top: 20px;
+    padding-bottom: 0;
+
+  }
+
+  .search-results-users li:first-child {
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+    padding-top: 20px;
+    padding-bottom: 0;
 
   }
 
@@ -24,15 +92,19 @@
 
 
 
-<a href="javascript:void(0)" class="next-page">Next Page</a>
-
 
 <main class="search-results-container group">
   <section class="search-texts-container group">
+  <div id="pages" class="pages">
+    </div>
+  <a href="javascript:void(0)" class="next-page">Next</a>
+  <a href="javascript:void(0)" class="prev-page">Previous</a>
+  <h1>Texts:</h1>
     <ul class="search-results-texts">
     </ul>
   </section>
-</section class="search-results-sidebar group">
+
+<section class="search-results-sidebar group">
 
   <ul class="search-results-artists">
     <li>Artist Results </li>

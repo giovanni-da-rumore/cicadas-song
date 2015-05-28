@@ -2,7 +2,7 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 
 	initialize: function (options) {
 		this.collection = new Cicadas.Collections.SearchResults();
-		this.listenToOnce(this.collection, "sync", this.renderResults);
+		//this.listenToOnce(this.collection, "sync", this.renderResults);
 		this.query = options.query;
 		this.collection.searchInfo.query = this.query;
 		this.collection.searchInfo.page = 1;
@@ -16,7 +16,8 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 	},
 
 	events: {
-		"click .next-page": "nextPage"
+		"click .next-page": "nextPage",
+		"click .prev-page": "prevPage"
 	},
 
 	template: JST["static_pages/search_results"],
@@ -28,22 +29,28 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 
 
 	renderResults: function () {
+		this.$el.html(this.template());
 		this.renderSearchInfo();
-		var $container = this.$("#search-results");
-		$container.empty();
+
 
 		var view;
 		this.collection.each(function (result) {
 			if (result instanceof Cicadas.Models.User) {
 				// view = new Cicadas.Views.UserListItem({ model: result });
+				this.$el.find('.search-results-users')
+				.append('<li><a href="users/' + result.escape('id') + ">" + result.escape('username') + "</a>" )
 			} else if (result instanceof Cicadas.Models.Author) {
+				debugger;
 				// view = new Cicadas.Views.AuthorListItem({ model: result });
-			} else if (result instanceof Cicadas.Models.Text) {
+				this.$el.find(".search-results-artists")
+				.append('<li><a href="authors/' + result.escape('id') + ">" + result.escape('name') + "</a>" )
+			}
+			else if (result instanceof Cicadas.Models.Text) {
 				view = new Cicadas.Views.TextListItem({ model: result });
+				this.$el.find('.search-results-texts').append(view.render().$el);
 			}
 
-			$container.append(view.render().$el);
-		});
+		}.bind(this));
 	},
 
 	nextPage: function () {
@@ -53,8 +60,15 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 		});
 	},
 
+	prevPage: function () {
+		this.collection.searchInfo.page--
+		this.collection.fetch({
+			data: this.collection.searchInfo
+		});
+	},
+
 	renderSearchInfo: function () {
-		this.$("#pages").html(this.collection.searchInfo.totalPages);
+		this.$el.find(".pages").html(this.collection.searchInfo.totalPages);
 	}
 
 });
