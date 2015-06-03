@@ -43,7 +43,7 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 				debugger;
 				// view = new Cicadas.Views.AuthorListItem({ model: result });
 				this.$el.find(".search-results-artists")
-				.append('<li><a href="authors/' + result.escape('id') + ">" + result.escape('name') + "</a>" )
+				.append('<li><a href="#/authors/' + result.id + '">' + result.escape('name') + "</a></li>" )
 			}
 			else if (result instanceof Cicadas.Models.Text) {
 				view = new Cicadas.Views.TextListItem({ model: result });

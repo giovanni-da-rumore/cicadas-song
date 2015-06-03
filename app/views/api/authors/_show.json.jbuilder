@@ -1,5 +1,9 @@
 json.extract! author, :id, :name, :birth, :death, :created_at, :updated_at
 
+# json.image asset_path(author.image.url(:original))
+#
+# json.image asset_path(author.image.url(:original))
+
 json._type "Author"
 
 json.texts author.texts do |text|

@@ -1,0 +1,28 @@
+
+
+
+<main class="author-show-page group">
+
+
+
+  <section class="user-sidebar group">
+
+    <h1 class="user-show-name">
+      <%= author.escape('name') %>
+    </h1>
+    <div class="user-show-avatar">
+      <img src="<%= author.get("image") %>" alt="image">
+    </div>
+
+    <img src="f9ad55ab523f374cb770678b5eba3ca2.328x450x1.jpg" alt="image_url?" />
+
+
+    <form class="autor-picture-form">
+    <strong>Change Image:</strong>
+    <input type="text" name="author[picture]" class="avatar-input"
+    value="<%=author.get("image_url")%>">
+
+    <button class="save-avatar"> Save </button>
+    <a href="#">Cancel</a>
+
+  </main>

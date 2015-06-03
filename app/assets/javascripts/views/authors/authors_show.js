@@ -13,9 +13,8 @@ Cicadas.Views.AuthorShow = Backbone.CompositeView.extend({
 
 
   render: function () {
-
-    // this.$el.html(this.template({user: this.model}));
-    this.$el.html(this.model.escape("name"));
+    debugger;
+    this.$el.html(this.template({author: this.model}));
     return this;
   },
 

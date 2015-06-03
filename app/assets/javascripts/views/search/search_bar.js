@@ -28,7 +28,7 @@ Cicadas.Views.SearchBar = Backbone.View.extend({
 		this.collection.searchInfo.query = $input.val();
 		this.collection.searchInfo.page = 1;
 		var that = this;
-		Backbone.history.navigate("#search/?" + $input.val().replace(/\s/, "+"), {trigger: true} )
+		Backbone.history.navigate("#/search/?" + $input.val().replace(/\s/, "+"), {trigger: true} )
 	},
 
 
