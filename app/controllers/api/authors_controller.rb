@@ -12,14 +12,14 @@ class Api::AuthorsController < ApplicationController
 
   def update
     @author = Author.find(params[:id])
-    # if author_params[:image_url]
-    #   @author.image_from_url(author_params[:image_url])
-    # end
+    if author_params[:image_url]
+      @author.image_from_url(author_params[:image_url])
+    end
 
     if @author.update_attributes(author_params)
       render json: @author
     else
-      render json @author.errors.full_messages, status: :unprocessable_entity
+      render json: @author.errors.full_messages, status: :unprocessable_entity
     end
   end
 

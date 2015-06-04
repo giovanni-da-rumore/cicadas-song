@@ -1,8 +1,7 @@
-
-
-
-<a class="search-text-item group" href="/#/texts/<%=text.escape('id')%>">
-  <div class="search-text-title"><%=text.escape('title')%></div>
-  <div class="search-text-author"><%=author.escape('name')%></div>
+<a class="text-item group" href="/#/texts/<%=text.escape('id')%>">
+  <div class="text-item-title"><%=text.escape('title')%></div>
+  <% if (!authorPage) { %>
+    <div class="text-item-author"><%=text.author().escape('name')%></div>
+    <% } %>
 
 </a>

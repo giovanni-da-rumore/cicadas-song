@@ -1,19 +1,24 @@
 <style>
 
-html {
 
-  background: url(<%= asset_path "hunting_fishing.jpg"%>);
-  background-size: cover;
-  height: 100%;
+
+.background-holder {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
-  margin: auto;
-}
-
-.entry {
-  background-size: cover;
-  background: transparent;
+  height: 100%;
+  z-index:0;
 
 }
+
+.sign-in-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+}
+
 
 body {
   background: transparent;
@@ -27,11 +32,12 @@ body {
   background: #3FC213;
   margin-top: 220px;
   margin: auto;
-  z-index: 1;
+  z-index: 5;
   border: 1px solid #83A1E8;
   border-radius: 5px;
   color: white;
   opacity: 0.9;
+  /*position: absolute;*/
 }
 
 .entry-form h1 {
@@ -42,7 +48,6 @@ body {
   font-weight: bold;
   font-size: 28px;
   text-shadow: 1px 1px 2px #ffc31c;
-  opacity: 0.9;
 }
 
 
@@ -96,6 +101,10 @@ body {
 </style>
 
 <main class="entry">
+  <div background-holder>
+    <img class="sign-in-background" src='http://www.docsciences.fr/IMG/jpg/ds10_1_1.jpg'/>
+  </div>
+
 <%= render "/layouts/entry_header" %>
 
 
@@ -107,7 +116,7 @@ body {
 
   <section class="form-propre">
 
-  <div class="errors"
+  <div class="errors">
     <%= render "shared/errors" %>
   </div>
 

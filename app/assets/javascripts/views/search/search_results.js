@@ -31,17 +31,12 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 	renderResults: function () {
 		this.$el.html(this.template());
 		this.renderSearchInfo();
-
-
 		var view;
 		this.collection.each(function (result) {
 			if (result instanceof Cicadas.Models.User) {
-				// view = new Cicadas.Views.UserListItem({ model: result });
-				this.$el.find('.search-results-users')
-				.append('<li><a href="users/' + result.escape('id') + ">" + result.escape('username') + "</a>" )
+				this.$el.find(".search-results-users")
+				.append('<li><a href="#/authors/' + result.id + '">' + result.escape('username') + "</a></li>" )
 			} else if (result instanceof Cicadas.Models.Author) {
-				debugger;
-				// view = new Cicadas.Views.AuthorListItem({ model: result });
 				this.$el.find(".search-results-artists")
 				.append('<li><a href="#/authors/' + result.id + '">' + result.escape('name') + "</a></li>" )
 			}

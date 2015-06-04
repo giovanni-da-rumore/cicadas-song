@@ -35,6 +35,9 @@ module Api
 
     def update
       @text = Text.find(params[:id])
+      if text_params[:image_url]
+        @text.image_from_url(author_params[:image_url])
+      end
       if @text.update_attributes(text_params)
        render json: @text
       else
@@ -51,7 +54,7 @@ module Api
 
     private
     def text_params
-      params.require(:text).permit(:author, :title, :body, :user_id, date: [:year, :day, :month])
+      params.require(:text).permit(:author, :title, :body, :user_id, :image_url, date: [:year, :day, :month])
     end
 
     def user_is_editor

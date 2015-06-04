@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603225429) do
+ActiveRecord::Schema.define(version: 20150604201603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20150603225429) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "image_url"
   end
 
   add_index "authors", ["birth"], name: "index_authors_on_birth", using: :btree
@@ -91,14 +90,18 @@ ActiveRecord::Schema.define(version: 20150603225429) do
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "texts", force: :cascade do |t|
-    t.string   "title",                          null: false
+    t.string   "title",                              null: false
     t.date     "date"
-    t.text     "body",                           null: false
+    t.text     "body",                               null: false
     t.integer  "author_id"
-    t.integer  "user_id",                        null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.boolean  "author_is_user", default: false
+    t.integer  "user_id",                            null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "author_is_user",     default: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "texts", ["author_id"], name: "index_texts_on_author_id", using: :btree

@@ -68,7 +68,7 @@ Cicadas.Routers.Text = Backbone.Router.extend({
 
   _swapViews: function (view) {
     if (!this._Search) {
-      this._Search = new Cicadas.Views.SearchBar();
+       this._Search = new Cicadas.Views.SearchBar();
     }
     this.$searchBar.html(this._Search.render().$el);
     this._currentView && this._currentView.remove();

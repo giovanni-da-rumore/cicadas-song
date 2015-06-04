@@ -5,13 +5,14 @@ Cicadas.Views.TextListItem = Backbone.CompositeView.extend({
 
 
   initialize: function (options) {
-    this.author = new Cicadas.Models.Author({id: this.model.escape('author_id')})
-    this.author.fetch();
-    this.listenTo(this.author, "sync",  this.render);
+    this.authorPage = options.authorPage;
+    this.collection = new Cicadas.Collections.Texts(this.model.id)
+    this.model = this.collection.getOrFetch(this.model.id);
+    this.listenTo(this.model, "sync",  this.render);
   },
 
   render: function () {
-    this.$el.html(this.template({text: this.model, author: this.author}));
+    this.$el.html(this.template({text: this.model, authorPage: this.authorPage}));
     return this;
   },
 
