@@ -2,7 +2,7 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 
 	initialize: function (options) {
 		this.collection = new Cicadas.Collections.SearchResults();
-		//this.listenToOnce(this.collection, "sync", this.renderResults);
+		this.listenToOnce(this.collection, "sync", this.renderResults);
 		this.query = options.query;
 		this.collection.searchInfo.query = this.query;
 		this.collection.searchInfo.page = 1;
@@ -33,12 +33,13 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 		this.renderSearchInfo();
 		var view;
 		this.collection.each(function (result) {
+			debugger;
 			if (result instanceof Cicadas.Models.User) {
 				this.$el.find(".search-results-users")
-				.append('<li><a href="#/authors/' + result.id + '">' + result.escape('username') + "</a></li>" )
+				.append('<li><a href="#/users/' + result.get('id') + '">' + result.escape('username') + "</a></li>" )
 			} else if (result instanceof Cicadas.Models.Author) {
 				this.$el.find(".search-results-artists")
-				.append('<li><a href="#/authors/' + result.id + '">' + result.escape('name') + "</a></li>" )
+				.append('<li><a href="#/authors/' + result.get('id') + '">' + result.escape('name') + "</a></li>" )
 			}
 			else if (result instanceof Cicadas.Models.Text) {
 				view = new Cicadas.Views.TextListItem({ model: result });

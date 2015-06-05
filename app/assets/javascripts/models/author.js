@@ -1,4 +1,14 @@
 Cicadas.Models.Author = Backbone.Model.extend({
+  idAttribute: "polyId",
+
+  initialize: function () {
+    if (!this.get('polyId')) {
+      this.attributes.polyId = this.get("id");
+      this.id = this.get('id');
+    }
+
+
+  },
 
   urlRoot: '/api/authors',
 
@@ -6,8 +16,8 @@ Cicadas.Models.Author = Backbone.Model.extend({
   toJSON: function(){
     var json = {author: _.clone(this.attributes)};
 
-    if (this._picture) {
-      json.author.picture = this._picture;
+    if (this._image_url) {
+      json.author.image_url = this._image_url;
     }
 
     return json;

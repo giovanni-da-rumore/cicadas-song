@@ -1,7 +1,5 @@
 <style>
 
-
-
 .background-holder {
   position: absolute;
   left: 0;
@@ -9,7 +7,6 @@
   width: 100%;
   height: 100%;
   z-index:0;
-
 }
 
 .sign-in-background {
@@ -25,30 +22,41 @@ body {
 }
 
 
+
+
 .entry-form {
-  width: 300px;
-  padding: 20px;
+  position: absolute;
+  top: 125px;
+  left: 50%;
+  transform: translateX(-30%);
+  width: 310px;
+  padding: 25px;
   background: #049100;
-  background: #3FC213;
+  color: #ffc31c;
   margin-top: 220px;
   margin: auto;
-  z-index: 5;
-  border: 1px solid #83A1E8;
+  z-index: 1;
+  border: 2px solid #3B5E2B;
   border-radius: 5px;
-  color: white;
-  opacity: 0.9;
-  /*position: absolute;*/
+  opacity: 0.95;
 }
 
-.entry-form h1 {
-  text-align: center;
-  padding: 10px 0px;
-  color: #ffc31c;
-  color: #FFD714;
-  font-weight: bold;
-  font-size: 28px;
-  text-shadow: 1px 1px 2px #ffc31c;
+.entry-form li {
+  float: left;
+  padding-bottom: 5px;
+  width: 300px;
 }
+
+.entry-form h2 {
+  color: #ffc31c;
+  font-weight: bold;
+  font-size: 24px;
+  text-shadow: 1px 1px 2px #3B5E2B;
+  text-align: center;
+  padding-top: 10px;
+  width: 311px;
+}
+
 
 
 .entry-form input {
@@ -63,29 +71,34 @@ body {
   margin-top: 5px;
 }
 
-.entry-form .form-propre {
-  background: #3FE713;
-  /*background: #3FC213;*/
+
+.form-propre {
   display: block;
-  padding: 5px;
-  margin-top: 20px;
+  background: #05ab00;
+  padding: 10px;
+  margin-top: 5px;
+  color: white;
+  opacity: 1.0!important;
+  width: 290px;
+  padding-bottom: 3px;
 
 }
 
 .entry-form label {
-  font-size: 16px;
+  font-size: 17px;
   padding-bottom: 5px;
-  text-shadow: 1px 1px 2\1px #fff;
+  text-shadow: 2px 2px 2px #009900;
 
 }
 
 .entry-submit {
-  margin: 10px 5px;
-  padding: 4px;
-  border: 1px solid #000;
+  margin: 10px 0px;
+  padding: 7px;
+  /*border: 2px solid #3B5E2B;*/
   display: inline;
   border-radius: 3px;
-  background: #3FC213;
+  background: #047800;
+  text-shadow: 1px 1px 1px #047800;
 }
 
 .errors {
@@ -95,43 +108,60 @@ body {
 }
 
 
+.header-logo {
+  padding: 14px 10px;
+  border-radius: 50%;
+  border: 4px solid #009900;
+  background: #fff;
+  color: #3FBC13;
+  box-shadow: 0px 0px 1px black;
+  font-size: 36px;
+  display: block;
+  font-weight: bold;
+  vertical-align: center;
+  float: left;
+  margin-left: 126px;
 
+}
 
 
 </style>
+  <main class="entry">
 
-<main class="entry">
-  <div background-holder>
-    <img class="sign-in-background" src='http://www.docsciences.fr/IMG/jpg/ds10_1_1.jpg'/>
-  </div>
-
-<%= render "/layouts/entry_header" %>
+    <div background-holder>
+      <img class="sign-in-background" src='<%= asset_path "bruegel_corn.jpg"%>'/>
+    </div>
 
 
-<form class="entry-form group" action="<%=users_url%>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <%= render "/layouts/entry_header" %>
 
-  <h1>SIGN UP</h1>
+    <ul class="entry-form group" action="<%=sessions_url%>" method="post">
 
+      <li>
+        <h1 class="header-logo">蝉</h1>
+      </li>
+      <li>
+        <h2>SIGN UP</h2>
+      </li>
+      <li>
+        <form class="form-propre" method="post" action="/users">
+          <div class="errors">
+          <%= render "shared/errors" %>
+          </div>
 
-  <section class="form-propre">
-
-  <div class="errors">
-    <%= render "shared/errors" %>
-  </div>
-
-  <label>Username
-   <input type=text name="user[username]" value="<%=@user.username%>">
-  </label>
-  <label>Email
-   <input type="text" name="user[email]" value="<%=@user.email%>">
- </label>
-  <label>Password
-   <input type="password" name="user[password]" value="">
- </label>
-
-  <button class="entry-submit">sign up</button>
-</section>
-
-</form>
-<main>
+          <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+          <label>
+            Username
+            <input type=text name="user[username]" value="<%=@user.username%>">
+          </label>
+          <label>Email
+           <input type="text" name="user[email]" value="<%=@user.email%>">
+         </label>
+            Password
+            <input type="password" name="user[password]" value="">
+          </label>
+          <button class="entry-submit">Sign Up</button>
+        </form>
+      </li>
+    </ul>
+  </main>

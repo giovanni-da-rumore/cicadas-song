@@ -2,11 +2,11 @@ Cicadas.Collections.SearchResults = Backbone.Collection.extend({
 
 	initialize: function () {
 		this.searchInfo = {};
+		this.model.prototype.idAttribute = "polyId";
 	},
 
 	parse: function (response) {
 		this.searchInfo.totalPages = response.total_pages;
-		debugger;
 		return response.search_results;
 	},
 
@@ -21,11 +21,9 @@ Cicadas.Collections.SearchResults = Backbone.Collection.extend({
 		return newModel;
 	},
 
-	// populate: function (attrs) {
-	// 	var type = attrs._type
-	// 	this.add(new Cicadas.Models[type](attrs));
-	// }
-
 
 
 });
+
+
+Cicadas.Collections.SearchResults.prototype.model.prototype.idAttribute = "polyId";

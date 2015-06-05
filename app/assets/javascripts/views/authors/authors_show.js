@@ -14,6 +14,7 @@ Cicadas.Views.AuthorShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    debugger;
     this.$el.html(this.template({author: this.model}));
     this.model.texts().each(function (text) {
       view = new Cicadas.Views.TextListItem({ model: text, authorPage: true });

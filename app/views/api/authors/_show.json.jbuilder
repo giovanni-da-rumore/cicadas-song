@@ -1,4 +1,5 @@
 json.extract! author, :id, :name, :birth, :death, :created_at, :updated_at
+json.polyId author.id.to_s + "_author"
 
 json.image asset_path(author.image.url(:original))
 

@@ -1,5 +1,6 @@
 json.extract! text, :id, :title, :date, :body, :author_id, :author_is_user,
 :user_id, :created_at, :updated_at
+json.polyId text.id.to_s + "_text"
 
 json._type "Text"
 

@@ -1,4 +1,5 @@
 json.extract! user, :id, :username, :email, :moderator
+json.polyId user.id.to_s + "_user"
 json._type "User"
 json.avatar asset_path(user.avatar.url(:original))
 
