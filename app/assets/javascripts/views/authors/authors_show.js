@@ -8,13 +8,11 @@ Cicadas.Views.AuthorShow = Backbone.CompositeView.extend({
 
 
   initialize: function () {
-    this.listenToOnce(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync", this.render);
     this.model.fetch();
-    this.collection
   },
 
   render: function () {
-    debugger;
     this.$el.html(this.template({author: this.model}));
     this.model.texts().each(function (text) {
       view = new Cicadas.Views.TextListItem({ model: text, authorPage: true });
@@ -26,10 +24,11 @@ Cicadas.Views.AuthorShow = Backbone.CompositeView.extend({
   updateAuthor: function (event) {
     event.preventDefault();
     var attrs = this.$el.find('form').serializeJSON();
+    this.model._image_url = attrs.author.image_url;
+    debugger;
 
     var riuscire = function () {
-      this.collection.add(this.model, {merge: true});
-      Backbone.history.navigate("/texts/" + this.model.get('id'), {trigger: true})
+      this.model.fetch();
     };
 
     var fallire = function (model, response) {

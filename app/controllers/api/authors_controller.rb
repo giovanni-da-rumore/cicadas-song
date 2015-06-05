@@ -15,8 +15,9 @@ class Api::AuthorsController < ApplicationController
     if author_params[:image_url]
       @author.image_from_url(author_params[:image_url])
     end
-
-    if @author.update_attributes(author_params)
+    new_params = author_params
+    new_params.delete(:image_url)
+    if @author.update_attributes(new_params)
       render json: @author
     else
       render json: @author.errors.full_messages, status: :unprocessable_entity
@@ -25,8 +26,9 @@ class Api::AuthorsController < ApplicationController
 
 
   def author_params
-    params.require(author).permit(:name, :image_url, :birth, :death)
+    params.require(:author).permit(:name, :image_url, :birth, :death)
   end
+
 
 
 end

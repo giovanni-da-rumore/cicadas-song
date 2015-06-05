@@ -1,11 +1,11 @@
 Cicadas.Models.Author = Backbone.Model.extend({
-  idAttribute: "polyId",
+  // idAttribute: "polyId",
 
   initialize: function () {
-    if (!this.get('polyId')) {
-      this.attributes.polyId = this.get("id");
-      this.id = this.get('id');
-    }
+    // if (!this.get('polyId')) {
+    //   this.attributes.polyId = this.get("id");
+    //   this.id = this.get('id');
+    // }
 
 
   },
@@ -19,6 +19,8 @@ Cicadas.Models.Author = Backbone.Model.extend({
     if (this._image_url) {
       json.author.image_url = this._image_url;
     }
+
+    debugger;
 
     return json;
   },
