@@ -25,7 +25,6 @@ Cicadas.Views.AuthorShow = Backbone.CompositeView.extend({
     event.preventDefault();
     var attrs = this.$el.find('form').serializeJSON();
     this.model._image_url = attrs.author.image_url;
-    debugger;
 
     var riuscire = function () {
       this.model.fetch();
@@ -33,8 +32,8 @@ Cicadas.Views.AuthorShow = Backbone.CompositeView.extend({
 
     var fallire = function (model, response) {
       this.$el.find('.errors').empty();
-      }.bind(this));
-    }
+    };
+
     this.model.save(attrs, {
       success: riuscire.bind(this),
       error: fallire.bind(this)

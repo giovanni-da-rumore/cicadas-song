@@ -17,7 +17,6 @@ Cicadas.Collections.SearchResults = Backbone.Collection.extend({
 		delete attrs._type;
 		var newModel;
 		newModel = new Cicadas.Models[type](attrs);
-		debugger;
 		return newModel;
 	},
 
