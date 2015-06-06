@@ -15,8 +15,8 @@ class Api::AuthorsController < ApplicationController
     if author_params[:image_url]
       @author.image_from_url(author_params[:image_url])
     end
-    new_params = author_params
-    new_params.delete(:image_url)
+    # new_params = author_params
+    # new_params.delete(:image_url)
     if @author.update_attributes(new_params)
       render json: @author
     else
