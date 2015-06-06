@@ -1,5 +1,18 @@
 Cicadas.Models.Text = Backbone.Model.extend({
 
+
+  // Need polyid so search can return different models with the same id
+  idAttribute: "polyId",
+
+  initialize: function () {
+    if (!this.get('polyId')) {
+      this.attributes.polyId = this.get("id");
+      this.id = this.get('id');
+    }
+
+
+  },
+
   urlRoot: '/api/texts',
 
   parse: function (response) {
