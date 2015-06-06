@@ -33,7 +33,6 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 		this.renderSearchInfo();
 		var view;
 		this.collection.each(function (result) {
-			debugger;
 			if (result instanceof Cicadas.Models.User) {
 				this.$el.find(".search-results-users")
 				.append('<li><a href="#/users/' + result.get('id') + '">' + result.escape('username') + "</a></li>" )

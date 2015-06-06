@@ -36,7 +36,7 @@ module Api
     def update
       @text = Text.find(params[:id])
       if text_params[:image_url]
-        @text.image_from_url(author_params[:image_url])
+        @text.image_from_url(text_params[:image_url])
       end
       if @text.update_attributes(text_params)
        render json: @text

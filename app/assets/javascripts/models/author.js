@@ -1,4 +1,5 @@
 Cicadas.Models.Author = Backbone.Model.extend({
+
   idAttribute: "polyId",
 
   initialize: function () {

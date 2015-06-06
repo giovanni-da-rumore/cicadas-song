@@ -40,7 +40,6 @@ Cicadas.Views.TextForm = Backbone.View.extend({
 
 
   adjustTextArea: function (event) {
-    debugger;
     Cicadas.TextParser.adjustTextAreaLarge(event);
 
   },

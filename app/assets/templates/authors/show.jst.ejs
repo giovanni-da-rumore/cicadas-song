@@ -17,12 +17,8 @@
   }
 
   .author-show-sidebar {
-    width: 350px;
     float: left;
-    background: #f6f4e4;
-    border: 1px solid #ccc;;
-    padding: 10px;
-    margin-top: 28px;
+    margin-top: 28px;*/
 
   }
 
@@ -72,45 +68,50 @@
 
 
   .author-show-sidebar li {
-    padding: 5px;
     color: #878787;
+    font-size: 16px;
+    list-style: none;
 
   }
 
-
-  .author-show-sidebar li:first-child {
-    font-size: 14px;
-    border-bottom: 1px solid #ccc;
-    padding-top: 20px;
-    padding-bottom: 0;
-
-  }
-
-  .author-show-sidebar li:first-child {
-    font-size: 14px;
-    border-bottom: 1px solid #ccc;
-    padding-top: 20px;
-    padding-bottom: 0;
-
-  }
 
   img {
     width: 300px;
     height: 375px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
 
+  .edit-author {
+    cursor: pointer;
+  }
+
+
+  .cancel {
+    cursor: pointer;
+    float: left;
+    padding-left: 30px;
+    padding-top: 10px;
+
+  }
+
+
+  .save-image {
+    float: left;
+    padding-top: 10px
+  }
+
+
+  .image-input {
+    width: 300px;
+    z-index: 1;
+    margin-left: 2px;
+    color: #000;
   }
 
 
 
 </style>
-
-
-
-
-
-
-
-
 <main class="author-show group">
   <h1><%=author.escape('name')%></h1>
   <section class="author-container group">
@@ -122,13 +123,7 @@
 <section class="author-show-sidebar">
   <ul>
     <li><img src="<%= author.get("image") %>" alt="image"></li>
-
-    <li><form class="author-form"><li>
-    <li>Change Image: Paste image url</li>
-    <li>(i.e. a string that ends in .jpg/.png)</li>
-    <input type="text" name="author[image_url]" class="image-input">
-    <button class="save-image"> Save </button>
-    <a href="#">Cancel</a>
+    <li class="edit-author">Edit</li>
   </ul>
 
 </section>

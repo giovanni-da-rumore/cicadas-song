@@ -10,7 +10,6 @@ Cicadas.Models.Text = Backbone.Model.extend({
       this.id = this.get('id');
     }
 
-
   },
 
   urlRoot: '/api/texts',

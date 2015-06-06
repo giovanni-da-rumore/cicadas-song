@@ -2,8 +2,12 @@ Cicadas.Views.AuthorShow = Backbone.CompositeView.extend({
 
   template: JST['authors/show'],
 
+  formTemplate: JST["authors/form"],
+
 	events: {
     "submit .author-form": "updateAuthor",
+    "click .edit-author": "showForm",
+    "click .cancel": "render",
 	},
 
 
@@ -38,6 +42,11 @@ Cicadas.Views.AuthorShow = Backbone.CompositeView.extend({
       success: riuscire.bind(this),
       error: fallire.bind(this)
     });
+  },
+
+  showForm: function (event) {
+    this.$el.find('ul li:last').remove();
+    this.$el.find('.author-show-sidebar').append(this.formTemplate())
   },
 
 

@@ -55,13 +55,12 @@ class ApplicationController < ActionController::Base
 
 
   def find_or_make_author(author_name)
+    author_name.strip!
     author = Author.find_by(name: author_name)
-    if author
-      return author
-    else
+    unless author
       author = Author.new(name: author_name)
-      author
     end
+    author
   end
 
 
