@@ -10,9 +10,6 @@
   .user-show-page {
     width: 900px;
     margin: auto;
-    background: #fff;
-    background: #000;
-    color: white;
   }
 
   .user-sidebar {
@@ -23,35 +20,47 @@
 
 
   .user-show-page h1 {
-    font-size: 28px;
+    font-size: 36px;
     display: inline;
-    width: 100%;
+    /*width: 150px;*/
     font-weight: bold;
-    color: #FFD714;
-    padding: 3px;
-    text-shadow: 0px 2px 1px #3FC213;
-    box-shadow: 0px -1px 2px #3FC213;
+    color: #000;
+    /*color: #009900;*/
+    color
+    float: left;
+    /*padding: 5px;*/
+    /*padding-bottom: 0px;*/
+    text-shadow: 0px 0px 2px #ffc31c;
+    /*background: #009900;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    box-shadow: 2px 2px 2px #ffc31c;*/
   }
 
   .user-show-page h1:after {
     width: 200px;
     content: "";
     display: block;
-    border: 1px solid #FFD714;
-    margin-top: 15px;
-    box-shadow: 0px 0px 1px #3FC213;
+    border: 1px solid #ffc31c;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 1px #000;
   }
 
   .user-show-avatar {
     display: block;
     width: 200px;
     heigth: 250px;
-    border: 1px solid #ccc;*/
+    border: 1px solid #ccc;
+    float: left;
   }
 
   .user-prof-options {
     float: left;
-    padding: 20px 0px;
+    padding: 5px 0px;
   }
 
   .user-prof-options li {
@@ -67,7 +76,7 @@
     display: block;
     border-bottom: 1px solid #ccc;
     margin-bottom: 5px;
-    color: #ccc;
+    color: #878787;
   }
 
   .avatar-input {
@@ -92,12 +101,16 @@
   .user-show-main-content li {
     padding: 10px;
     border-top: 1px solid #ccc;
+    cursor: pointer;
 
   }
 
+  .user-show-main-content li:last-child {
+    border-bottom: 1px solid #ccc;
+  }
+
   .user-show-main-content li:hover {
-    background: #d8d6bf;
-    background: #d6d4bf;;
+    background: #d6d4bf;
 
 
   }
@@ -110,6 +123,24 @@
 
   }
 
+  .image-button {
+    background: #d8d6bf;
+    background:  #878787;
+    border-radius: 5px;
+    float: left;
+    display: inline;
+    padding: 3px;
+    margin-right: 35px;
+    height: 20px;
+    cursor: pointer;
+
+  }
+
+  /*.cancel {
+    padding: 3px;
+
+  }*/
+
 
   h2 {
     display: inline;
@@ -119,7 +150,23 @@
   }
 
 
-}
+  .about-edit {
+    color: #878787;
+    font-size: 12px;
+    display: block;
+    float: right;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+    margin-top: -5px;
+  }
+
+
+  .avatar-header {
+    border-bottom: none!important;
+
+  }
+
 </style>
 
 <main class="user-show-page group">
@@ -138,24 +185,26 @@
     <ul class="user-prof-options group">
       <li>
         <form class="avatar-form">
-        <strong>Change Avatar:</strong>
+        <strong class="avatar-header">Change Avatar</strong>
         <input type="file" name="user[avatar]" id="input-user-avatar"
         class="avatar-input">
         <img src="" class="preview-user-avatar">
-        <button class="save-avatar"> Save </button>
-        or <a href="#">Cancel</a>
+        <button class="save-avatar image-button"> Save </button>
+        <div class="cancel image-button">Cancel</div>
       </form>
       </li>
       <li>
-        <strong> About <%=user.escape('username') %>:</strong>
+        <strong> About <%=user.escape('username') %>
+          <% if (Cicadas.currentUser.id == user.id) { %>
+            <div class="about-edit">Click to edit</div>
+          <% } %>
+
+        </strong>
         <p>
-          Born in the south land, some twenty odd years ago...
+          Born in the south land,<br>
+          some twenty odd years ago...
         </p>
       </li>
-      <li>
-        to be decided
-      </li>
-
 
     </ul>
   </section>
