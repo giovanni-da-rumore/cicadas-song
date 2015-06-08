@@ -136,11 +136,6 @@
 
   }
 
-  /*.cancel {
-    padding: 3px;
-
-  }*/
-
 
   h2 {
     display: inline;
@@ -200,9 +195,13 @@
           <% } %>
 
         </strong>
-        <p>
-          Born in the south land,<br>
-          some twenty odd years ago...
+        <p class="about">
+        <% if (user.escape('about') ) { %>
+        <%= user.escape('about') %>
+        <% } else { %>
+          <%= user.escape('username') %> is keeping quiet for now
+        <% } %>
+
         </p>
       </li>
 

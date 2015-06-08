@@ -6,6 +6,7 @@
   padding: 20px 0px;
   width: 975px;
   background: #f6f4e4;
+  font-family: arial, helvetica, sans-serif;
 
   // background: #ffffef;
   // background: #fdfdfd;
@@ -21,7 +22,8 @@
   width-min: 625px;
   width: 65%;
   margin-left: 15px;
-  position: relative
+  position: relative;
+  font-family: arial;
   // border-right: 1px solid #ccc;
   /*margin-left: 75px;
   border-left: 1px solid #ccc;*/
@@ -81,6 +83,7 @@
 .text-show-body {
   font-size: 19px;
   padding: 15px 10px;
+  font-family: arial;
 }
 
 

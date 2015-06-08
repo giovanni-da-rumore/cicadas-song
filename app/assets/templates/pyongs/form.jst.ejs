@@ -1,0 +1,61 @@
+<style>
+
+.postlet-textarea {
+  width: 300px;
+  min-height: 150px;
+  resize: none;
+  font-size: 16px;
+  padding: 7px;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
+.postlet-form {
+  margin-left: 250px;
+  display: block;
+  widht: 500px;
+  padding-bottom: 10px;
+}
+
+
+
+.postlet-form button {
+  margin-top: 15px;
+  padding: 5px;
+  background: #f6f4e4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.postlet-form input {
+  width: 300px;
+
+}
+
+
+
+}
+</style>
+
+
+<form class="postlet-form">
+  <label>Text Url
+    <input type="text" name="postlet[text_url]">
+  </label>
+
+  <label>Description</label>
+    <textarea class="postlet-textarea" type="text" name="postlet[description]"></textarea>
+
+
+  <label>Image Url
+    <input type="text" name="postlet[image_url]">
+  </label>
+
+  <label>Order
+    <input type="text" name="postlet[order]">
+  </label>
+
+
+  <button>Save</button>
+
+<form>

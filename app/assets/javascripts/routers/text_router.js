@@ -14,6 +14,7 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     "users/:id": "showUser",
     "search/": "searchResults",
     "authors/:id": "showAuthor",
+    "poidekaipothen/postlets/new": "newPostlet",
   },
 
 
@@ -61,19 +62,31 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     var query = params.replace(/\+/gm, " ");
     this._SearchResults = new Cicadas.Views.SearchResults({query: query});
     this._Search = new Cicadas.Views.SearchBar({query: query});
+    this._inSearch = true;
     this._swapViews(this._SearchResults);
 
   },
 
 
+  newPostlet: function () {
+    var postlet = new Cicadas.Models.Postlet();
+    this._newPostlet = new Cicadas.Views.PostletForm({
+      model: postlet,
+    });
+    this._swapViews(this._newPostlet);
+
+  },
+
   _swapViews: function (view) {
-    if (!this._Search) {
-       this._Search = new Cicadas.Views.SearchBar();
+    if (!this._inSearch) {
+      this._Search = new Cicadas.Views.SearchBar();
     }
     this.$searchBar.html(this._Search.render().$el);
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);
+    this._inSearch = false;
   }
+
 
 });

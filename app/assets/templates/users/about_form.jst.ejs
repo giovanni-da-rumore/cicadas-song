@@ -1,0 +1,22 @@
+<style>
+
+  .about-textarea {
+    width: 180px;
+    height: 100px;
+    background: #fff;
+    border: 1px solid #ccc;
+    resize: none;
+
+  }
+
+
+</style>
+
+
+<form class="about-form">
+
+  <textarea class="about-textarea" name="user[about]"> <%=user.escape("about") %></textarea>
+  <button class="about-save image-button">Save</button>
+  <div class="cancel image-button">Cancel</div>
+
+</form>

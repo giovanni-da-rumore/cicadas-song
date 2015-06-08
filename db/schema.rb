@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606214443) do
+ActiveRecord::Schema.define(version: 20150608162049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,29 @@ ActiveRecord::Schema.define(version: 20150606214443) do
 
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
+  create_table "postlets", force: :cascade do |t|
+    t.integer  "text_id"
+    t.integer  "order"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "image_url"
+  end
+
+  add_index "postlets", ["order"], name: "index_postlets_on_order", using: :btree
+  add_index "postlets", ["text_id"], name: "index_postlets_on_text_id", using: :btree
+
+  create_table "pyongs", force: :cascade do |t|
+    t.integer  "text_id"
+    t.integer  "order"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "pyongs", ["order"], name: "index_pyongs_on_order", using: :btree
+  add_index "pyongs", ["text_id"], name: "index_pyongs_on_text_id", using: :btree
+
   create_table "sessions", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "content",    null: false
@@ -90,15 +113,27 @@ ActiveRecord::Schema.define(version: 20150606214443) do
   add_index "sessions", ["content"], name: "index_sessions_on_content", unique: true, using: :btree
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
+  create_table "text_descriptions", force: :cascade do |t|
+    t.integer  "text_id",                null: false
+    t.integer  "author_id",              null: false
+    t.string   "content"
+    t.integer  "score",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "text_descriptions", ["author_id"], name: "index_text_descriptions_on_author_id", using: :btree
+  add_index "text_descriptions", ["text_id"], name: "index_text_descriptions_on_text_id", using: :btree
+
   create_table "texts", force: :cascade do |t|
     t.string   "title",                              null: false
-    t.date     "date"
+    t.string   "date"
     t.text     "body",                               null: false
-    t.integer  "author_id"
-    t.integer  "user_id",                            null: false
+    t.integer  "author_id",                          null: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.boolean  "author_is_user",     default: false
+    t.integer  "user_id",                            null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -109,16 +144,16 @@ ActiveRecord::Schema.define(version: 20150606214443) do
   add_index "texts", ["author_id"], name: "index_texts_on_author_id", using: :btree
   add_index "texts", ["date"], name: "index_texts_on_date", using: :btree
   add_index "texts", ["title"], name: "index_texts_on_title", using: :btree
-  add_index "texts", ["user_id"], name: "index_texts_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                            null: false
     t.string   "email",                               null: false
     t.string   "password_digest",                     null: false
-    t.boolean  "moderator",           default: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "moderator",           default: false
     t.integer  "score",               default: 0
+    t.string   "about"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -126,7 +161,6 @@ ActiveRecord::Schema.define(version: 20150606214443) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["moderator"], name: "index_users_on_moderator", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

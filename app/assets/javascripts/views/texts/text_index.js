@@ -6,19 +6,21 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
   initialize: function () {
     this.collection = new Cicadas.Collections.Texts();
     this.collection.fetch();
-    this.listenTo(this.collection, "sync", this.listenToAdd)
+    this.promoted = new Cicadas.Collections.Postlets();
+    this.promoted.fetch();
+    this.listenTo(this.promoted, "sync", this.listenToAdd)
   },
 
 
   listenToAdd: function () {
-    this.stopListening(this.collection, "sync");
-    this.listenTo(this.collection, "add", this.listenToSync);
+    this.stopListening(this.promoted, "sync");
+    this.listenTo(this.promoted, "add", this.listenToSync);
     this.render();
   },
 
   listenToSync: function () {
-    this.stopListening(this.collection, "add");
-    this.listenTo(this.collection, "sync", this.listenToadd);
+    this.stopListening(this.promoted, "add");
+    this.listenTo(this.promoted, "sync", this.listenToadd);
     this.render();
   },
 
@@ -27,10 +29,18 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
   render: function () {
     this.collection.each(function (text) {
       text = new Cicadas.Views.TextItem({model: text});
-      this.$el.append(text.render().$el);
     }.bind(this));
     return this;
   },
+
+
+  getPostlets: function () {
+    this.promoted.each(function (text) {
+
+      
+    })
+
+  }
 
 
 

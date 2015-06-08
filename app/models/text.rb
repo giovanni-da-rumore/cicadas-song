@@ -2,7 +2,7 @@ class Text < ActiveRecord::Base
   include PgSearch
   multisearchable against: [:title, :author_name]
 
-  has_attached_file :image, default_url: "hunting_fishing.jpg",
+  has_attached_file :image, default_url: "boreas.jpg",
         styles: {:medium => "300x300>", :thumb => "100x100>"}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
@@ -20,6 +20,8 @@ class Text < ActiveRecord::Base
   has_many :annotations, dependent: :destroy
 
   has_many :descriptions, dependent: :destroy
+
+  has_many :postlets, dependent: :destroy
 
 
   has_many :libraries
