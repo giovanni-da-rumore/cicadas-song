@@ -9,8 +9,12 @@
 
 <script>
 
+Cicadas.boreas = "<%= asset_path("boreas.jpg") %>"
+Cicadas.grid = "<%= asset_path("grid.png") %>"
+
+
 $(document).ready(function(){
-  Cicadas.initialize({ cUserId: <%= current_user.id%> });
+  Cicadas.initialize({ cUserId: <%= current_user.id %> });
 });
 
 </script>
