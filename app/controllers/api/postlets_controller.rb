@@ -2,7 +2,7 @@ module Api
   class PostletsController < ApiController
 
     def create
-      @postlet = Postlet.new(pyong_params)
+      @postlet = Postlet.new(postlet_params)
       if @postlet.save
         update_order
         render json: @postlet
@@ -13,7 +13,7 @@ module Api
 
 
     def index
-      @postlets = Postlet.all.order(:order).limit(15)
+      @postlets = Postlet.all.order(:post_order).limit(15)
       render :index
     end
 
@@ -26,20 +26,24 @@ module Api
 
 
     private
-    def pyong_params
-      params.require(:postlet).permit(:description, :order, :text_id, :image_url)
+    def postlet_params
+      params.require(:postlet).permit(:description, :post_order, :text_id, :image_url)
     end
 
     def update_order
       Postlet.all.each do |postlet|
-        postlet.order += 1
+        if postlet.post_order.nil?
+          postlet.post_order = 10
+        else
+          postlet.post_order += 1
+        end
         postlet.save
       end
       delete_postlets
     end
 
     def delete_postlets
-      Postlet.where('order > 20').destroy_all
+      Postlet.where('post_order > 20').destroy_all
     end
 
 

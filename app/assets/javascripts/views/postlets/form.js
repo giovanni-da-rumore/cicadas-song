@@ -28,7 +28,7 @@ Cicadas.Views.PostletForm = Backbone.CompositeView.extend({
 
     var riuscire = function () {
       this.collection.add(this.model, {merge: true})
-      Backbone.history.navigate("/");
+      Backbone.history.navigate("/", {trigger: true});
     };
 
     this.model.save(attrs, {

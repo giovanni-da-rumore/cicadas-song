@@ -1,6 +1,6 @@
 class Postlet < ActiveRecord::Base
-  validates :text_id, :description, :order, presence: true
+  validates :text_id, :description, :post_order, presence: true
   belongs_to :text
-  
+
 
 end

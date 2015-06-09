@@ -101,4 +101,53 @@ Cicadas.Models.Text = Backbone.Model.extend({
     return textSlices;
   },
 
+
+
+  makeEditSlices: function () {
+    var parsedBod = this.get('body');
+    for (var i = this.annotations().length - 1; i >= 0; i--) {
+      var tate = this.annotations().models[i];
+      var insertLeft = "(" + tate.id + ")[";
+      var insertRight = "](" + tate.id + ")";
+      parsedBod = parsedBod.slice(0, tate.get('end_index')) + insertRight + parsedBod.slice(tate.get('end_index'));
+      parsedBod = parsedBod.slice(0, tate.get('start_index')) + insertLeft + parsedBod.slice(tate.get('start_index'));
+    }
+    return parsedBod;
+
+  },
+
+
+  adjustAnnotations: function (newText) {
+    var index = 0;
+    var annotations = this.annotations().models;
+    for (var i = 0; i < newText.length; i++) {
+      // only hit annotations on every other round
+      // if contiguous, they will be separated by an empty string
+      if (i % 2 === 1) {
+        var j = Math.floor(i / 2);
+        annotations[j].attributes.start_index = index;
+        index += newText[i].length;
+        annotations[j].attributes.end_index = index;
+        annotations[j].save();
+        this.annotations().add(annotations[j], {merge: true});
+      } else {
+        index += newText[i].length;
+      }
+    }
+  },
+
+
+  cleanEdit: function (newText) {
+    //even if a text begins or ends with an annotation, it will
+    // have an empty string
+    return newText.length === (this.annotations().length * 2) + 1
+  },
+
+
+
+//Regex for edit!!!
+//  s.split(/\]\([0-9]*\)|\([0-9]*\)\[/)
+
+
+
 });

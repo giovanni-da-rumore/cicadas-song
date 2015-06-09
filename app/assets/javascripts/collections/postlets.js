@@ -5,7 +5,7 @@ Cicadas.Collections.Postlets = Backbone.Collection.extend({
   model: Cicadas.Models.Postlet,
 
   comparator: function (collection){
-    return(collection.get('order'));
+    return(collection.get('post_order'));
   },
 
 

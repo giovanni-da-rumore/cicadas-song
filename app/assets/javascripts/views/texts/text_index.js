@@ -12,7 +12,7 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
     this.collection.fetch();
     this.promoted = new Cicadas.Collections.Postlets();
     this.promoted.fetch();
-    this.listenToOnce(this.promoted, "sync", this.render);
+    this.listenTo(this.promoted, "sync", this.render);
     this.listenToOnce(this.collection, "sync", this.render);
   },
 
@@ -53,7 +53,8 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
     var pCount = 1
     var page
     this.promoted.each(function (postlet) {
-      if (pCount > 8) {
+      debugger;
+      if (pCount > 20) {
         return;
       } else if (pCount < 4 ) {
         page = this.mainPostlet({postlet: postlet});
