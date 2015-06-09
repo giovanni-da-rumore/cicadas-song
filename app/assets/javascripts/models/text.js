@@ -144,10 +144,4 @@ Cicadas.Models.Text = Backbone.Model.extend({
   },
 
 
-
-//Regex for edit!!!
-//  s.split(/\]\([0-9]*\)|\([0-9]*\)\[/)
-
-
-
 });

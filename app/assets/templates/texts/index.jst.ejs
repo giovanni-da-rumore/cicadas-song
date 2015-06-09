@@ -6,6 +6,15 @@
   margin: auto;
 }
 
+
+.main-page h3 {
+  font-size: 16px;
+  color: #808080;
+  margin-left: 5px;
+
+}
+
+
 .text-index-left {
   width: 550px;
   float: left;
@@ -15,8 +24,8 @@
 
 
 .text-index-right {
-  float: right;
-  width: 500px;
+  float: left;
+  width: 525px;
   /*padding: 20px;*/
 }
 
@@ -31,6 +40,63 @@
 }
 
 
+.sub-postlets-list li {
+  margin: 5px;
+  float: left;
+
+}
+
+
+
+.recent-texts-list {
+  float: left;
+}
+
+.recent-texts-list li {
+  float: left;
+  display: block;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  width: 500px;
+  /*background: #f6f4e4;
+  color: #808080;*/
+  font-weight: bold;
+  margin: 7px;
+}
+
+
+.recent-texts-list a {
+  width: 500px;
+  background: #f6f4e4;
+  padding: 10px;
+  transition: color 0.5s ease, background 0.5s ease;
+  color: #808080;
+  display: block;
+}
+
+.recent-texts-list a:hover {
+  background: #7F7F7F;
+  color: #F0F0F0;
+}
+
+.recent-text-author {
+  font-weight: normal;
+  display: inline;
+}
+
+
+
+.main-about {
+  padding: 10px;
+  border: 1px solid #ccc;
+  float: left;
+  margin: 5px;
+  width: 480px;
+
+
+}
+
+
 
 
 </style>
@@ -39,7 +105,7 @@
 <main class="main-page group">
 
   <section class="text-index-left group">
-    <h1>Cicadas Song's Latest</h1>
+    <h3>Latest on Cicadas Song</h3>
     <ul class="main-postlets">
       <li id="1"></li>
       <li id="2"></li>
@@ -48,9 +114,9 @@
   </section>
 
   <section class="text-index-right group">
-    <section class="about">
-      <h2>About Cicadas Song</h2>
-      <h1 class="header-logo">蝉</h1>
+      <h3>About Cicadas Song</h3>
+    <section class="main-about">
+      <h2 class="header-logo">蝉</h2>
       <p class="about-text">
         Cicadas Song is a Genius-inspired, interactive digital library with a focus on classical
         literature. Named after a Platonic myth, Cicadas Song encourages users to not simply
@@ -60,18 +126,18 @@
       </p>
     </section>
 
-    <section class="sub-postlets">
+    <section class="sub-postlets group">
       <ul class="sub-postlets-list">
-        <li id="4"></li>
+        <li id="4" class="top-sub-postlet"></li>
         <li id="5"></li>
         <li id="6"></li>
         <li id="7"></li>
         <li id="8"></li>
-        <li id="9"></li>
       </ul>
     </section>
 
     <section class="recent-texts">
+      <h3>Recent Texts</h3>
       <ul class="recent-texts-list">
       </ul>
 

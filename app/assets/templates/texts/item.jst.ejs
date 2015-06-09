@@ -1,12 +1,7 @@
-<div class="text-show-container group">
-<section class="text-show-main">
-  <header class="text-show-header">
-    <h1 class="show-title"> <a href="/#/texts/<%=text.escape('id')%>"><%= text.escape('title') %> </a></h1>
-    <h3 class="show-author"> <%= text.author().escape('name')%> </h3>
-  </header>
-  <nav class="text-show-nav">
-  </nav>
-  <section class="text-show-body">
-    <%=body%>
-  </section>
-</section>
+
+<li>
+  <a href="/#/texts/<%=text.escape('id')%>">
+    <%= text.escape('title') %> by
+    <div class="recent-text-author"> <%=text.author().escape('name')%> </div>
+  </a>
+</li>

@@ -1,6 +1,96 @@
+<style>
+
+  .text-index-right img {
+    width: 300px;
+    height: 250px;
+    margin-left: -50px;
+    margin-top: -25px
+    border: 1px solid #ccc;
+    opacity: 0.3;
+    transition: opacity 1s;
+
+  }
+
+
+  .top-sub-postlet img {
+    width: 600px;
+    height: 400px;
+
+  }
+
+  .top-sub-postlet .postlet-sub-crop {
+    width: 500px;
+    height: 175px;
+    overflow: hidden;
+    display: block;
+    float: left;
+    background-color: #000;
+
+  }
+
+
+  .postlet-sub-crop:hover img {
+      opacity: 0.5;
+    }
+
+
+  .postlet-sub-crop:hover .postlet-sub-title {
+    color: #F7F7F7;
+  }
+
+
+
+
+  .image-from-postlet {
+    margin-top: -50px;
+
+  }
+
+
+  .postlet-sub-crop {
+    width: 246px;
+    height: 150px;
+    overflow: hidden;
+    display: block;
+    float: left;
+    background-color: #000;
+    position: relative;
+    border: 1px solid #8A8A8A;
+    border: 1px solid #36648B;
+    /*background-image: url(<%= Cicadas.grid %>);*/
+
+  }
+
+  .postlet-sub-title {
+    float: left;
+    display: block;
+    top: 10px;
+    left: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px 0px;
+    position: absolute;
+    color: #ccc;
+    transition: color 0.8s;
+  }
+
+
+
+
+
+</style>
+
+
+
 <a href="/#/texts/<%=postlet.escape('text_id')%>">
-  <img src="<%=postlet.get('image_url')%>"/>
-  <h1 class="sub-postlet-title">
-    <%= postlet.escape('title') %> By <%= postlet.escape('author') %>
+  <div class="postlet-sub-crop">
+    <% if (!postlet.escape('image_url') ) { %>
+        <img class="default-img" src="<%=Cicadas.boreas %>"/>
+    <% } else { %>
+      <img class="image-from-postlet" src='<%=postlet.get('image_url')%>'/>
+    <% } %>
+  <h1 class="postlet-sub-title">
+    <%= postlet.escape('title') %> by <%= postlet.escape('author_name') %>
   </h1>
+  </div>
 </a>

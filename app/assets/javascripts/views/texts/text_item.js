@@ -1,19 +1,10 @@
 Cicadas.Views.TextItem = Backbone.CompositeView.extend({
 
-
-  events: {
-    "click .show-title": "toText",
-  },
-
-
   template: JST['texts/item'],
 
   initialize: function () {
-    this.collection = new Cicadas.Collections.Texts();
     this.listenTo(this.model, "sync", this.render);
-    var that = this;
     this.model.fetch();
-    this.textId = this.model.escape('id');
   },
 
   render: function () {
@@ -22,10 +13,6 @@ Cicadas.Views.TextItem = Backbone.CompositeView.extend({
     return this;
   },
 
-  toText: function (event) {
-    event.preventDefault();
-    Backbone.history.navigate("#/texts/"+this.model.escape('id'), {trigger: true});
-  },
 
 
 

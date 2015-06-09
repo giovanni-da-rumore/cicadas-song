@@ -28,7 +28,7 @@ module Api
     end
 
     def index
-      @texts = Text.order(:created_at).limit(10)
+      @texts = Text.order(:created_at).limit(10).reverse
       render :index
     end
 

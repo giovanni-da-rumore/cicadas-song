@@ -12,7 +12,7 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
     this.collection.fetch();
     this.promoted = new Cicadas.Collections.Postlets();
     this.promoted.fetch();
-    this.listenTo(this.promoted, "sync", this.render);
+    this.listenToOnce(this.promoted, "sync", this.render);
     this.listenToOnce(this.collection, "sync", this.render);
   },
 
@@ -32,13 +32,13 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
 
 
   render: function () {
-    var textCount = 0
+    var textCount = 0;
     this.$el.html(this.template());
     this.collection.each(function (text) {
-      if (textCount > 7) {
+      if (textCount > 6) {
         return
       }
-      text = new Cicadas.Views.TextListItem({model: text});
+      text = new Cicadas.Views.TextItem({model: text});
       this.$el.find('.recent-texts-list').append(text.render().$el);
       textCount += 1
     }.bind(this));
@@ -53,7 +53,6 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
     var pCount = 1
     var page
     this.promoted.each(function (postlet) {
-      debugger;
       if (pCount > 20) {
         return;
       } else if (pCount < 4 ) {

@@ -54,7 +54,6 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
     var $body = this.$el.find('.text-show-body');
     this.$el.find('.text-show-nav').html(JST["texts/nav"]);
     var parsedBod = this.model.makeEditSlices();
-    // this.model.escape('body')
     $body.html('<textarea class="edit-textarea" name="text[body]">' + parsedBod + "</textarea>");
     this.$el.find('.edit-textarea').trigger("keyup");
   },
@@ -68,10 +67,13 @@ Cicadas.Views.TextShow = Backbone.CompositeView.extend({
 
     var newText = attrs.text.body.split(/\]\([0-9]*\)|\([0-9]*\)\[/);
     if (!this.model.cleanEdit(newText)) {
+      alert("You can't alter annotations through editing.")
+      this.render();
       return;
     }
     this.model.adjustAnnotations(newText);
     attrs.text.body = newText.join('');
+
     this.model.save(attrs, {
       success: function () {
         that.editingText = false;
