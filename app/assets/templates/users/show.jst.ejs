@@ -1,47 +1,44 @@
 
 <style>
 
-  img {
-    display: block;
+  .user-show-page img {
     width: 100%;
     height: 100%;
+    display: block;
+  }
+
+  .avatar-image {
+    height: 300px!important;
   }
 
   .user-show-page {
-    width: 900px;
+    width: 1010px;
     margin: auto;
+    padding: 20px 0px;
   }
 
   .user-sidebar {
     float: left;
-    width: 200px;
+    width: 330px;
     margin: 20px;
   }
+
+
 
 
   .user-show-page h1 {
     font-size: 36px;
     display: inline;
-    /*width: 150px;*/
     font-weight: bold;
     color: #000;
-    /*color: #009900;*/
     color
     float: left;
-    /*padding: 5px;*/
-    /*padding-bottom: 0px;*/
     text-shadow: 0px 0px 2px #ffc31c;
-    /*background: #009900;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    box-shadow: 2px 2px 2px #ffc31c;*/
+
   }
 
   .user-show-page h1:after {
-    width: 200px;
+    width: 250px;
     content: "";
     display: block;
     border: 1px solid #ffc31c;
@@ -52,8 +49,8 @@
 
   .user-show-avatar {
     display: block;
-    width: 200px;
-    heigth: 250px;
+    width: 250px;
+    heigth: 350px;
     border: 1px solid #ccc;
     float: left;
   }
@@ -66,7 +63,7 @@
   .user-prof-options li {
     float: left;
     display: block;
-    width: 200px;
+    width: 250px;
     padding: 10px 0px;
     border-bottom: 1px solid #ccc;
   }
@@ -90,7 +87,7 @@
 
 
   .user-show-main-content {
-    width: 630px;
+    width: 600px;
     float: left;
     display: block;
     padding: 15px;
@@ -119,13 +116,16 @@
   .user-show-main-content ul {
     display: block;
     float: left;
-    width: 420px;
+    width: 550px;
+    border-top: 2px solid #ccc;
 
   }
 
   .image-button {
     background: #d8d6bf;
     background:  #878787;
+    background: #d6d4bf;
+    border: 1px solid #ccc;
     border-radius: 5px;
     float: left;
     display: inline;
@@ -139,7 +139,7 @@
 
   h2 {
     display: inline;
-    padding: 20px 0px;
+    padding: 18px 5px;
     font-size: 30px;
     float: left;
   }
@@ -174,7 +174,7 @@
       <%= user.escape('username') %>
     </h1>
     <div class="user-show-avatar">
-      <img src="<%= user.get("avatar") %>" alt="avatar">
+      <img class="avatar-image" src="<%= user.get("avatar") %>" alt="avatar">
     </div>
 
     <ul class="user-prof-options group">

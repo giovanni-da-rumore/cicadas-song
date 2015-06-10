@@ -14,8 +14,8 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 	},
 
 	render: function () {
-		this.topPadding = $(window).scrollTop() - 50;
-		if (this.topPadding < 70) { this.topPadding = 10};
+		this.topPadding = $(window).scrollTop() - 200;
+		if (this.topPadding < 200) { this.topPadding = 0};
 		// in case want to make smoother comparison later, or for "start annotation thing
 		// that genius does"
 		// this.topPadding = $('a.active').position().top - 120;
