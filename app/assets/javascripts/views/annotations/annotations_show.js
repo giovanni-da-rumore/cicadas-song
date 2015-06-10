@@ -14,9 +14,11 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
 
 
   render: function () {
+    this.topPadding = $(window).scrollTop() - 50;
+    if (this.topPadding < 70) { this.topPadding = 10};
     var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
     var content = Cicadas.TextParser.spaceParse(content);
-    this.$el.html(this.template({annotation: this.model, content: content}));
+    this.$el.html(this.template({annotation: this.model, content: content, topPadding: this.topPadding}));
     return this;
   },
 

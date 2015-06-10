@@ -4,8 +4,8 @@ past a certain page -->
 
 <style media="screen">
 
-  .text-show-body .high-yellow {
-    background: #ffc31c; /*yellow*/
+  .text-show-body .active {
+    background: #ffc31c;
     -webkit-text-stroke: 1px black;
   }
 
@@ -33,13 +33,17 @@ past a certain page -->
 
   .text-show-body > a:hover {
     background: #ffc31c;
-    /*background: #ffd700; Slightly brighter gold, consider using */
-    /*-webkit-text-stroke: 1px black;*/
   }
 
   a.active {
     background: #ffc31c;
     webkit-text-stroke: 1px black;
+  }
+
+  .text-show-padding {
+    display: block;
+    background: transparent;
+    padding: 20px;
   }
 
 
@@ -48,7 +52,7 @@ past a certain page -->
 
 </style>
 
-
+<div class="text-show-padding"></div>
 
 <div class="text-show-container group">
 <section class="text-show-main">

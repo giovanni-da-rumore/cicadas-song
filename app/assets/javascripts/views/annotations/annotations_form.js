@@ -14,7 +14,12 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 	},
 
 	render: function () {
-		this.$el.html(this.template({annotation: this.model}));
+		this.topPadding = $(window).scrollTop() - 50;
+		if (this.topPadding < 70) { this.topPadding = 10};
+		// in case want to make smoother comparison later, or for "start annotation thing
+		// that genius does"
+		// this.topPadding = $('a.active').position().top - 120;
+		this.$el.html(this.template({annotation: this.model, topPadding: this.topPadding}));
 		this.$el.find(".annotation-textarea").trigger('keyup');
 		return this;
 	},
@@ -33,7 +38,7 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 			this.text.annotations().add(this.model);
 
       var content = Cicadas.TextParser.spaceParse(this.model.escape('content'));
-      this.$el.html(JST['annotations/show']({annotation: this.model, content: content}));
+      this.$el.html(JST['annotations/show']({annotation: this.model, content: content, topPadding: this.topPadding}));
     };
 
 		if (this.isNested(this.range.start, this.range.end)) {

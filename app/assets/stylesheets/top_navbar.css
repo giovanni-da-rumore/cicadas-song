@@ -1,40 +1,43 @@
 .header {
-  /*border-bottom: 1px solid #F2F2F2;*/
   display: block;
   text-align: center;
-  /*margin-bottom: 10px;*/
-  /*background: #FF0000;*/
   background: #009900;
   background: #3FBC13;
-  /*width: 5000px;*/
   width: 100%;
-  /*background: #22b422;*/
-  /*background: #00B300;*/
 }
 
 .header-list {
-  /*border: 1px solid blue;*/
   float: right;
 }
 
-.header-nav {
-  display: block;
-  color: #f9f8f7;
-  width: 975px;
-  margin: auto;
+
+@media (max-width: 980px) {
+  .header-nav {
+    display: block;
+    color: #f9f8f7;
+    width: 975px;
+    margin: auto;
+  }
+  .header-list {
+    float: right;
+  }
 }
 
-/*.header-logo {
-  /*border: 1px solid orange;*/
-  /*float: left;
-  padding: 10px;
-  font-size: 18px;
+@media (min-width: 980px) {
+  .header-nav {
+    display: block;
+    color: #f9f8f7;
+    width: 1020px;
+    margin: auto;
+  }
+
+  .header-list {
+    float: right;
+    margin-right: 5px;
+  }
 }
 
-.header-logo:hover {
-  color: #FFD700;
-  color: #ffc31c;
-}*/
+
 
 .header-logo a {
   padding: 6px;
@@ -43,14 +46,12 @@
   background: #fff;
   color: #3FBC13;
   box-shadow: 0px 0px 1px black;
-  /*color: #0EA300;
-  color: #A40000;*/
   font-size: 25px;
   display: block;
   float: left;
   font-weight: bold;
-  margin-left: 5px;
   vertical-align: center;
+  margin-left: 5px;
 
 }
 
@@ -83,8 +84,6 @@
 
 .header-list a:hover {
   background: #000;
-  /*background: #0000f2;
-  background: #0000d2;*/
 }
 
 
