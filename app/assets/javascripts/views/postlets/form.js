@@ -1,6 +1,6 @@
 Cicadas.Views.PostletForm = Backbone.CompositeView.extend({
 
-  template: JST['pyongs/form'],
+  template: JST['postlets/form'],
 
   events: {
     "submit form": "submit",
@@ -10,10 +10,12 @@ Cicadas.Views.PostletForm = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenToOnce(this.model, 'sync', this.render);
+    this.model.fetch();
     this.collection = new Cicadas.Collections.Postlets();
   },
 
   render: function () {
+    debugger;
     this.$el.html(this.template({postlet: this.model}));
     this.$el.find("textarea").trigger('keyup');
     return this;
@@ -21,10 +23,11 @@ Cicadas.Views.PostletForm = Backbone.CompositeView.extend({
 
 
   submit: function (event) {
-    debugger;
     event.preventDefault();
     var attrs = this.$el.find('form').serializeJSON();
-    attrs["postlet"]["text_id"] = this.parseUrl(attrs.postlet.text_url);
+    if (this.parseUrl(attrs.postlet.text_url)) {
+      attrs["postlet"]["text_id"] = this.parseUrl(attrs.postlet.text_url);
+    }
 
     var riuscire = function () {
       this.collection.add(this.model, {merge: true})

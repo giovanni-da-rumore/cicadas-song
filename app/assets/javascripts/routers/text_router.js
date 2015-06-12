@@ -10,11 +10,11 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     "": "welcome",
     "texts/new": "newText",
     "texts/:id": "showText",
-    // "texts/:id/edit": "editText",
     "users/:id": "showUser",
     "search/": "searchResults",
     "authors/:id": "showAuthor",
     "poidekaipothen/postlets/new": "newPostlet",
+    "poidekaipothen/postlets/:id": "editPostlet",
   },
 
 
@@ -74,6 +74,16 @@ Cicadas.Routers.Text = Backbone.Router.extend({
       model: postlet,
     });
     this._swapViews(this._newPostlet);
+
+  },
+
+  editPostlet: function (id) {
+    var postlet = new Cicadas.Models.Postlet({id: id});
+    postlet.fetch();
+    this._editPostlet = new Cicadas.Views.PostletForm({
+      model: postlet,
+    });
+    this._swapViews(this._editPostlet);
 
   },
 

@@ -44,15 +44,15 @@
   </label>
 
   <label>Description</label>
-    <textarea class="postlet-textarea" type="text" name="postlet[description]"></textarea>
+    <textarea class="postlet-textarea" type="text" name="postlet[description]"><%=postlet.escape('description')%></textarea>
 
 
   <label>Image Url
-    <input type="text" name="postlet[image_url]">
+    <input type="text" name="postlet[image_url]" value="<%=postlet.escape('image_url')%>">
   </label>
 
   <label>Order
-    <input type="text" name="postlet[post_order]">
+    <input type="text" name="postlet[post_order]" value="<%postlet.escape('post_order')%>">
   </label>
 
 

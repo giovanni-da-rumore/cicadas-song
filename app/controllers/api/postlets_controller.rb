@@ -3,8 +3,10 @@ module Api
 
     def create
       @postlet = Postlet.new(postlet_params)
+
       if @postlet.save
         update_order
+        update_text_image(@postlet)
         render json: @postlet
       else
         render json: @postlet.errors.full_messages, status: :uprocessable_entity
@@ -16,6 +18,23 @@ module Api
       @postlets = Postlet.all.order(:post_order).limit(15)
       render :index
     end
+
+    def show
+      @postlet = Postlet.find(params[:id])
+      render json: @postlet
+    end
+
+
+    def update
+      @postlet = Postlet.find(params[:id])
+      if @postlet.update_attributes(postlet_params)
+        update_text_image(@postlet)
+       render json: @postlet
+      else
+       render json: @postlet.errors.full_messages, status: :unprocessable_entity
+      end
+    end
+
 
 
     def destroy
@@ -47,5 +66,12 @@ module Api
     end
 
 
+    def update_text_image(postlet)
+      if postlet_params[:image_url]
+        @text = Text.find(postlet.text_id)
+        @text.image_from_url(postlet_params[:image_url])
+        @text.save
+      end
+    end
   end
 end

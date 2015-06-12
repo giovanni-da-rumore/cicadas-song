@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :users
     resources :authors
     get "search", to: "static_pages#search"
-    resources :postlets, only: [:create, :destroy, :update, :index]
+    resources :postlets, only: [:create, :destroy, :update, :index, :show]
 
   end
 
