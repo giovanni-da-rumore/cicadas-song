@@ -73,7 +73,7 @@ module Api
       new_body = body.gsub(/[^\S\n]+/, " ")
       new_body = new_body.gsub(/\n[^\S\n]/, "\n")
       new_body = new_body.gsub(/[^\S\n]\n/, "\n")
-      new_body = new_body..gsub(/[\r]/, "")
+      new_body = new_body.gsub(/\r/, "")
       new_body
     end
   end

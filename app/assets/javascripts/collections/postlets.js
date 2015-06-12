@@ -4,9 +4,11 @@ Cicadas.Collections.Postlets = Backbone.Collection.extend({
 
   model: Cicadas.Models.Postlet,
 
-  comparator: function (collection){
-    return(collection.get('post_order'));
-  },
+  // comparator: function (collection){
+  //   return(collection.get('post_order'));
+  // },
+
+  comparator: "post_order",
 
 
   getOrFetch: function(id) {

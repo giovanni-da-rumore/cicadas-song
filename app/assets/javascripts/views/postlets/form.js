@@ -15,7 +15,6 @@ Cicadas.Views.PostletForm = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    debugger;
     this.$el.html(this.template({postlet: this.model}));
     this.$el.find("textarea").trigger('keyup');
     return this;

@@ -53,7 +53,8 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
     var pCount = 1
     var page
     this.promoted.each(function (postlet) {
-      if (pCount > 20) {
+      debugger;
+      if (pCount > 8) {
         return;
       } else if (pCount < 4 ) {
         page = this.mainPostlet({postlet: postlet});

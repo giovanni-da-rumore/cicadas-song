@@ -48,6 +48,8 @@ gem 'pg_search'
 gem 'diff-lcs'
 gem 'diffy'
 
+gem 'seed_dump'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -15,7 +15,7 @@ module Api
 
 
     def index
-      @postlets = Postlet.all.order(:post_order).limit(15)
+      @postlets = Postlet.order(:post_order).limit(15)
       render :index
     end
 
@@ -62,12 +62,12 @@ module Api
     end
 
     def delete_postlets
-      Postlet.where('post_order > 20').destroy_all
+      Postlet.where('post_order > 40').destroy_all
     end
 
 
     def update_text_image(postlet)
-      if postlet_params[:image_url]
+      if postlet_params[:image_url].length > 1
         @text = Text.find(postlet.text_id)
         @text.image_from_url(postlet_params[:image_url])
         @text.save

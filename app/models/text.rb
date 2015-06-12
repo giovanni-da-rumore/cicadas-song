@@ -6,8 +6,8 @@ class Text < ActiveRecord::Base
         styles: {:medium => "300x300>", :thumb => "100x100>"}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-
   validates :body, :title, :author, presence: true
+  validate :remove_returns
 
   belongs_to :author, inverse_of: :texts
 
@@ -34,6 +34,10 @@ class Text < ActiveRecord::Base
 
   def image_from_url(url)
     self.image = URI.parse(url)
+  end
+
+  def remove_returns
+    self.body = self.body.gsub(/[\r]/, "")
   end
 
 end

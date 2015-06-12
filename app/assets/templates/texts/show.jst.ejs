@@ -72,7 +72,7 @@ past a certain page -->
   }
 
   .text-image-crop:after {
-    background-image: url(<%=text.get('image')%>);
+    background-image: url(<%= text.escape('image') %>);
     background-position: left 0px top -20px;
     background-size: 100% 300%;
     opacity: 0.6;
