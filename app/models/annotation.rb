@@ -13,6 +13,7 @@ class Annotation < ActiveRecord::Base
 
   def is_not_nested
     error_message = "An annotation cannot contain other annotations"
+    return if self.text.nil?
 		self.text.annotations.each do |annotation|
 			if (start_index >= annotation.start_index && end_index <= annotation.end_index)
         errors.add(:index, error_message)

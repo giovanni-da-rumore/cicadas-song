@@ -19,7 +19,6 @@ Cicadas.Routers.Text = Backbone.Router.extend({
 
 
   welcome: function () {
-    // this.$rootEl.html("ubi amor ibi oculus est")
     this._textsIndex = new Cicadas.Views.TextsIndex();
     this._swapViews(this._textsIndex);
 

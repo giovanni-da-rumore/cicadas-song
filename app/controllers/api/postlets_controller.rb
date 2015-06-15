@@ -70,7 +70,7 @@ module Api
       if postlet_params[:image_url].length > 1
         @text = Text.find(postlet.text_id)
         @text.image_from_url(postlet_params[:image_url])
-        @text.save
+        @text.save!
       end
     end
   end

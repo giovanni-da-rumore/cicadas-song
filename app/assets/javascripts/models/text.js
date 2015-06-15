@@ -129,11 +129,13 @@ Cicadas.Models.Text = Backbone.Model.extend({
         annotations[j].attributes.start_index = index;
         // browser adds carriage returns to \n's automatically, need to remove to match db level text
         index += newText[i].replace(/\r\n/gm, "\n").length
+        index += this.adjustForSpaces(newText[i]);
         annotations[j].attributes.end_index = index;
         annotations[j].save();
         this.annotations().add(annotations[j], {merge: true});
       } else {
-        index += newText[i].replace(/\r\n/gm, "\n").length
+        index += newText[i].replace(/\r\n/gm, "\n").length;
+        index += this.adjustForSpaces(newText[i]);
       }
       debugger;
     }
@@ -146,5 +148,21 @@ Cicadas.Models.Text = Backbone.Model.extend({
     return newText.length === (this.annotations().length * 2) + 1
   },
 
+
+
+  adjustForSpaces: function (text) {
+    var parsed = text.split('\n');
+    var count = 0;
+    for (var i = 0; i < parsed.length; i++) {
+      if (parsed[i].length === 0) {
+        count += 1;
+      }
+    }
+    if (count > 0) {
+      return count - 1;
+    } else {
+      return count;
+    }
+  },
 
 });
