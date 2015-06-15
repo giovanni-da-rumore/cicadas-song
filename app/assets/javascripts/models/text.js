@@ -125,14 +125,17 @@ Cicadas.Models.Text = Backbone.Model.extend({
       // if contiguous, they will be separated by an empty string
       if (i % 2 === 1) {
         var j = Math.floor(i / 2);
+        debugger;
         annotations[j].attributes.start_index = index;
-        index += newText[i].length;
+        // browser adds carriage returns to \n's automatically, need to remove to match db level text
+        index += newText[i].replace(/\r\n/gm, "\n").length
         annotations[j].attributes.end_index = index;
         annotations[j].save();
         this.annotations().add(annotations[j], {merge: true});
       } else {
-        index += newText[i].length;
+        index += newText[i].replace(/\r\n/gm, "\n").length
       }
+      debugger;
     }
   },
 
