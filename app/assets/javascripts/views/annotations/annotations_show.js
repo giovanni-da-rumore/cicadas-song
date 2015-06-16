@@ -5,20 +5,19 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
 
   events: {
     "click .annotation-edit": "editAnnotation",
+    "click .delete": "deleteAnnotation",
   },
 
 
-  initialize: function () {
+  initialize: function (options) {
     this.listenTo(this.model, "sync", this.render);
     this.author = this.model.author();
-    // this.author.fetch();
     this.listenTo(this.author, "sync", this.render);
 
   },
 
 
   render: function () {
-    debugger;
     this.topPadding = $(window).scrollTop() - 200;
     if (this.topPadding < 200) { this.topPadding = 0};
     if (this.topPadding > $('a.active').position().top) {
@@ -32,6 +31,10 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
       topPadding: this.topPadding,
       author: this.author
       }));
+
+    if (Cicadas.currentUser.get('moderator')) {
+      this.$el.find('.annotation-bottom-bar').append('<button class="delete">Delete</button>')
+    }
     return this;
   },
 
@@ -46,6 +49,14 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
     this.$el.html(formView.$el);
     formView.render();
   },
+
+
+  deleteAnnotation: function (event) {
+    this.model.destroy({
+      success: this.render()
+    });
+
+  }
 
 
 

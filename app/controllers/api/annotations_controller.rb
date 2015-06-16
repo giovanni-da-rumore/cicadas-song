@@ -1,6 +1,6 @@
 module Api
   class AnnotationsController < ApiController
-		before_action :user_is_editor, only: [:destroy, :edit]
+		before_action :user_is_moderator, only: :destroy
 
   	def new
   	end
@@ -22,11 +22,19 @@ module Api
 
 
   	def destroy
+      @annotation = Annotation.find(params[:id])
+      @annotation.destroy!
+      render json: "Success!"
   	end
 
   	def annotation_params
   		params.require(:annotation).permit(:text_id, :author_id, :content,
   		:score, :start_index, :end_index)
+    end
+
+
+    def user_is_moderator
+      current_user.moderator
     end
   end
 end
