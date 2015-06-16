@@ -23,13 +23,14 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 	template: JST["static_pages/search_results"],
 
 	render: function () {
-		this.$el.html(this.template());
+		this.$el.html(this.template({pageInfo: this.collection.searchIngo}));
 		return this;
 	},
 
 
 	renderResults: function () {
-		this.$el.html(this.template());
+
+		this.$el.html(this.template({pageInfo: this.collection.searchInfo}));
 		this.renderSearchInfo();
 		var view;
 		this.collection.each(function (result) {
@@ -63,7 +64,8 @@ Cicadas.Views.SearchResults = Backbone.View.extend({
 	},
 
 	renderSearchInfo: function () {
+		this.$el.find(".page").html(this.collection.searchInfo.page);
 		this.$el.find(".pages").html(this.collection.searchInfo.totalPages);
-	}
+	},
 
 });

@@ -1,26 +1,27 @@
 <style>
 
   .search-results-container {
-    width: 975px;
+    width: 1040px;
     margin: auto;
     /*background: #f6f4e4;*/
   }
 
   .search-texts-container {
-    width: 475px;
+    width: 540px;
     float: left;
     display: block;
-    margin-right: 75px;
+    margin-right: 50px;
     margin-left: 3px;
 
   }
 
   .search-results-sidebar {
-    width: 350px;
+    width: 420px;
     float: left;
-    background: #f6f4e4;
+    background: #f1f1f1;
     border: 1px solid #ccc;;
     padding: 10px;
+    margin-top: 75px;
 
   }
 
@@ -30,6 +31,14 @@
     padding: 8px;
     border-top: 2px solid #ccc;
     display: block;
+    color: #5C5C5C;
+  }
+
+  .search-results-texts {
+    float: left;
+    width: 550px;
+
+
   }
 
   .search-results-texts > li:last-child {
@@ -46,7 +55,7 @@
     font-weight: bold;
     padding-bottom: 4px;
     float: left
-    width: 400px;
+    width: 500px;
     display: block;
   }
 
@@ -57,11 +66,10 @@
 
   }
 
-
-
 .search-results-sidebar li {
   padding: 5px;
   color: #878787;
+  color: #7F7F7F;
 
 }
 
@@ -83,24 +91,70 @@
   }
 
 
+  .search-results-container h1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    display: block;
+    float: left;
+    width: 500px;
+  }
+
+  .search-pages li {
+    float: left;
+    padding: 0px 3px;
+  }
+
+  .search-pages {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    float: right;
+  }
+
+  .next-prev {
+    padding-top: 35px;
+    margin-right: -120px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    float: right;
+  }
+
+  .next-prev li {
+    float: left;
+    margin: 0px 10px;
+    border-bottom: 1px solid #000;
+  }
+
+
 
 </style>
 
 
-
-
-
-
-
-
 <main class="search-results-container group">
   <section class="search-texts-container group">
-  <div id="pages" class="pages">
-    </div>
-  <a href="javascript:void(0)" class="next-page">Next</a>
-  <a href="javascript:void(0)" class="prev-page">Previous</a>
-  <h1>Texts:</h1>
-    <ul class="search-results-texts">
+  <ul class="search-pages">
+    <li>
+      Page
+    </li>
+    <li id="page" class="page">
+    </li>
+    <li>of</li>
+     <li id="pages" class="pages">
+     </li>
+  </ul>
+
+  <% if (pageInfo) { %>
+    <ul class="next-prev">
+		<% if (pageInfo.page < pageInfo.totalPages) { %>
+      <li><a href="javascript:void(0)" class="next-page">Next</a></li>
+    <% } %>
+    <% if (pageInfo.page > 1) { %>
+      <li><a href="javascript:void(0)" class="prev-page">Previous</a></li>
+      <% } %>
+    <% } %>
+  </ul>
+  <h1>Texts</h1>
+    <ul class="search-results-texts group">
     </ul>
   </section>
 
