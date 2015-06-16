@@ -10,15 +10,28 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.author = this.model.author();
+    // this.author.fetch();
+    this.listenTo(this.author, "sync", this.render);
+
   },
 
 
   render: function () {
+    debugger;
     this.topPadding = $(window).scrollTop() - 200;
     if (this.topPadding < 200) { this.topPadding = 0};
+    if (this.topPadding > $('a.active').position().top) {
+			this.topPadding = $('a.active').position().top;
+		}
     var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
     var content = Cicadas.TextParser.spaceParse(content);
-    this.$el.html(this.template({annotation: this.model, content: content, topPadding: this.topPadding}));
+    this.$el.html(this.template({
+      annotation: this.model,
+      content: content,
+      topPadding: this.topPadding,
+      author: this.author
+      }));
     return this;
   },
 

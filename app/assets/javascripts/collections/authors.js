@@ -1,8 +1,10 @@
-Cicadas.Collections.Authors = Backbone.Model.extend({
+Cicadas.Collections.Authors = Backbone.Collection.extend({
 
-  url: '/api/authors',
+  url: "/api/authors",
 
   model: Cicadas.Models.Author,
+
+  comparator: "name",
 
   getOrFetch: function(id) {
     var author = this.get(id)

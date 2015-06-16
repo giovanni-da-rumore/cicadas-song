@@ -8,7 +8,6 @@ Cicadas.Models.Author = Backbone.Model.extend({
       this.id = this.get('id');
     }
 
-
   },
 
   urlRoot: '/api/authors',
@@ -20,15 +19,11 @@ Cicadas.Models.Author = Backbone.Model.extend({
     if (this._image_url) {
       json.author.image_url = this._image_url;
     }
-
-    debugger;
-
     return json;
   },
 
 
   parse: function (response) {
-
     if (response.texts) {
       this.texts().set(response.texts, { parse: true });
       delete response.texts;

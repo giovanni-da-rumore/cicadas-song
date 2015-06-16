@@ -12,6 +12,7 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     "texts/:id": "showText",
     "users/:id": "showUser",
     "search/": "searchResults",
+    "authors": "indexAuthor",
     "authors/:id": "showAuthor",
     "poidekaipothen/postlets/new": "newPostlet",
     "poidekaipothen/postlets/:id": "editPostlet",
@@ -36,6 +37,14 @@ Cicadas.Routers.Text = Backbone.Router.extend({
     var author = authors.getOrFetch(id);
     this._showAuthor = new Cicadas.Views.AuthorShow({model: author});
     this._swapViews(this._showAuthor);
+  },
+
+  indexAuthor: function () {
+    var authors = new Cicadas.Collections.Authors();
+    authors.fetch();
+    this._indexAuthor = new Cicadas.Views.AuthorIndex({collection: authors});
+    this._swapViews(this._indexAuthor);
+
   },
 
   newText: function () {

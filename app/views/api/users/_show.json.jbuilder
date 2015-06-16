@@ -3,8 +3,6 @@ json.polyId user.id.to_s + "_user"
 json._type "User"
 json.avatar asset_path(user.avatar.url(:original))
 
-json.avatar asset_path(user.avatar.url(:original))
-
 json.annotations user.annotations do |annotation|
 	json.extract! annotation, :id, :text_id, :author_id, :content, :score,
 	 					:start_index, :end_index, :created_at, :updated_at

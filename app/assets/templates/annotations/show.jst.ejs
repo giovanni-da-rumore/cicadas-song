@@ -3,9 +3,30 @@
 
   .annotation-container {
     border-left: 1px solid #ffc31c;
-    padding-left: 10px;
+    padding-left: 12px;
     padding-top: 15px;
+    padding-bottom: 10px;
+    padding-right: 12px;
     margin-top: <%= topPadding %>px;
+
+  }
+
+
+  .annotation-author {
+    margin-bottom: 10px;
+    font-weight: bold;
+    box-shadow: 0px 2px 1px #ffc31c;
+  }
+
+  .author-name {
+    margin-left: 15px;
+    font-size: 14px;
+    float: left;
+  }
+
+  .annotation-auth-tag {
+    font-size: 15px;
+    float: left;
 
   }
 
@@ -41,9 +62,13 @@
 
 <main class="annotation-container group">
 <section class="annotation-main-content">
+  <section class="annotation-author group">
+    <div class="annotation-auth-tag">contributor:</div>
+    <div class="author-name">
+      <a href="#/users/<%= author.id%>">
 
-  <section class="annotation-author">
-    <!-- insert Description By: author name -->
+      <%= author.escape('username')%> </a>
+    </div>
   </section>
 
   <section class="annotation-content">

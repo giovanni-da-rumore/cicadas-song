@@ -6,10 +6,10 @@
 
     <%if current_user%>
       <ul class="header-list group">
-        <li><a href="#"> Notifications</a></li>
+        <li><a href="/#/authors"> Authors</a></li>
         <li><a href="<%="/#/users/#{current_user.id}"%>"><%=current_user.username%></a></li>
         <li><a href="/#/texts/new">Create</a></li>
-        <li><%= link_to "Sign out", sessions_url, method: :delete%></li>
+        <li><%= link_to "Sign out", sessions_url, method: :delete %></li>
       </ul>
     <% else %>
     <ul class="header-list group">

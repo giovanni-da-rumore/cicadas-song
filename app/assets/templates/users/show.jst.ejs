@@ -12,7 +12,7 @@
   }
 
   .user-show-page {
-    width: 1010px;
+    width: 1070px;
     margin: auto;
     padding: 20px 0px;
   }
@@ -21,6 +21,7 @@
     float: left;
     width: 330px;
     margin: 20px;
+    margin-right: 60px;
   }
 
 
@@ -107,7 +108,7 @@
   }
 
   .user-show-main-content li:hover {
-    background: #d6d4bf;
+    background: #c4c4c4;
 
 
   }
@@ -122,9 +123,7 @@
   }
 
   .image-button {
-    background: #d8d6bf;
-    background:  #878787;
-    background: #d6d4bf;
+    background: #c4c4c4;
     border: 1px solid #ccc;
     border-radius: 5px;
     float: left;
@@ -162,6 +161,14 @@
 
   }
 
+
+  .user-texts-placeholder {
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 15px;
+
+  }
+
 </style>
 
 <main class="user-show-page group">
@@ -178,16 +185,18 @@
     </div>
 
     <ul class="user-prof-options group">
-      <li>
-        <form class="avatar-form">
-        <strong class="avatar-header">Change Avatar</strong>
-        <input type="file" name="user[avatar]" id="input-user-avatar"
-        class="avatar-input">
-        <img src="" class="preview-user-avatar">
-        <button class="save-avatar image-button"> Save </button>
-        <div class="cancel image-button">Cancel</div>
-      </form>
-      </li>
+      <% if (user.id == Cicadas.currentUser.id) { %>
+        <li>
+          <form class="avatar-form">
+          <strong class="avatar-header">Change Avatar</strong>
+          <input type="file" name="user[avatar]" id="input-user-avatar"
+          class="avatar-input">
+          <img src="" class="preview-user-avatar">
+          <button class="save-avatar image-button"> Save </button>
+          <div class="cancel image-button">Cancel</div>
+        </form>
+        </li>
+      <% } %>
       <li>
         <strong> About <%=user.escape('username') %>
           <% if (Cicadas.currentUser.id == user.id) { %>
@@ -213,6 +222,15 @@
     <h2>Uploaded Texts</h2>
 
     <ul>
+      <% if (user.uploadedTexts().length == 0) { %>
+
+        <div class="user-texts-placeholder">
+
+          <%= user.escape('username') %> has yet to add any texts.
+        </div>
+
+      <% } %>
+
     <% user.uploadedTexts().each(function (text) { %>
       <li>
         <a href="#/texts/<%=text.escape('id')%>"><%=text.escape('title')%>

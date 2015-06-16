@@ -4,7 +4,7 @@ Cicadas.Collections.Texts = Backbone.Collection.extend({
 
   model: Cicadas.Models.Text,
 
-  // comparator: "created_at",
+  comparator: "created_at",
 
 
   getOrFetch: function(id) {

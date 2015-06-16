@@ -4,8 +4,8 @@ Cicadas.Models.Annotation = Backbone.Model.extend({
 
 
 	author: function () {
-		var users = new Cicadas.Collections.Users()
-		return users.getOrFetch(this.author_id);
+		var users = new Cicadas.Collections.Users();
+		return users.getOrFetch(this.escape('author_id'));
 
 	}
 

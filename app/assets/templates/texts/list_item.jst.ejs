@@ -1,7 +1,8 @@
-<a class="text-item group" href="/#/texts/<%=text.escape('id')%>">
+<li><a class="text-item group" href="/#/texts/<%=text.escape('id')%>">
   <div class="text-item-title"><%=text.escape('title')%></div>
   <% if (!authorPage) { %>
     <div class="text-item-author"><%=text.author().escape('name')%></div>
     <% } %>
 
 </a>
+</li>

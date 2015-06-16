@@ -4,9 +4,13 @@ Cicadas.Models.User = Backbone.Model.extend({
 
   toJSON: function(){
     var json = {user: _.clone(this.attributes)};
+    
+    if (json.user.avatar.indexOf("assets/david_bowie") > -1) {
+      json.user.avatar = null
+    }
 
     if (this._avatar) {
-      json.user.avatar = this._avatar;
+        json.user.avatar = this._avatar;
     }
 
     return json;

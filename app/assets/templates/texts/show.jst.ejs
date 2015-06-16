@@ -1,7 +1,3 @@
-
-<!-- Eventually make top bar toggle class between position fixed and relative when scroll
-past a certain page -->
-
 <style media="screen">
 
   .text-show-body .active {
@@ -10,19 +6,14 @@ past a certain page -->
   }
 
   .annotation  {
-    background: #e0dece;
+    /*background: #e0dece;
     background: #d6d4bf;
-    background: #d8d6bf;
+    background: #d8d6bf;*/
+    background: #E0E0E0;
   }
 
   .text-show-nav {
-    /*margin-left: -15px;
-    margin-bottom: 10px;*/
-    /*For now, until more buttons added*/
     float: right;
-    /*border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;*/
-    /*margin-bottom: 10px;*/
     width: 600px;
     display: block;
   }
@@ -33,7 +24,6 @@ past a certain page -->
     float: right;
     border-left: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    /*border-right: 1px solid #ccc;*/
   }
 
   .text-show-nav > li {
@@ -69,7 +59,7 @@ past a certain page -->
 
   .text-image-crop:after {
     background-image: url(<%= text.escape('image') %>);
-    background-position: left 0px top -50px;
+    background-position: left 0px top -75px;
     background-size: 100% 300%;
     opacity: 0.6;
     width: 100%;
@@ -86,6 +76,7 @@ past a certain page -->
 
   .image-border {
     width: 1010px;
+    width: 1049px;
     height: 300px;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
@@ -102,31 +93,32 @@ past a certain page -->
     z-index: 10;
     opacity: 1;
     position: relative;
-    padding-top: 200px;
-    padding-left: 20px;
+    padding-top: 220px;
+    padding-left: 13px;
 
   }
 
   .show-title {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: bold;
     color: #fff;
     -webkit-text-stroke: 1px #ccc;
-    padding-bottom: 35px;
+    padding-bottom: 25px;
+    letter-spacing: 2px;
   }
 
   .show-author {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 200px;
     padding-bottom: 2px;
     padding-left: 5px;
     -webkit-text-stroke: 1px #ccc;
+    letter-spacing: 2px
   }
 
   .show-author > a:hover {
-    text-shadow: 2px 2px 2px #ffc31c;
+    text-shadow: 2px 2px 2px #ccc;
     -webkit-text-stroke: 1px #fff;
-
     cursor: pointer;
   }
 
@@ -144,8 +136,10 @@ past a certain page -->
 
     <div class="image-border">
   <header class="text-show-header">
-    <h1 class="show-title"><%= text.escape('title') %></h1>
-    <h3 class="show-author"><a href="/#/authors/<%=text.author().escape('id')%>"><%= text.author().escape('name')%></a></h3>
+    <h1 class="show-title"> <%= text.escape('title') %> </h1>
+    <h3 class="show-author"><a href="/#/authors/<%=text.author().escape('id')%>">
+      <%= text.author().escape('name')%></a>
+    </h3>
   </header>
     </div>
   </div>
@@ -171,7 +165,6 @@ past a certain page -->
 </section>
 
 <section class="text-show-comment-form">
-  <!-- insert comment form -->
 </section>
 
 </div>

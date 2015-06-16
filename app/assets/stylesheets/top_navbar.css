@@ -28,12 +28,13 @@
     display: block;
     color: #f9f8f7;
     width: 1020px;
+    width: 1058px;
     margin: auto;
   }
 
   .header-list {
     float: right;
-    margin-right: 5px;
+    margin-right: 4px;
   }
 }
 
