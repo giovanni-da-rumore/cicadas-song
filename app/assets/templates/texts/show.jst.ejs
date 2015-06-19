@@ -6,9 +6,6 @@
   }
 
   .annotation  {
-    /*background: #e0dece;
-    background: #d6d4bf;
-    background: #d8d6bf;*/
     background: #E0E0E0;
   }
 
@@ -151,7 +148,9 @@
 
 
   <ul class="text-show-nav group">
+    <% if (Cicadas.currentUser.get('moderator') === true) { %>
       <li><button class="edit-text">Edit Text</button></li>
+    <% } %>
   </ul>
   <section class="text-show-body" font-family="sans-serif">
     <%=body%>

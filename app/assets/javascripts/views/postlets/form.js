@@ -15,6 +15,10 @@ Cicadas.Views.PostletForm = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    if (Cicadas.currentUser.escape('moderator') !== true) {
+      Backbone.history.navigate('/', {trigger: true})
+      return;
+    }
     this.$el.html(this.template({postlet: this.model}));
     this.$el.find("textarea").trigger('keyup');
     return this;
