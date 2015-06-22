@@ -35,10 +35,11 @@ Cicadas.Views.TextsIndex = Backbone.View.extend({
     var textCount = 0;
     this.$el.html(this.template());
     this.collection.each(function (text) {
-      if (textCount > 6) {
+      if (textCount > 8) {
         return
       }
       text = new Cicadas.Views.TextItem({model: text});
+      debugger;
       this.$el.find('.recent-texts-list').append(text.render().$el);
       textCount += 1
     }.bind(this));

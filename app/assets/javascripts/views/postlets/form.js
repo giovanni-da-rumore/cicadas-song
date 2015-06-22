@@ -11,7 +11,6 @@ Cicadas.Views.PostletForm = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenToOnce(this.model, 'sync', this.render);
     this.model.fetch();
-    this.collection = new Cicadas.Collections.Postlets();
   },
 
   render: function () {

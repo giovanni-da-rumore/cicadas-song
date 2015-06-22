@@ -47,7 +47,7 @@
 
 
  body {
-   font-family: sans-serif;
+   font-family: arial, sans-serif;
    font-size: 14px;
    color: #000;
    background: #f1f1f1;
@@ -69,10 +69,10 @@
 
  button.form-submit {
    border: 1px solid #000;
-   border-radius: 5px;
+   border-radius: 4px;
    padding: 3px;
    background: #e6e6e6;
-   box-shadow: 0 0 1px 1px teal;
+   /*box-shadow: 0 0 1px 1px teal;*/
  }
 
  input {
