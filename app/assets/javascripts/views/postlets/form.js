@@ -14,7 +14,7 @@ Cicadas.Views.PostletForm = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    if (Cicadas.currentUser.escape('moderator') !== true) {
+    if (Cicadas.currentUser.get('moderator') !== true) {
       Backbone.history.navigate('/', {trigger: true})
       return;
     }
