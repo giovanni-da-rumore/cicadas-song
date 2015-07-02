@@ -11,7 +11,7 @@
  */
 
 var block = {
-  newline: /^(\n)+/,
+  newline: /^\n+/,
   code: /^( {4}[^\n]+\n*)+/,
   fences: noop,
   hr: /^( *[-*_]){3,} *(?:\n+|$)/,
