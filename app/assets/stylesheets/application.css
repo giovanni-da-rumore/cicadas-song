@@ -47,9 +47,15 @@
 
  blockquote:before {
    content: open-quote;
-   margin-right: 8px;
-   margin-left: -22px;
-   font-size: 25px;
+   margin-right: 5px;
+   margin-left: -23px;
+   font-size: 26px;
+   font-weight: bold;
+ }
+
+ blockquote:after {
+   content: close-quote;
+   opacity: 0;
  }
 
  ul {

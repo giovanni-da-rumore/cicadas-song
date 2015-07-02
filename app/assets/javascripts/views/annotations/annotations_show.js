@@ -23,8 +23,18 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
     if (this.topPadding > $('a.active').position().top) {
 			this.topPadding = $('a.active').position().top;
 		}
-    var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
-    var content = Cicadas.TextParser.spaceParse(content);
+    // var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
+    // var content = Cicadas.TextParser.spaceParse(content);
+    //markdown
+    marked.setOptions({
+      renderer: new marked.Renderer(),
+      gfm: true,
+      breaks: true,
+      sanitize: true,
+    });
+
+    var content = marked(this.model.get('content'));
+    
     this.$el.html(this.template({
       annotation: this.model,
       content: content,

@@ -45,7 +45,6 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
       var content = Cicadas.TextParser.spaceParse(this.model.escape('content'));
 			var view = new Cicadas.Views.AnnotationShow({model: this.model});
       this.$el.html(view.render().$el);
-			// JST['annotations/show']({annotation: this.model, content: content, topPadding: this.topPadding})
 		};
 
 		if (this.isNested(this.range.start, this.range.end)) {
