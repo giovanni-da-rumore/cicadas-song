@@ -45,12 +45,12 @@ gem 'pg_search'
 
 #in case need to show differences between user edits later on,
 # visions and revisioins
-gem 'diff-lcs'
-gem 'diffy'
+# gem 'diff-lcs'
+# gem 'diffy'
 
 gem 'seed_dump'
 
-gem 'rails-bootstrap-markdown'
+# gem 'rails-bootstrap-markdown'
 
 group :development do
   gem 'better_errors'
