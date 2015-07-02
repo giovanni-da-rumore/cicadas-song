@@ -11,7 +11,7 @@
  */
 
 var block = {
-  newline: /^\n+/,
+  newline: /^(\n)+/,
   code: /^( {4}[^\n]+\n*)+/,
   fences: noop,
   hr: /^( *[-*_]){3,} *(?:\n+|$)/,
@@ -262,6 +262,7 @@ Lexer.prototype.token = function(src, top, bq) {
     // blockquote
     if (cap = this.rules.blockquote.exec(src)) {
       src = src.substring(cap[0].length);
+      debugger;
 
       this.tokens.push({
         type: 'blockquote_start'
