@@ -28,9 +28,10 @@ Cicadas.Views.DescriptionForm = Backbone.CompositeView.extend({
 
     var riuscire = function () {
       this.author = Cicadas.currentUser;
-      var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
-      var content = Cicadas.TextParser.spaceParse(content);
-      debugger;
+      // var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
+      // var content = Cicadas.TextParser.spaceParse(content);
+      var content = marked(this.model.get('content'));
+
       this.$el.html(JST['descriptions/show']({description: this.model,
         content: content, author: this.author}));
     };

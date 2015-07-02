@@ -78,8 +78,10 @@ Cicadas.Routers.Text = Backbone.Router.extend({
 
   newPostlet: function () {
     var postlet = new Cicadas.Models.Postlet();
+    var postlets = new Cicadas.Collections.Postlets();
     this._newPostlet = new Cicadas.Views.PostletForm({
       model: postlet,
+      collection: postlets,
     });
     this._swapViews(this._newPostlet);
 
@@ -87,9 +89,11 @@ Cicadas.Routers.Text = Backbone.Router.extend({
 
   editPostlet: function (id) {
     var postlet = new Cicadas.Models.Postlet({id: id});
+    var postlets = new Cicadas.Collections.Postlets();
     postlet.fetch();
     this._editPostlet = new Cicadas.Views.PostletForm({
       model: postlet,
+      collection: postlets,
     });
     this._swapViews(this._editPostlet);
 

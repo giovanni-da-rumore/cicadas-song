@@ -35,6 +35,23 @@
 
  }
 
+ strong {
+   font-weight: bold;
+
+ }
+
+
+ blockquote {
+   quotes: "\201C""\201D""\2018""\2019";
+ }
+
+ blockquote:before {
+   content: open-quote;
+   margin-right: 8px;
+   margin-left: -22px;
+   font-size: 25px;
+ }
+
  ul {
    list-style: none;
  }

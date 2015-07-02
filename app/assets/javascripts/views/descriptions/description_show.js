@@ -15,8 +15,23 @@ Cicadas.Views.DescriptionShow = Backbone.CompositeView.extend({
 
 
   render: function () {
-    var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
-    var content = Cicadas.TextParser.spaceParse(content);
+    // var content = Cicadas.TextParser.imageParse(this.model.escape('content'));
+    // var content = marked(this.model.escape('content'));
+    marked.setOptions({
+      renderer: new marked.Renderer(),
+      gfm: true,
+      tables: true,
+      breaks: true,
+      pedantic: false,
+      sanitize: true,
+      smartLists: true,
+      smartypants: false
+    });
+    var content = marked(this.model.get('content'));
+
+    // console.log(this.model.escape('content'))
+    content = Cicadas.TextParser.spaceParse(content);
+    console.log(content)
     this.$el.html(this.template({description: this.model, content: content, author: this.author}));
     return this;
   },
