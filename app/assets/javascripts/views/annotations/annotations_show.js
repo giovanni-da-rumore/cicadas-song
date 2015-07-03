@@ -1,11 +1,13 @@
 Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
 
   template: JST['annotations/show'],
+  formatting: JST['formatting/show'],
 
 
   events: {
     "click .annotation-edit": "editAnnotation",
     "click .delete": "deleteAnnotation",
+    "click .formatting": "showFormatting",
   },
 
 
@@ -13,6 +15,7 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render);
     this.author = this.model.author();
     this.listenTo(this.author, "sync", this.render);
+    this.formatShown = false;
 
   },
 
@@ -34,7 +37,7 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
     });
 
     var content = marked(this.model.get('content'));
-    
+
     this.$el.html(this.template({
       annotation: this.model,
       content: content,
@@ -66,7 +69,19 @@ Cicadas.Views.AnnotationShow = Backbone.CompositeView.extend({
       success: this.render()
     });
 
-  }
+  },
+
+  showFormatting: function (event) {
+    event.preventDefault();
+    if (this.formatShown === false) {
+      this.$el.find(".annotation-container").append(this.formatting());
+      this.formatShown = true;
+    } else {
+      this.$el.find('.formatting-container').remove();
+      this.formatShown = false;
+    }
+
+  },
 
 
 

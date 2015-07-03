@@ -262,7 +262,6 @@ Lexer.prototype.token = function(src, top, bq) {
     // blockquote
     if (cap = this.rules.blockquote.exec(src)) {
       src = src.substring(cap[0].length);
-      debugger;
 
       this.tokens.push({
         type: 'blockquote_start'

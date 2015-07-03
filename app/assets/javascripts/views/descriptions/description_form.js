@@ -2,15 +2,19 @@ Cicadas.Views.DescriptionForm = Backbone.CompositeView.extend({
 
   template: JST['descriptions/form'],
 
+  formatting: JST['formatting/show'],
+
   events: {
     "click .description-submit": "submitDescription",
     "click .description-cancel": "cancel",
+    "click .formatting": "showFormatting",
     "keyup .description-textarea": "adjustTextArea",
   },
 
   initialize: function (options) {
     this.textId = options.textId;
     this.parentText = options.parentText;
+    this.formatShown = false;
   },
 
   render: function () {
@@ -44,6 +48,18 @@ Cicadas.Views.DescriptionForm = Backbone.CompositeView.extend({
     this.model.save(attrs, {
       success: riuscire.bind(this),
     });
+  },
+
+  showFormatting: function (event) {
+    event.preventDefault();
+    if (this.formatShown === false) {
+      this.$el.find(".description-form").append(this.formatting());
+      this.formatShown = true;
+    } else {
+      this.$el.find('.formatting-container').remove();
+      this.formatShown = false;
+    }
+
   },
 
   adjustTextArea: function (event) {

@@ -3,13 +3,18 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 	events: {
 		"click .annotation-submit": "submitHandler",
 		"keyup .annotation-textarea": "adjustTextArea",
+		"click .form-formatting": "showFormatting",
+
 	},
 
 	template: JST["annotations/form"],
 
+	formatting: JST["formatting/show"],
+
 	initialize: function (options) {
 		this.range = options.range;
 		this.text = options.text;
+		this.formatShown = false;
 		this.parentView = options.view;
 	},
 
@@ -79,8 +84,6 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 	},
 
 
-
-
 	isNested: function (start, end) {
 		var nested = false;
 		this.text.annotations().each(function (annotation) {
@@ -107,6 +110,20 @@ Cicadas.Views.AnnotationForm = Backbone.CompositeView.extend({
 		event.preventDefault();
 		Cicadas.TextParser.adjustTextAreaLarge(event);
 	},
+
+
+	showFormatting: function (event) {
+    event.preventDefault();
+		if (this.formatShown === false) {
+    	this.$el.find(".annotation-form").append(this.formatting());
+			this.formatShown = true;
+
+		} else {
+      this.$el.find('.formatting-container').remove();
+      this.formatShown = false;
+    }
+
+  },
 
 
 
